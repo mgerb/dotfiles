@@ -11,6 +11,9 @@ local sources = {
    b.formatting.gofmt,
    b.formatting.goimports,
 
+   -- Rust
+   b.formatting.rustfmt,
+
    -- Lua
    b.formatting.stylua,
    b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
