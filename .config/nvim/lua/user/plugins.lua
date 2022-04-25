@@ -36,13 +36,8 @@ use("nvim-telescope/telescope.nvim")
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
 use("sindrets/diffview.nvim")
-
-use({
-	"norcalli/nvim-colorizer.lua",
-	config = function()
-		require("colorizer").setup()
-	end,
-})
+use("windwp/nvim-ts-autotag")
+use("norcalli/nvim-colorizer.lua")
 
 -- color scheme
 use("Mofiqul/dracula.nvim")
