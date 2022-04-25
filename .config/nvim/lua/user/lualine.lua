@@ -4,7 +4,9 @@ lualine.setup {
   options = {
     icons_enabled = true,
     -- theme = 'auto',
-    theme = 'tokyonight',
+    -- theme = 'tokyonight',
+    theme = 'dracula-nvim',
+    -- theme = 'vscode',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},

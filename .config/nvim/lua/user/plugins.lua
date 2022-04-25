@@ -31,12 +31,21 @@ use("famiu/bufdelete.nvim")
 use("folke/which-key.nvim")
 use("numToStr/Comment.nvim")
 use("akinsho/toggleterm.nvim")
-use("folke/tokyonight.nvim")
 use("lewis6991/impatient.nvim")
 use("nvim-telescope/telescope.nvim")
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
 use("sindrets/diffview.nvim")
+
+use({
+	"norcalli/nvim-colorizer.lua",
+	config = function()
+		require("colorizer").setup()
+	end,
+})
+
+-- color scheme
+use("Mofiqul/dracula.nvim")
 
 use({
 	"nvim-lualine/lualine.nvim",

@@ -33,7 +33,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "FiraCode Nerd Font Mono:h17", -- the font used in graphical neovim applications
-  spell = true,
+  spell = false,
   spelllang = "en_us",
 }
 
