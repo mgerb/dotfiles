@@ -38,6 +38,11 @@ use("windwp/nvim-autopairs")
 use("sindrets/diffview.nvim")
 use("windwp/nvim-ts-autotag")
 use("norcalli/nvim-colorizer.lua")
+use("folke/todo-comments.nvim")
+
+--TODO:
+-- use("ThePrimeagen/harpoon")
+-- use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && yarn install" })
 
 -- color scheme
 use("Mofiqul/dracula.nvim")
