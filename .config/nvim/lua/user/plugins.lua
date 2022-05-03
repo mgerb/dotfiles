@@ -65,7 +65,8 @@ use("johnpapa/vscode-angular-snippets")
 -- lsp
 use("neovim/nvim-lspconfig")
 use("williamboman/nvim-lsp-installer")
-use("jose-elias-alvarez/null-ls.nvim")
+-- TODO: update to main branch when this is fixed https://github.com/jose-elias-alvarez/null-ls.nvim/issues/843
+use({ "jose-elias-alvarez/null-ls.nvim", commit = "bd9dfc6015241334c140fb065445ba9443e6de14" })
 
 use({ "akinsho/bufferline.nvim", tag = "*" })
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
