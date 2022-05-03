@@ -35,8 +35,6 @@ map("n", "<S-h>", ":bprevious<CR>", opts)
 -- nvim-tree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
 
-map("n", "<leader>k", ":m .-2<CR>==", opts)
-map("n", "<leader>j", ":m .+1<CR>==", opts)
 map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", opts)
 map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)

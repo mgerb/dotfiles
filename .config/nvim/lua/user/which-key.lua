@@ -79,7 +79,6 @@ local opts = {
 
 local mappings = {
 	["c"] = { "<cmd>:Bdelete<cr>", "Close" },
-	["e"] = { "<cmd>:NvimTreeToggle<cr>", "Tree" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["w"] = { "<cmd>:w<cr>", "Write" },
 	["f"] = {
@@ -95,6 +94,7 @@ local mappings = {
 		f = { "<cmd>DiffviewFileHistory<cr>", "File History" },
 		l = { "<cmd>DiffViewLog<cr>", "Log" },
 		r = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
+		t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle Files" },
 	},
 
 	g = {
@@ -102,18 +102,23 @@ local mappings = {
 		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		-- l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
 		u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-
 		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
 		c = { "<cmd>Telescope git_commits<cr>", "Commits" },
 		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
 		t = { "<cmd>Telescope git_status<cr>", "Status" },
+	},
+
+	h = {
+		name = "Harpoon",
+		a = { "<cmd> lua require 'harpoon.mark'.add_file()<cr>", "Add File" },
+		h = { "<cmd> lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Menu" },
+		t = { "<cmd>Telescope harpoon marks<cr>", "Telescope" },
 	},
 
 	l = {
@@ -134,10 +139,13 @@ local mappings = {
 			"Workspace Symbols",
 		},
 	},
+
 	n = {
 		name = "NvimTree",
 		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
+		e = { "<cmd>:NvimTreeToggle<cr>", "Tree" },
 	},
+
 	p = {
 		name = "Packer",
 		a = { "<cmd>PackerSnapshot 1<cr>", "Snapshot" },

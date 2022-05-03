@@ -40,8 +40,8 @@ use("windwp/nvim-ts-autotag")
 use("norcalli/nvim-colorizer.lua")
 use("folke/todo-comments.nvim")
 
+use("ThePrimeagen/harpoon")
 --TODO:
--- use("ThePrimeagen/harpoon")
 -- use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && yarn install" })
 
 -- color scheme
@@ -66,7 +66,8 @@ use("johnpapa/vscode-angular-snippets")
 use("neovim/nvim-lspconfig")
 use("williamboman/nvim-lsp-installer")
 -- TODO: update to main branch when this is fixed https://github.com/jose-elias-alvarez/null-ls.nvim/issues/843
-use({ "jose-elias-alvarez/null-ls.nvim", commit = "bd9dfc6015241334c140fb065445ba9443e6de14" })
+-- use({ "jose-elias-alvarez/null-ls.nvim", commit = "bd9dfc6015241334c140fb065445ba9443e6de14" })
+use("jose-elias-alvarez/null-ls.nvim")
 
 use({ "akinsho/bufferline.nvim", tag = "*" })
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
