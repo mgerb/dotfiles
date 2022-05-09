@@ -17,6 +17,7 @@ end
 local packer = require("packer")
 
 packer.init({
+  -- snapshot = "1", // startup snapshot - not working??
 	-- set our snapshot directory inside the nvim config folder
 	snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
@@ -47,10 +48,7 @@ use("ThePrimeagen/harpoon")
 -- color scheme
 use("Mofiqul/dracula.nvim")
 
-use({
-	"nvim-lualine/lualine.nvim",
-	requires = { "kyazdani42/nvim-web-devicons", opt = true },
-})
+use("nvim-lualine/lualine.nvim")
 
 -- cmp
 use("hrsh7th/nvim-cmp")

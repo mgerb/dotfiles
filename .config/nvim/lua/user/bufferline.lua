@@ -27,17 +27,19 @@ bufferline.setup({
 		--- some limitations that will *NOT* be fixed.
 		name_formatter = function(buf) -- buf contains a "name", "path" and "bufnr"
 			-- remove extension from markdown files for example
-			if buf.name:match("%.md") then
-				return vim.fn.fnamemodify(buf.name, ":t:r")
-			end
+			-- if buf.name:match("%.md") then
+			-- 	return vim.fn.fnamemodify(buf.name, ":t:r")
+			-- end
 		end,
-		max_name_length = 18,
+		max_name_length = 25,
 		max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-		tab_size = 18,
+		tab_size = 25,
 		diagnostics = "nvim_lsp", -- | "coc" | false
 		diagnostics_update_in_insert = false,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			return "(" .. count .. ")"
+			-- return "(" .. count .. ")"
+      local icon = level:match("error") and " " or " "
+			return icon
 		end,
 		offsets = { { filetype = "NvimTree", text = "", text_align = "left" } },
 		color_icons = true, -- whether or not to add the filetype icon highlights
