@@ -78,6 +78,20 @@ local opts = {
 }
 
 local mappings = {
+	a = {
+		name = "Angular Scripts",
+		m = { "<cmd>lua require('user.custom.angular').jump_to_nearest_module()<cr>", "Module" },
+		c = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('ts')<cr>", "Component" },
+		t = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('html')<cr>", "HTML" },
+		s = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('scss')<cr>", "SCSS" },
+		j = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
+
+		xr = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
+		xe = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
+		xa = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
+		xf = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
+		xs = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
+	},
 	["c"] = { "<cmd>:Bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["w"] = { "<cmd>:w<cr>", "Write" },
@@ -91,6 +105,7 @@ local mappings = {
 		name = "Diffview",
 		c = { "<cmd>DiffviewClose<cr>", "Close" },
 		d = { "<cmd>DiffviewOpen<cr>", "Open" },
+		h = { "<cmd>DiffviewOpen head~1<cr>", "Open head~1" },
 		f = { "<cmd>DiffviewFileHistory<cr>", "File History" },
 		l = { "<cmd>DiffViewLog<cr>", "Log" },
 		r = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
@@ -117,6 +132,7 @@ local mappings = {
 	h = {
 		name = "Harpoon",
 		a = { "<cmd> lua require 'harpoon.mark'.add_file()<cr>", "Add File" },
+		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 		h = { "<cmd> lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Menu" },
 		t = { "<cmd>Telescope harpoon marks<cr>", "Telescope" },
 	},
@@ -138,6 +154,11 @@ local mappings = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
+	},
+
+	m = {
+		name = "MG Scripts",
+		o = { "<cmd>lua _MG_TS_ORGANIZE_IMPORTS()<cr>", "TS Organize Imports" },
 	},
 
 	n = {

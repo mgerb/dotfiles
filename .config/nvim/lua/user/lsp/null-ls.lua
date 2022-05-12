@@ -7,13 +7,31 @@ null_ls.setup({
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.stylua,
-
 		null_ls.builtins.diagnostics.codespell,
 		null_ls.builtins.diagnostics.eslint,
-
 		null_ls.builtins.code_actions.eslint,
-
 		null_ls.builtins.completion.spell,
 	},
+
 	debug = true,
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+					vim.lsp.buf.formatting_sync()
+					-- organize imports of typescript file
+					-- NOTE: not working well at the moment
+					-- tends to format imports differently
+					-- vim.lsp.buf.execute_command({
+					-- 	command = "_typescript.organizeImports",
+					-- 	arguments = { vim.fn.expand("%:p") },
+					-- })
+				end,
+			})
+		end
+	end,
 })
