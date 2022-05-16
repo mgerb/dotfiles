@@ -92,6 +92,12 @@ local mappings = {
 		xf = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
 		xs = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
 	},
+	b = {
+		name = "Bufferline",
+		h = { "<cmd>BufferLineMovePrev<cr>", "Move Previous" },
+		l = { "<cmd>BufferLineMoveNext<cr>", "Move Next" },
+		s = { "<cmd>BufferLineSortByDirectory<cr>", "Sort by Directory" },
+	},
 	["c"] = { "<cmd>:Bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["w"] = { "<cmd>:w<cr>", "Write" },

@@ -29,8 +29,8 @@ map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>", opts)
-map("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+map("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 
 -- nvim-tree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
@@ -39,4 +39,3 @@ map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", opts)
 map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
-
