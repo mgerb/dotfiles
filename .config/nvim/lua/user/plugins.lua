@@ -17,7 +17,7 @@ end
 local packer = require("packer")
 
 packer.init({
-  -- snapshot = "1", // startup snapshot - not working??
+	-- snapshot = "1", // startup snapshot - not working??
 	-- set our snapshot directory inside the nvim config folder
 	snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
@@ -42,8 +42,7 @@ use("norcalli/nvim-colorizer.lua")
 use("folke/todo-comments.nvim")
 
 use("ThePrimeagen/harpoon")
---TODO:
--- use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && yarn install" })
+use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
 
 -- color scheme
 use("Mofiqul/dracula.nvim")
