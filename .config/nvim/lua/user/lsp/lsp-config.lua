@@ -68,7 +68,7 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  -- use telescope for references
+	-- use telescope for references
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
@@ -76,19 +76,15 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(language_servers)
-  return function(client, bufnr)
-    for _, value in ipairs(language_servers) do
-      if value == client.name then
-        client.resolved_capabilities.document_formatting = false
-      end
-    end
-    -- NOTE: add language servers here to prevent formatting conflicts
-    -- if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
-    -- 	client.resolved_capabilities.document_formatting = false
-    -- end
-    lsp_keymaps(bufnr)
-    lsp_highlight_document(client)
-  end
+	return function(client, bufnr)
+		for _, value in ipairs(language_servers) do
+			if value == client.name then
+				client.resolved_capabilities.document_formatting = false
+			end
+		end
+		lsp_keymaps(bufnr)
+		lsp_highlight_document(client)
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
