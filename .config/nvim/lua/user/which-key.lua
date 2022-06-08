@@ -169,6 +169,7 @@ local mappings = {
 
 	n = {
 		name = "NvimTree",
+		c = { "<cmd>NvimTreeCollapse<cr>", "Collapse" },
 		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
 		e = { "<cmd>:NvimTreeToggle<cr>", "Tree" },
 	},
