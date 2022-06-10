@@ -52,9 +52,9 @@ use("nvim-lualine/lualine.nvim")
 -- cmp
 use("hrsh7th/nvim-cmp")
 use("hrsh7th/cmp-nvim-lsp")
--- use "hrsh7th/cmp-buffer" -- buffer completions
--- use "hrsh7th/cmp-path" -- path completions
--- use "hrsh7th/cmp-cmdline" -- cmdline completions
+use("hrsh7th/cmp-buffer") -- buffer completions
+use("hrsh7th/cmp-path") -- path completions
+use("hrsh7th/cmp-cmdline") -- cmdline completions
 use("saadparwaiz1/cmp_luasnip")
 use("L3MON4D3/LuaSnip")
 use("johnpapa/vscode-angular-snippets")
@@ -62,8 +62,6 @@ use("johnpapa/vscode-angular-snippets")
 -- lsp
 use("neovim/nvim-lspconfig")
 use("williamboman/nvim-lsp-installer")
--- TODO: update to main branch when this is fixed https://github.com/jose-elias-alvarez/null-ls.nvim/issues/843
--- use({ "jose-elias-alvarez/null-ls.nvim", commit = "bd9dfc6015241334c140fb065445ba9443e6de14" })
 use("jose-elias-alvarez/null-ls.nvim")
 
 use({ "akinsho/bufferline.nvim", tag = "*" })
