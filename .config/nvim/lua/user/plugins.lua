@@ -40,9 +40,9 @@ use("sindrets/diffview.nvim")
 use("windwp/nvim-ts-autotag")
 use("norcalli/nvim-colorizer.lua")
 use("folke/todo-comments.nvim")
-
 use("ThePrimeagen/harpoon")
 use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
+use("editorconfig/editorconfig-vim")
 
 -- color scheme
 use("Mofiqul/dracula.nvim")
