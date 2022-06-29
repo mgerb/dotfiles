@@ -9,12 +9,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.stylelint,
 
-		null_ls.builtins.diagnostics.codespell,
+		-- null_ls.builtins.diagnostics.cspell,
 		null_ls.builtins.diagnostics.eslint,
 		null_ls.builtins.diagnostics.stylelint,
 
 		null_ls.builtins.code_actions.eslint,
-		null_ls.builtins.completion.spell,
 	},
 
 	debug = true,

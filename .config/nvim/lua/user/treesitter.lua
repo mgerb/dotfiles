@@ -1,14 +1,40 @@
 local configs = require("nvim-treesitter.configs")
+local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+ft_to_parser.ejs = "html"
 
 local setup = {
 	-- A list of parser names, or "all"
-	ensure_installed = { "rust", "go", "typescript", "javascript", "html", "scss" },
+	-- ensure_installed = {
+	-- 	"bash",
+	-- 	"c",
+	-- 	"cmake",
+	-- 	"comment",
+	-- 	"cpp",
+	-- 	"css",
+	-- 	"elixir",
+	-- 	"go",
+	-- 	"gomod",
+	-- 	"html",
+	-- 	"javascript",
+	-- 	"jsdoc",
+	-- 	"json",
+	-- 	"lua",
+	-- 	"make",
+	-- 	"rust",
+	-- 	"scss",
+	-- 	"toml",
+	-- 	"tsx",
+	-- 	"typescript",
+	-- 	"vim",
+	-- 	"vue",
+	-- },
+	ensure_installed = "all",
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 
 	-- List of parsers to ignore installing (for "all")
-	ignore_install = { "" },
+	ignore_install = { "phpdoc" },
 
 	highlight = {
 		-- `false` will disable the whole extension

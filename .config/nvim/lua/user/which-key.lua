@@ -105,7 +105,9 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Find files",
 	},
-	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Word" },
+	-- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Word" },
+	["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Find Word" },
+	["r"] = { "<cmd>Telescope resume<cr>", "Resume" },
 
 	d = {
 		name = "Diffview",

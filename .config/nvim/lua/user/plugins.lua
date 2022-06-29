@@ -33,7 +33,9 @@ use("folke/which-key.nvim")
 use("numToStr/Comment.nvim")
 use("akinsho/toggleterm.nvim")
 use("lewis6991/impatient.nvim")
-use("nvim-telescope/telescope.nvim")
+use({ "nvim-telescope/telescope.nvim", requires = {
+	{ "nvim-telescope/telescope-live-grep-args.nvim" },
+} })
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
 use("sindrets/diffview.nvim")
