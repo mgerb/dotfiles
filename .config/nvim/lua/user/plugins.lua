@@ -51,12 +51,13 @@ use("Mofiqul/dracula.nvim")
 
 use("nvim-lualine/lualine.nvim")
 
--- cmp
+-- completions
 use("hrsh7th/nvim-cmp")
 use("hrsh7th/cmp-nvim-lsp")
 use("hrsh7th/cmp-buffer") -- buffer completions
 use("hrsh7th/cmp-path") -- path completions
 use("hrsh7th/cmp-cmdline") -- cmdline completions
+use("hrsh7th/cmp-nvim-lsp-signature-help")
 use("saadparwaiz1/cmp_luasnip")
 use("L3MON4D3/LuaSnip")
 use("johnpapa/vscode-angular-snippets")
