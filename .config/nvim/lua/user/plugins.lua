@@ -45,11 +45,15 @@ use("folke/todo-comments.nvim")
 use("ThePrimeagen/harpoon")
 use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
 use("editorconfig/editorconfig-vim")
+use("nvim-lualine/lualine.nvim")
 
 -- color scheme
 use("Mofiqul/dracula.nvim")
 
-use("nvim-lualine/lualine.nvim")
+-- lsp
+use("neovim/nvim-lspconfig")
+use("williamboman/nvim-lsp-installer")
+use("jose-elias-alvarez/null-ls.nvim")
 
 -- completions
 use("hrsh7th/nvim-cmp")
@@ -57,15 +61,14 @@ use("hrsh7th/cmp-nvim-lsp")
 use("hrsh7th/cmp-buffer") -- buffer completions
 use("hrsh7th/cmp-path") -- path completions
 use("hrsh7th/cmp-cmdline") -- cmdline completions
-use("hrsh7th/cmp-nvim-lsp-signature-help")
+use("ray-x/lsp_signature.nvim")
+
+-- luasnip
 use("saadparwaiz1/cmp_luasnip")
 use("L3MON4D3/LuaSnip")
-use("johnpapa/vscode-angular-snippets")
 
--- lsp
-use("neovim/nvim-lspconfig")
-use("williamboman/nvim-lsp-installer")
-use("jose-elias-alvarez/null-ls.nvim")
+-- angular
+use("johnpapa/vscode-angular-snippets")
 
 use({ "akinsho/bufferline.nvim", tag = "*" })
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
