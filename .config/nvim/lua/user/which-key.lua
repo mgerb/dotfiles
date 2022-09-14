@@ -91,6 +91,14 @@ local mappings = {
 		xa = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
 		xf = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
 		xs = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
+
+		g = {
+			name = "Generate",
+			c = { "<cmd>lua require('user.custom.angular').run_nx_generator('component')<cr>", "Component" },
+			d = { "<cmd>lua require('user.custom.angular').run_nx_generator('directive')<cr>", "Directive" },
+			p = { "<cmd>lua require('user.custom.angular').run_nx_generator('pipe')<cr>", "Pipe" },
+			s = { "<cmd>lua require('user.custom.angular').run_nx_generator('service')<cr>", "Service" },
+		},
 	},
 	b = {
 		name = "Bufferline",
