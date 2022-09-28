@@ -92,6 +92,11 @@ local mappings = {
 		xf = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
 		xs = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
 
+		n = {
+			name = "NX",
+			t = { "<cmd>lua require('user.custom.angular').run_nx_test_for_file()<cr>", "Test" },
+		},
+
 		g = {
 			name = "Generate",
 			c = { "<cmd>lua require('user.custom.angular').run_nx_generator('component')<cr>", "Component" },

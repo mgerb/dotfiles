@@ -5,6 +5,10 @@ local path = require("plenary.path")
 local Job = require("plenary.job")
 local nvim_tree_api = require("nvim-tree.api")
 
+local function get_project_name_from_module_file(module_relative_path)
+	return module_relative_path:match("^.+/(.+).module.ts$")
+end
+
 function M.jump_to_angular_component_part(extension)
 	-- get file name for the current buffer
 	local current_buffer = vim.api.nvim_buf_get_name(0)
@@ -238,6 +242,27 @@ function M.run_nx_generator(generator_type)
 			})
 			:sync(10000)
 	end
+
+	if generator_type == "component-store" then
+		Job
+			:new({
+				command = "npx",
+				args = {
+					"nx",
+					"workspace-generator",
+					"cavo-component-store",
+					"--projectName",
+					project_name,
+					"--path",
+					relative_path,
+				},
+				on_exit = function(j, return_val)
+					-- print(vim.inspect(j:result()))
+					-- don't need to do anything here
+				end,
+			})
+			:sync(10000)
+	end
 end
 
 -- find the nearest angular module file by walking up the directory tree
@@ -277,6 +302,21 @@ function M.playAround()
 	vim.ui.input({ prompt = "INPUT", completion = "dir" }, function(i)
 		print(i)
 	end)
+end
+
+function M.run_nx_test_for_file()
+	-- get file name for the current buffer
+	local current_buffer = vim.api.nvim_buf_get_name(0)
+
+	-- get the parts for the nx command
+	local module_relative_path = find_nearest_angular_module(current_buffer)
+	local project_name = get_project_name_from_module_file(module_relative_path)
+
+	-- build command string
+	local test_command = "nx test " .. project_name .. " --testFile " .. current_buffer .. " --watch"
+
+	-- execute the nx command in a new terminal buffer
+	vim.fn.execute("80 vnew | set winfixheight |  terminal " .. test_command)
 end
 
 return M
