@@ -13,8 +13,8 @@ map("n", "<C-s>", ":w<CR>", opts) -- save file
 map("n", "<esc>", ":noh<CR>", opts) -- clear highlighted searches
 
 -- comment
-map("n", "<C-_>", "<CMD>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-map("x", "<C-_>", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
+map("n", "<C-/>", "<CMD>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+map("x", "<C-/>", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- better window navigation
 map("n", "<C-h>", "<c-w>h", opts)
