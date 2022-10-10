@@ -126,3 +126,14 @@ alias dc="docker-compose"
 # Set up the prompt
 eval "$(starship init zsh)"
 
+case "$OSTYPE" in
+  darwin*)
+    alias nvim="$HOME/Desktop/nvim-macos/bin/nvim"
+  ;;
+  linux*)
+    # ...
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # ...
+  ;;
+esac
