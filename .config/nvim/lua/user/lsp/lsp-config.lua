@@ -63,7 +63,8 @@ M.on_attach = function(language_servers)
 
     for _, value in ipairs(language_servers) do
       if value == client.name then
-        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
       end
     end
   end
