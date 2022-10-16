@@ -9,7 +9,7 @@ lsp_config.setup()
 -- NOTE: if having formatting conflicts add language server to this list
 local language_servers = { "tsserver", "sumneko_lua", "gopls", "html", "rust_analyzer" }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
