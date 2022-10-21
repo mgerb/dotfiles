@@ -208,6 +208,7 @@ local mappings = {
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		t = { "<cmd>ToggleTermToggleAll<cr>", "Toggle All" },
 	},
+	["x"] = { "<cmd>:%bd<cr>", "Close All Buffers" },
 }
 
 which_key.setup(setup)
