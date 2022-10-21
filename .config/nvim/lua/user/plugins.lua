@@ -4,22 +4,21 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
 
 local packer = require("packer")
 
 packer.init({
-  -- snapshot = "1", // startup snapshot - not working??
-  -- set our snapshot directory inside the nvim config folder
-  snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
+	-- set our snapshot directory inside the nvim config folder
+	snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
 
 local use = packer.use
@@ -34,7 +33,7 @@ use("folke/which-key.nvim")
 use("numToStr/Comment.nvim")
 use("akinsho/toggleterm.nvim")
 use({ "nvim-telescope/telescope.nvim", requires = {
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
+	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 } })
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
@@ -76,5 +75,5 @@ use({ "akinsho/bufferline.nvim", tag = "*" })
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
-  require("packer").sync()
+	require("packer").sync()
 end
