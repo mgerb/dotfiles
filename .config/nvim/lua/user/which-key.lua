@@ -100,10 +100,16 @@ local mappings = {
 
 		g = {
 			name = "Generate",
-			c = { "<cmd>lua require('user.custom.angular').run_nx_generator('component')<cr>", "Component" },
-			d = { "<cmd>lua require('user.custom.angular').run_nx_generator('directive')<cr>", "Directive" },
-			p = { "<cmd>lua require('user.custom.angular').run_nx_generator('pipe')<cr>", "Pipe" },
-			s = { "<cmd>lua require('user.custom.angular').run_nx_generator('service')<cr>", "Service" },
+			c = {
+				"<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('component')<cr>",
+				"Component",
+			},
+			d = {
+				"<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('directive')<cr>",
+				"Directive",
+			},
+			p = { "<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('pipe')<cr>", "Pipe" },
+			s = { "<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('service')<cr>", "Service" },
 		},
 	},
 	b = {
@@ -137,19 +143,20 @@ local mappings = {
 
 	g = {
 		name = "Git",
+		b = { "<cmd>Gitsigns blame_line<cr>", "Branches" },
+		B = { "<cmd>Telescope git_branches<cr>", "Branches" },
+		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
+		c = { "<cmd>Telescope git_commits<cr>", "Commits" },
+		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
-		c = { "<cmd>Telescope git_commits<cr>", "Commits" },
-		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
 		t = { "<cmd>Telescope git_status<cr>", "Status" },
+		u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
 	},
 
 	h = {
@@ -164,8 +171,12 @@ local mappings = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		d = {
-			"<cmd>Telescope diagnostics<cr>",
-			"Diagnostics",
+			"<cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<cr>",
+			"Diagnostics (File)",
+		},
+		D = {
+			"<cmd>lua require('telescope.builtin').diagnostics()<cr>",
+			"Diagnostics (All)",
 		},
 		f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
