@@ -1,19 +1,19 @@
 local scan = require("plenary.scandir")
 local path = require("plenary.path")
 
--- exported functions
-local M = {}
-
--- internal  functions
-local I = {}
-
-function M.table_length(T)
+function table_length(T)
 	local count = 0
 	for _ in pairs(T) do
 		count = count + 1
 	end
 	return count
 end
+
+-- exported functions
+local M = {}
+
+-- internal  functions
+local I = {}
 
 function I.find_nearest_project_json(starting_dir)
 	local current_dir = path:new(starting_dir)
@@ -24,11 +24,10 @@ function I.find_nearest_project_json(starting_dir)
 		current_dir = current_dir:parent()
 		scan_result = scan.scan_dir(current_dir:normalize(), { search_pattern = ".project.json" })
 		count = count + 1
-	until M.table_length(scan_result) > 0 or count >= 10
+	until table_length(scan_result) > 0 or count >= 10
 
 	return scan_result[1]
 end
-
 -- find the nearest angular module file by walking up the directory tree
 -- looking for a file that matches the pattern *.module.ts
 function M.find_nearest_angular_module(starting_dir)
@@ -40,7 +39,21 @@ function M.find_nearest_angular_module(starting_dir)
 		current_dir = current_dir:parent()
 		scan_result = scan.scan_dir(current_dir:normalize(), { search_pattern = ".module.ts" })
 		count = count + 1
-	until M.table_length(scan_result) > 0 or count >= 10
+	until table_length(scan_result) > 0 or count >= 10
+
+	return scan_result[1]
+end
+
+function M.find_nearest_file(starting_dir, file_name)
+	local current_dir = path:new(starting_dir)
+	local scan_result
+	local count = 1
+	-- keep going up directories until you find a `.module.ts` (or stop at 10 as then something went wrong)
+	repeat
+		current_dir = current_dir:parent()
+		scan_result = scan.scan_dir(current_dir:normalize(), { search_pattern = file_name, depth = 1 })
+		count = count + 1
+	until table_length(scan_result) > 0 or count >= 10
 
 	return scan_result[1]
 end
@@ -60,9 +73,9 @@ function M.find_nearest_ngrx_part(starting_dir, ngrx_part)
 			{ search_pattern = "." .. ngrx_part_plural .. ".ts" }
 		)
 		count = count + 1
-	until M.table_length(scan_result) > 0 or M.table_length(scan_result_plural) > 0 or count >= 10
+	until table_length(scan_result) > 0 or table_length(scan_result_plural) > 0 or count >= 10
 
-	if M.table_length(scan_result) > 0 then
+	if table_length(scan_result) > 0 then
 		return scan_result[1]
 	else
 		return scan_result_plural[1]
@@ -127,5 +140,11 @@ function M.load_file_into_buffer(file)
 	vim.api.nvim_win_set_buf(0, new_buff)
 	vim.fn.execute("edit")
 end
+
+--DEPRECATED
+-- return the name of the project from the module file
+-- function M.get_project_name_from_module_file(module_relative_path)
+--   return module_relative_path:match("^.+/(.+).module.ts$")
+-- end
 
 return M

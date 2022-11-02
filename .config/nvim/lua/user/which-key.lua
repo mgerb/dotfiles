@@ -81,35 +81,30 @@ local mappings = {
 	a = {
 		name = "Angular Scripts",
 		a = { "<cmd>AttachToTest<cr>", "Attach to Test" },
-		c = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('ts')<cr>", "Component" },
-		j = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
-		m = { "<cmd>lua require('user.custom.angular').jump_to_nearest_module()<cr>", "Module" },
-		s = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('scss')<cr>", "SCSS" },
-		t = { "<cmd>lua require('user.custom.angular').jump_to_angular_component_part('html')<cr>", "HTML" },
+		c = { "<cmd>lua require('user.custom').jump_to_angular_component_part('ts')<cr>", "Component" },
+		j = { "<cmd>lua require('user.custom').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
+		m = { "<cmd>lua require('user.custom').jump_to_nearest_module()<cr>", "Module" },
+		s = { "<cmd>lua require('user.custom').jump_to_angular_component_part('scss')<cr>", "SCSS" },
+		t = { "<cmd>lua require('user.custom').jump_to_angular_component_part('html')<cr>", "HTML" },
 
-		xr = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
-		xe = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
-		xa = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
-		xf = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
-		xs = { "<cmd>lua require('user.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
-
-		n = {
-			name = "NX",
-			t = { "<cmd>lua require('user.custom.angular').run_nx_test_for_file()<cr>", "Test" },
-		},
+		xr = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
+		xe = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
+		xa = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
+		xf = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
+		xs = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
 
 		g = {
 			name = "Generate",
 			c = {
-				"<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('component')<cr>",
+				"<cmd>lua require('user.custom.nx-commands').run_nx_generator('component')<cr>",
 				"Component",
 			},
 			d = {
-				"<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('directive')<cr>",
+				"<cmd>lua require('user.custom.nx-commands').run_nx_generator('directive')<cr>",
 				"Directive",
 			},
-			p = { "<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('pipe')<cr>", "Pipe" },
-			s = { "<cmd>lua require('user.custom.angular.nx-commands').run_nx_generator('service')<cr>", "Service" },
+			p = { "<cmd>lua require('user.custom.nx-commands').run_nx_generator('pipe')<cr>", "Pipe" },
+			s = { "<cmd>lua require('user.custom.nx-commands').run_nx_generator('service')<cr>", "Service" },
 		},
 	},
 	b = {
