@@ -1,7 +1,5 @@
 local bufferline = require("bufferline")
 
-vim.opt.termguicolors = true
-
 bufferline.setup({
 	options = {
 		mode = "buffers", -- set to "tabs" to only show tabpages instead

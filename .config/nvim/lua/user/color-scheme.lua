@@ -1,5 +1,30 @@
--- vim.cmd[[colorscheme tokyonight]]
+local dracula = require("dracula")
+
+dracula.setup({
+	overrides = {
+		["@text"] = { fg = dracula.colors().bright_white },
+		["@text.strong"] = { fg = dracula.colors().bright_white },
+		["@tag"] = { fg = dracula.colors().pink },
+		["@tag.delimiter"] = { fg = dracula.colors().white },
+		["@comment"] = { fg = dracula.colors().comment },
+		htmlEndTag = { fg = dracula.colors().white },
+		htmlTag = { fg = dracula.colors().pink },
+		htmlTagN = { fg = dracula.colors().pink },
+		htmlTagName = { fg = dracula.colors().pink },
+		Function = { fg = dracula.colors().green },
+		Search = { fg = dracula.colors().orange, bg = dracula.colors().comment },
+		IncSearch = { fg = dracula.colors().black, bg = dracula.colors().orange },
+		CurSearch = { link = "IncSearch" },
+	},
+})
+
 vim.cmd([[colorscheme dracula]])
+
+-- other color schemes to test out
+-- vim.o.background = "dark"
+-- vim.cmd([[colorscheme nightfox]])
+-- vim.cmd([[colorscheme tokyonight-night]])
+-- vim.cmd([[colorscheme gruvbox]])
 
 local highlight = function(group, fg, bg, attr, sp)
 	fg = fg and "guifg=" .. fg or "guifg=NONE"
