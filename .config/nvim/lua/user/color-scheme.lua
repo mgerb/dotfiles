@@ -23,7 +23,7 @@ vim.cmd([[colorscheme dracula]])
 -- other color schemes to test out
 -- vim.o.background = "dark"
 -- vim.cmd([[colorscheme nightfox]])
--- vim.cmd([[colorscheme tokyonight-night]])
+-- vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme gruvbox]])
 
 local highlight = function(group, fg, bg, attr, sp)

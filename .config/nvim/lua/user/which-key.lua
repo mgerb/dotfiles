@@ -86,6 +86,7 @@ local mappings = {
 		m = { "<cmd>lua require('user.custom').jump_to_nearest_module()<cr>", "Module" },
 		s = { "<cmd>lua require('user.custom').jump_to_angular_component_part('scss')<cr>", "SCSS" },
 		t = { "<cmd>lua require('user.custom').jump_to_angular_component_part('html')<cr>", "HTML" },
+		u = { "<cmd>UnattachInlineTesting<cr>", "Unattach from Test" },
 
 		xr = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
 		xe = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
