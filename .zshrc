@@ -116,6 +116,10 @@ alias apple_brew='arch --arm64e /opt/homebrew/bin/brew'
 export AWS_SDK_LOAD_CONFIG=1
 export AWS_PROFILE=default
 
+# alias's
+alias dc="docker-compose"
+alias nv="neovide --multigrid"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -143,8 +147,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-alias dc="docker-compose"
 
 # Set up the prompt
 eval "$(starship init zsh)"

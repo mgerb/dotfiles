@@ -7,6 +7,8 @@
   - [Download appimage from releases page](https://github.com/neovim/neovim/releases)
   - `mv nvim.appimage /usr/local/bin/nvim`
   - `sudo chmod +x /usr/local/bin/nvim`
+- [Install Neovide](https://github.com/neovide/neovide)
+  - place neovide in `/usr/local/bin`
 - [Install zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
   - [Install ohmyzsh](https://ohmyz.sh/#install)
   - [Install dracula zsh theme](https://draculatheme.com/zsh)
