@@ -80,13 +80,13 @@ local opts = {
 local mappings = {
 	a = {
 		name = "Angular Scripts",
-		a = { "<cmd>AttachToTest<cr>", "Attach to Test" },
+		a = { "<cmd>JestingAttachNx<cr>", "Attach to Test" },
 		c = { "<cmd>lua require('user.custom').jump_to_angular_component_part('ts')<cr>", "Component" },
 		j = { "<cmd>lua require('user.custom').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
 		m = { "<cmd>lua require('user.custom').jump_to_nearest_module()<cr>", "Module" },
 		s = { "<cmd>lua require('user.custom').jump_to_angular_component_part('scss')<cr>", "SCSS" },
 		t = { "<cmd>lua require('user.custom').jump_to_angular_component_part('html')<cr>", "HTML" },
-		u = { "<cmd>UnattachInlineTesting<cr>", "Unattach from Test" },
+		u = { "<cmd>JestingUnattach<cr>", "Unattach from Test" },
 
 		xr = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
 		xe = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },

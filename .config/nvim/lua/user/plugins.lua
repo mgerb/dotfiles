@@ -46,13 +46,27 @@ use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm inst
 use("editorconfig/editorconfig-vim")
 use("nvim-lualine/lualine.nvim")
 
+use("justinrassier/jesting.nvim")
+
+use({
+	"github/copilot.vim",
+	branch = "release",
+	config = function()
+		local sysname = vim.loop.os_uname().sysname
+		if sysname == "Darwin" then
+			vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.18.1/bin/node"
+		end
+	end,
+})
+
 -- color scheme
 use("Mofiqul/dracula.nvim")
 
 -- other color schemes to test out
 -- use("EdenEast/nightfox.nvim")
-use("folke/tokyonight.nvim")
+-- use("folke/tokyonight.nvim")
 -- use("ellisonleao/gruvbox.nvim")
+--
 
 -- lsp
 use("williamboman/mason.nvim")
