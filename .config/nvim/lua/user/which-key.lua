@@ -139,7 +139,7 @@ local mappings = {
 
 	g = {
 		name = "Git",
-		b = { "<cmd>Gitsigns blame_line<cr>", "Branches" },
+		b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
 		B = { "<cmd>Telescope git_branches<cr>", "Branches" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
