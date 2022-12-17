@@ -145,7 +145,6 @@ local mappings = {
 		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
 		c = { "<cmd>Telescope git_commits<cr>", "Commits" },
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
