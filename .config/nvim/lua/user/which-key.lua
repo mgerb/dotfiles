@@ -80,13 +80,17 @@ local opts = {
 local mappings = {
 	a = {
 		name = "Angular Scripts",
-		a = { "<cmd>JestingAttachNx<cr>", "Attach to Test" },
 		c = { "<cmd>lua require('user.custom').jump_to_angular_component_part('ts')<cr>", "Component" },
-		j = { "<cmd>lua require('user.custom').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
+		j = {
+			name = "Jesting",
+			f = { "<cmd>JestingAttachNx<cr>", "Attach to File" },
+			t = { "<cmd>JestingAttachSingleTestNx<cr>", "Attach to Single Test" },
+			u = { "<cmd>JestingUnattach<cr>", "Unattach from Test" },
+		},
 		m = { "<cmd>lua require('user.custom').jump_to_nearest_module()<cr>", "Module" },
 		s = { "<cmd>lua require('user.custom').jump_to_angular_component_part('scss')<cr>", "SCSS" },
+		S = { "<cmd>lua require('user.custom').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
 		t = { "<cmd>lua require('user.custom').jump_to_angular_component_part('html')<cr>", "HTML" },
-		u = { "<cmd>JestingUnattach<cr>", "Unattach from Test" },
 
 		xr = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
 		xe = { "<cmd>lua require('user.custom').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
