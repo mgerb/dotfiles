@@ -1,7 +1,7 @@
 local lualine = require("lualine")
 
 lualine.setup({
-	options = {
-		theme = "dracula-nvim",
-	},
+	-- options = {
+		-- theme = "dracula-nvim",
+	-- },
 })
