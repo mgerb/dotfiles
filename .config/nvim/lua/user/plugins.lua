@@ -60,10 +60,10 @@ use({
 })
 
 -- official dracula vim theme
-use("dracula/vim")
+-- use("dracula/vim")
 
 -- old dracula theme I was using - kept breaking with updates
--- use("Mofiqul/dracula.nvim")
+use("Mofiqul/dracula.nvim")
 
 -- other color schemes to test out
 use("EdenEast/nightfox.nvim")

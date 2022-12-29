@@ -127,7 +127,7 @@ local mappings = {
 	},
 	-- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Word" },
 	["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Diagnostics" },
-	["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Find Word" },
+	["F"] = { "<cmd>Telescope live_grep_args<cr>", "Find Word" },
 	["r"] = { "<cmd>Telescope resume<cr>", "Resume" },
 
 	d = {
