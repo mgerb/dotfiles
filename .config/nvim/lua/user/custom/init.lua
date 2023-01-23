@@ -1,5 +1,17 @@
-require("user.custom.organize-imports")
 require("user.custom.commands")
+
+vim.api.nvim_create_user_command("MGTSOrganizeImports", function()
+	vim.lsp.buf.execute_command({
+		command = "_typescript.organizeImports",
+		arguments = { vim.fn.expand("%:p") },
+	})
+end, {})
+
+vim.api.nvim_create_user_command("MGPackerSnapshot", function()
+	local date = os.date("*t")
+	local dateString = string.format("%d-%02d-%02d", date.year, date.month, date.day)
+	require("packer").snapshot(dateString .. ".json")
+end, {})
 
 local M = {}
 local path = require("plenary.path")

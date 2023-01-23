@@ -191,7 +191,7 @@ local mappings = {
 
 	m = {
 		name = "MG Scripts",
-		o = { "<cmd>lua _MG_TS_ORGANIZE_IMPORTS()<cr>", "TS Organize Imports" },
+		o = { "<cmd>MGTSOrganizeImports<cr>", "TS Organize Imports" },
 	},
 
 	n = {
@@ -203,7 +203,7 @@ local mappings = {
 
 	p = {
 		name = "Packer",
-		a = { "<cmd>PackerSnapshot 1<cr>", "Snapshot" },
+		a = { "<cmd>MGPackerSnapshot<cr>", "Snapshot" },
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
 		i = { "<cmd>PackerInstall<cr>", "Install" },
 		s = { "<cmd>PackerSync<cr>", "Sync" },
