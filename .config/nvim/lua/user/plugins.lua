@@ -54,7 +54,7 @@ use({
 	config = function()
 		local sysname = vim.loop.os_uname().sysname
 		if sysname == "Darwin" then
-			vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.18.1/bin/node"
+			vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.19.0/bin/node"
 		end
 	end,
 })
