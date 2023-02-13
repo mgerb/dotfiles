@@ -40,6 +40,7 @@ map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 
+-- jump around 10 lines at a time
 map("n", "<CS-j>", "10j", opts)
 map("n", "<CS-k>", "10k", opts)
 map("n", "<CS-h>", "10h", opts)

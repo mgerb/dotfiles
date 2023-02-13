@@ -4,21 +4,21 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+  packer_bootstrap = fn.system({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
 end
 
 local packer = require("packer")
 
 packer.init({
-	-- set our snapshot directory inside the nvim config folder
-	snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
+  -- set our snapshot directory inside the nvim config folder
+  snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
 
 local use = packer.use
@@ -33,7 +33,7 @@ use("folke/which-key.nvim")
 use("numToStr/Comment.nvim")
 use("akinsho/toggleterm.nvim")
 use({ "nvim-telescope/telescope.nvim", requires = {
-	{ "nvim-telescope/telescope-live-grep-args.nvim" },
+  { "nvim-telescope/telescope-live-grep-args.nvim" },
 } })
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
@@ -45,18 +45,19 @@ use("ThePrimeagen/harpoon")
 use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
 use("editorconfig/editorconfig-vim")
 use("nvim-lualine/lualine.nvim")
+use("stevearc/aerial.nvim")
 
 use("justinrassier/jesting.nvim")
 
 use({
-	"github/copilot.vim",
-	branch = "release",
-	config = function()
-		local sysname = vim.loop.os_uname().sysname
-		if sysname == "Darwin" then
-			vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.19.0/bin/node"
-		end
-	end,
+  "github/copilot.vim",
+  branch = "release",
+  config = function()
+    local sysname = vim.loop.os_uname().sysname
+    if sysname == "Darwin" then
+      vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.19.0/bin/node"
+    end
+  end,
 })
 
 -- official dracula vim theme
@@ -69,7 +70,6 @@ use("Mofiqul/dracula.nvim")
 use("EdenEast/nightfox.nvim")
 use("folke/tokyonight.nvim")
 use("ellisonleao/gruvbox.nvim")
---
 
 -- lsp
 use("williamboman/mason.nvim")
@@ -97,5 +97,5 @@ use({ "akinsho/bufferline.nvim", tag = "*" })
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
-	require("packer").sync()
+  require("packer").sync()
 end
