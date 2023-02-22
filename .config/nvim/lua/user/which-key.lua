@@ -122,14 +122,16 @@ local mappings = {
   ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
   ["q"] = { "<cmd>:q<cr>", "Quit" },
   ["w"] = { "<cmd>:w<cr>", "Write" },
+  ["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Diagnostics" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files(require('user.custom.telescope').get_my_theme())<cr>",
     "Find files",
   },
-  ["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Diagnostics" },
-  ["F"] = { "<cmd>Telescope live_grep_args<cr>", "Find Word" },
+  ["F"] = {
+    "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('user.custom.telescope').get_my_theme())<cr>",
+    "Live Grep",
+  },
   ["r"] = { "<cmd>Telescope resume<cr>", "Resume" },
-
   d = {
     name = "Diffview",
     c = { "<cmd>DiffviewClose<cr>", "Close" },
@@ -140,7 +142,6 @@ local mappings = {
     r = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
     t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle Files" },
   },
-
   g = {
     name = "Git",
     b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
@@ -157,7 +158,6 @@ local mappings = {
     t = { "<cmd>Telescope git_status<cr>", "Status" },
     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
   },
-
   h = {
     name = "Harpoon",
     a = { "<cmd> lua require 'harpoon.mark'.add_file()<cr>", "Add File" },
@@ -165,7 +165,6 @@ local mappings = {
     h = { "<cmd> lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Menu" },
     t = { "<cmd>Telescope harpoon marks<cr>", "Telescope" },
   },
-
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -188,19 +187,16 @@ local mappings = {
       "Workspace Symbols",
     },
   },
-
   m = {
     name = "MG Scripts",
     o = { "<cmd>MGTSOrganizeImports<cr>", "TS Organize Imports" },
   },
-
   n = {
     name = "NvimTree",
     c = { "<cmd>NvimTreeCollapse<cr>", "Collapse" },
     r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
     e = { "<cmd>:NvimTreeToggle<cr>", "Tree" },
   },
-
   p = {
     name = "Packer",
     a = { "<cmd>MGPackerSnapshot<cr>", "Snapshot" },
@@ -210,7 +206,6 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-
   t = {
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
