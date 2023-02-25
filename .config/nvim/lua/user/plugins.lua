@@ -32,9 +32,12 @@ use("famiu/bufdelete.nvim")
 use("folke/which-key.nvim")
 use("numToStr/Comment.nvim")
 use("akinsho/toggleterm.nvim")
-use({ "nvim-telescope/telescope.nvim", requires = {
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
-} })
+use({
+  "nvim-telescope/telescope.nvim",
+  requires = {
+    { "nvim-telescope/telescope-live-grep-args.nvim" },
+  },
+})
 use("lewis6991/gitsigns.nvim")
 use("windwp/nvim-autopairs")
 use("sindrets/diffview.nvim")
@@ -46,6 +49,7 @@ use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm inst
 use("editorconfig/editorconfig-vim")
 use("nvim-lualine/lualine.nvim")
 use("stevearc/aerial.nvim")
+use("RRethy/vim-illuminate")
 
 use("justinrassier/jesting.nvim")
 
