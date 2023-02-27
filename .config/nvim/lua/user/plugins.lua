@@ -49,8 +49,8 @@ use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm inst
 use("editorconfig/editorconfig-vim")
 use("nvim-lualine/lualine.nvim")
 use("stevearc/aerial.nvim")
-use("RRethy/vim-illuminate")
 use("mbbill/undotree")
+use("andymass/vim-matchup")
 
 use("justinrassier/jesting.nvim")
 
