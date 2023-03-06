@@ -72,9 +72,9 @@ use({
 use("Mofiqul/dracula.nvim")
 
 -- other color schemes to test out
-use("EdenEast/nightfox.nvim")
-use("folke/tokyonight.nvim")
-use("ellisonleao/gruvbox.nvim")
+-- use("EdenEast/nightfox.nvim")
+-- use("folke/tokyonight.nvim")
+-- use("ellisonleao/gruvbox.nvim")
 
 -- lsp
 use("williamboman/mason.nvim")
