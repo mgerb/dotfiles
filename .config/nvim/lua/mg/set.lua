@@ -35,7 +35,7 @@ local options = {
 	guifont = "FiraCode Nerd Font Mono:h14", -- the font used in graphical neovim applications
 	spell = false,
 	spelllang = "en_us",
-    undodir = os.getenv("HOME") .. "/.vim/undodir",
+	undodir = os.getenv("HOME") .. "/.vim/undodir",
 	undofile = true, -- enable persistent undo
 }
 
@@ -46,4 +46,3 @@ for k, v in pairs(options) do
 end
 
 vim.opt.isfname:append("@-@")
-
