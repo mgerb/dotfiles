@@ -1,6 +1,5 @@
 local path = require("plenary.path")
-local find_nearest_file = require("user.custom.utils").find_nearest_file
-local get_project_name_from_path = require("user.custom.utils").get_project_name_from_path
+local find_nearest_file = require("mg.custom.utils").find_nearest_file
 local popup = require("plenary.popup")
 
 local M = {}
@@ -84,13 +83,7 @@ function M.create_popup_of_test_results(test_result)
 		borderchars = borderchars,
 	})
 
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<CR>",
-		"<Cmd>lua require('user.custom.commands').select_menu_item()<CR>",
-		{}
-	)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<CR>", "<Cmd>lua require('mg.custom.commands').select_menu_item()<CR>", {})
 end
 
 function M.select_menu_item()

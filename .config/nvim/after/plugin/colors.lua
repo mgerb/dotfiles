@@ -20,8 +20,6 @@ dracula.setup({
 })
 
 vim.cmd([[colorscheme dracula]])
--- vim.cmd([[colorscheme nightfox]])
--- vim.o.background = "dark"
 
 local highlight = function(group, fg, bg, attr, sp)
 	fg = fg and "guifg=" .. fg or "guifg=NONE"

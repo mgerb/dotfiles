@@ -18,12 +18,12 @@ local options = {
 	swapfile = false, -- creates a swapfile
 	termguicolors = true, -- set term gui colors (most terminals support this)
 	timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
-	undofile = true, -- enable persistent undo
-	updatetime = 300, -- faster completion (4000ms default)
+	updatetime = 50, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
-	shiftwidth = 2, -- the number of spaces inserted for each indentation
-	tabstop = 2, -- insert 2 spaces for a tab
+	shiftwidth = 4, -- the number of spaces inserted for each indentation
+	tabstop = 4, -- insert 2 spaces for a tab
+	softtabstop = 4,
 	cursorline = false, -- highlight the current line
 	number = true, -- set numbered lines
 	relativenumber = false, -- set relative numbered lines
@@ -35,9 +35,9 @@ local options = {
 	guifont = "FiraCode Nerd Font Mono:h14", -- the font used in graphical neovim applications
 	spell = false,
 	spelllang = "en_us",
+    undodir = os.getenv("HOME") .. "/.vim/undodir",
+	undofile = true, -- enable persistent undo
 }
-
-vim.opt.shortmess:append("c")
 
 vim.g.neovide_cursor_animation_length = 0.03
 
@@ -45,6 +45,5 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd("set whichwrap+=<,>,[,],h,l")
--- vim.cmd [[set iskeyword+=-]]
--- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+vim.opt.isfname:append("@-@")
+

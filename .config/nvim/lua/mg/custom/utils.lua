@@ -28,6 +28,7 @@ function I.find_nearest_project_json(starting_dir)
 
 	return scan_result[1]
 end
+
 -- find the nearest angular module file by walking up the directory tree
 -- looking for a file that matches the pattern *.module.ts
 function M.find_nearest_angular_module(starting_dir)
@@ -68,10 +69,8 @@ function M.find_nearest_ngrx_part(starting_dir, ngrx_part)
 	repeat
 		current_dir = current_dir:parent()
 		scan_result = scan.scan_dir(current_dir:normalize(), { search_pattern = "." .. ngrx_part .. ".ts" })
-		scan_result_plural = scan.scan_dir(
-			current_dir:normalize(),
-			{ search_pattern = "." .. ngrx_part_plural .. ".ts" }
-		)
+		scan_result_plural =
+			scan.scan_dir(current_dir:normalize(), { search_pattern = "." .. ngrx_part_plural .. ".ts" })
 		count = count + 1
 	until table_length(scan_result) > 0 or table_length(scan_result_plural) > 0 or count >= 10
 

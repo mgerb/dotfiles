@@ -1,4 +1,12 @@
-require("user.custom.commands")
+require("mg.custom.commands")
+local path = require("plenary.path")
+local Job = require("plenary.job")
+local packer = require("packer")
+local find_nearest_angular_module = require("mg.custom.utils").find_nearest_angular_module
+local find_nearest_ngrx_part = require("mg.custom.utils").find_nearest_ngrx_part
+local get_project_name_from_path = require("mg.custom.utils").get_project_name_from_path
+local get_relative_path_from_project_name = require("mg.custom.utils").get_relative_path_from_project_name
+local load_file_into_buffer = require("mg.custom.utils").load_file_into_buffer
 
 vim.api.nvim_create_user_command("MGTSOrganizeImports", function()
 	vim.lsp.buf.execute_command({
@@ -10,26 +18,17 @@ end, {})
 vim.api.nvim_create_user_command("MGPackerSnapshot", function()
 	local date = os.date("*t")
 	local dateString = string.format("%d-%02d-%02d", date.year, date.month, date.day)
-	require("packer").snapshot(dateString .. ".json")
+	packer.snapshot(dateString .. ".json")
 end, {})
 
 local M = {}
-local path = require("plenary.path")
-local Job = require("plenary.job")
-local find_nearest_angular_module = require("user.custom.utils").find_nearest_angular_module
-local find_nearest_ngrx_part = require("user.custom.utils").find_nearest_ngrx_part
-local get_project_name_from_path = require("user.custom.utils").get_project_name_from_path
-local get_relative_path_from_project_name = require("user.custom.utils").get_relative_path_from_project_name
-local load_file_into_buffer = require("user.custom.utils").load_file_into_buffer
 
 function M.jump_to_angular_component_part(extension)
 	-- get file name for the current buffer
 	local current_buffer = vim.api.nvim_buf_get_name(0)
 	-- get the parts of the component path
-	local component_path, component_name, component_extension = string.match(
-		current_buffer,
-		"(.-)([^\\/]-%.?([^%.\\/]*))$"
-	)
+	local component_path, component_name, component_extension =
+		string.match(current_buffer, "(.-)([^\\/]-%.?([^%.\\/]*))$")
 
 	-- niave replacement of extension with desired destination extension
 	local destination_file = string.gsub(component_name, "%." .. component_extension, "%." .. extension)
@@ -67,8 +66,7 @@ function M.jump_to_ngrx_parts(ngrx_part)
 		-- find the corresponding data-access lib by naming convention
 		local data_access_project_name = string.gsub(project_name, "feature", "data%-access")
 		data_access_project_name = "shared-" .. data_access_project_name
-		local absolute_path_to_project = path
-			:new(get_relative_path_from_project_name(data_access_project_name))
+		local absolute_path_to_project = path:new(get_relative_path_from_project_name(data_access_project_name))
 			:absolute()
 		found_ngrx_part = find_nearest_ngrx_part(absolute_path_to_project, ngrx_part)
 	end
@@ -91,13 +89,11 @@ function M.jump_to_nearest_module()
 end
 
 function M.open_github_pr()
-	Job
-		:new({
-			command = "gh",
-			args = { "pr", "view", "--web" },
-			on_exit = function(j, return_val) end,
-		})
-		:sync()
+	Job:new({
+		command = "gh",
+		args = { "pr", "view", "--web" },
+		on_exit = function(j, return_val) end,
+	}):sync()
 end
 
 function M.new_scratch_buffer()
