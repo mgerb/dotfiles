@@ -3,10 +3,7 @@ local telescope = require("telescope.builtin")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-	"tsserver",
-	"rust_analyzer",
-})
+lsp.ensure_installed({})
 
 -- Fix Undefined global 'vim'
 lsp.configure("lua-language-server", {

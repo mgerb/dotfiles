@@ -64,7 +64,15 @@ return require("packer").startup({
 		})
 
 		-- misc
-		use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" }, tag = "nightly" })
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
+			},
+		})
 		use("folke/which-key.nvim")
 		use("theprimeagen/harpoon")
 		use("mbbill/undotree")

@@ -1,4 +1,7 @@
-require("illuminate").configure()
+require("illuminate").configure({
+	delay = 500,
+	min_count_to_highlight = 2,
+})
 local dracula = require("dracula")
 
 vim.api.nvim_command("highlight MatchBackground guibg=" .. dracula.colors().selection)
