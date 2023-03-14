@@ -21,9 +21,9 @@
 
 ```
 ln -s $HOME/Desktop/git/dotfiles/.zshrc $HOME/.zshrc
-ln -s $HOME/Desktop/git/dotfiles/.config/starship.toml $HOME/.config/starship.toml
-ln -s $HOME/Desktop/git/dotfiles/.config/nvim $HOME/.config/nvim
-ln -s $HOME/Desktop/git/dotfiles/.config/kitty $HOME/.config/kitty
+ln -s $HOME/Desktop/git/dotfiles/config/starship.toml $HOME/.config/starship.toml
+ln -s $HOME/Desktop/git/dotfiles/config/nvim $HOME/.config/nvim
+ln -s $HOME/Desktop/git/dotfiles/config/kitty $HOME/.config/kitty
 ln -s $HOME/Desktop/git/dotfiles/.oh-my-zsh/dracula-theme/dracula.zsh-theme $HOME/.oh-my-zsh/themes/dracula.zsh-theme
 
 --- deprecated ---

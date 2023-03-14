@@ -1,0 +1,32 @@
+               packer.nvim - finished in 2.998s
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ✓ Updated williamboman/mason.nvim: 4a514a3..1c23135
+  URL: https://github.com/williamboman/mason.nvim
+  Commits:
+    1c23135 feat(pydocstyle): toml support (#1040) (20 hours ago)
+
+ ✓ Updated neovim/nvim-lspconfig: 62856b2..95b7a69
+  URL: https://github.com/neovim/nvim-lspconfig
+  Commits:
+    95b7a69 fix(commands): Strange `LspStop` arguments, not matching doc (#2486) (3 hours ago)
+    3b08f2e docs: update server_configurations.md skip-checks: true (13 hours ago)
+    4d87037 feat: add cairo_ls (#2483) (14 hours ago)
+
+ ✓ Updated nvim-treesitter/nvim-treesitter: 934113c9..9dd1b9c0
+  URL: https://github.com/nvim-treesitter/nvim-treesitter
+  Commits:
+    9dd1b9c0 Update parsers: gdscript, kdl, meson, yuck (6 hours ago)
+    75d98eaa feat(kdl): update parser & queries fixing the comment bug (7 hours ago)
+    5b9339f6 feat: add PO (7 hours ago)
+    d80c99ca fix(qmldir): add to parsers.lua (7 hours ago)
+    ba4ecfe4 feat: add qmldir (8 hours ago)
+    3fe80dbe feat: add passwd (16 hours ago)
+    f95ffd09 python(highlights): adapt query to parser change (20 hours ago)
+    b1b2e9b6 Update parsers: markdown, markdown_inline, python, zig (20 hours ago)
+    bae59318 Update parsers: markdown, markdown_inline (20 hours ago)
+
+
+ Press 'q' to quit
+ Press '<CR>' to show more info
+ Press 'd' to show the diff
+ Press 'r' to revert an update
