@@ -28,15 +28,15 @@ local mappings = {
 		g = {
 			name = "Generate",
 			c = {
-				"<cmd>lua require('mg.custom.nx-commands').run_nx_generator('component')<cr>",
+				"<cmd>lua require('mg.custom.nx').run_nx_generator('component')<cr>",
 				"Component",
 			},
 			d = {
-				"<cmd>lua require('mg.custom.nx-commands').run_nx_generator('directive')<cr>",
+				"<cmd>lua require('mg.custom.nx').run_nx_generator('directive')<cr>",
 				"Directive",
 			},
-			p = { "<cmd>lua require('mg.custom.nx-commands').run_nx_generator('pipe')<cr>", "Pipe" },
-			s = { "<cmd>lua require('mg.custom.nx-commands').run_nx_generator('service')<cr>", "Service" },
+			p = { "<cmd>lua require('mg.custom.nx').run_nx_generator('pipe')<cr>", "Pipe" },
+			s = { "<cmd>lua require('mg.custom.nx').run_nx_generator('service')<cr>", "Service" },
 		},
 	},
 	b = {
