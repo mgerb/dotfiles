@@ -118,10 +118,11 @@ local mappings = {
 		o = { "<cmd>MGTSOrganizeImports<cr>", "TS Organize Imports" },
 	},
 	n = {
-		name = "Neotree",
-		c = { "<cmd>Neotree close<cr>", "Close" },
+		name = "Tree",
 		b = { "<cmd>Neotree buffers<cr>", "Buffers" },
-		t = { "<cmd>Neotree toggle<cr>", "Toggle" },
+		c = { "<cmd>NvimTreeCollapse<cr>", "Collapse" },
+		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
+		e = { "<cmd>:NvimTreeToggle<cr>", "Toggle" },
 	},
 	p = {
 		name = "Packer",

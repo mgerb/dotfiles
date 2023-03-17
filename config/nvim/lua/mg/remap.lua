@@ -35,7 +35,7 @@ vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { silent = true })
 vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { silent = true })
 
 -- nvim-tree
-vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { silent = true })
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 
 vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { silent = true })
 vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { silent = true })
