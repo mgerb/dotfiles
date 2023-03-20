@@ -48,7 +48,7 @@ local mappings = {
 	["c"] = { "<cmd>:Bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["w"] = { "<cmd>:w<cr>", "Write" },
-	["e"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Diagnostics" },
+	["e"] = { "<cmd>lua vim.diagnostic.open_float({focusable = true})<cr>", "Open Diagnostics" },
 	["f"] = {
 		"<cmd>lua require('telescope.builtin').find_files(require('mg.custom.telescope').get_my_theme())<cr>",
 		"Find files",
