@@ -16,6 +16,14 @@ lsp.configure("lua-language-server", {
 	},
 })
 
+-- prevent tsserver from formatting - we use prettier instead
+lsp.configure("tsserver", {
+	on_attach = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end,
+})
+
 local cmp = require("cmp")
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-Space>"] = cmp.mapping.complete(),
