@@ -33,6 +33,7 @@ return require("packer").startup({
 				{ "hrsh7th/cmp-cmdline" }, -- Optional
 				{ "saadparwaiz1/cmp_luasnip" }, -- Optional
 				{ "hrsh7th/cmp-nvim-lua" }, -- Optional
+				{ "ray-x/lsp_signature.nvim" },
 
 				-- Snippets
 				{ "L3MON4D3/LuaSnip" }, -- Required
