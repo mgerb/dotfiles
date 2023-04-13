@@ -47,3 +47,8 @@ vim.keymap.set("n", "<CS-j>", "10j", { silent = true })
 vim.keymap.set("n", "<CS-k>", "10k", { silent = true })
 vim.keymap.set("n", "<CS-h>", "10h", { silent = true })
 vim.keymap.set("n", "<CS-l>", "10l", { silent = true })
+
+vim.keymap.set("v", "<CS-j>", "10j", { silent = true })
+vim.keymap.set("v", "<CS-k>", "10k", { silent = true })
+vim.keymap.set("v", "<CS-h>", "10h", { silent = true })
+vim.keymap.set("v", "<CS-l>", "10l", { silent = true })
