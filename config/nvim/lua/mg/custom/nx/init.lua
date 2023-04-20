@@ -1,7 +1,7 @@
 local path = require("plenary.path")
 local Job = require("plenary.job")
 local nvim_tree_api = require("nvim-tree.api")
-local get_project_name_from_path = require("mg.custom.utils").get_project_name_from_path
+local get_project_name_from_path = require("mg.custom.nx.utils").get_project_name_from_path
 
 local M = {}
 
@@ -39,10 +39,6 @@ function M.run_nx_generator(generator_type)
 				selected_clean,
 			},
 			cwd = node_path,
-			on_exit = function(j, return_val)
-				-- print(vim.inspect(j:result()))
-				-- don't need to do anything here
-			end,
 		}):sync(10000)
 	end
 
@@ -61,10 +57,6 @@ function M.run_nx_generator(generator_type)
 				"--skipTests",
 			},
 			cwd = node_path,
-			on_exit = function(j, return_val)
-				-- print(vim.inspect(j:result()))
-				-- don't need to do anything here
-			end,
 		}):sync(10000)
 	end
 
@@ -109,10 +101,6 @@ function M.run_nx_generator(generator_type)
 				relative_path,
 			},
 			cwd = node_path,
-			on_exit = function(j, return_val)
-				print(vim.inspect(j:result()))
-				-- don't need to do anything here
-			end,
 		}):sync(10000)
 	end
 
@@ -132,24 +120,34 @@ function M.run_nx_generator(generator_type)
 				"--addSpec",
 				tostring(add_spec_bool),
 			},
-			on_exit = function(j, return_val)
-				print(vim.inspect(j:result()))
-				-- don't need to do anything here
-			end,
+		}):sync(10000)
+	end
+	if generator_type == "story" then
+		Job:new({
+			command = "npx",
+			args = {
+				"nx",
+				"workspace-generator",
+				"cavo-story",
+				"--projectName",
+				project_name,
+				"--path",
+				relative_path,
+			},
 		}):sync(10000)
 	end
 end
 
-function M.run_nx_test_for_file()
-	-- get file name for the current buffer
-	local current_buffer = vim.api.nvim_buf_get_name(0)
-	local project_name = get_project_name_from_path(current_buffer)
-
-	-- build command string
-	local test_command = "nx test " .. project_name .. " --testFile " .. current_buffer .. " --watch"
-
-	-- execute the nx command in a new terminal buffer
-	vim.fn.execute("80 vnew | terminal " .. test_command)
-end
+-- function M.run_nx_test_for_file()
+--   -- get file name for the current buffer
+--   local current_buffer = vim.api.nvim_buf_get_name(0)
+--   local project_name = get_project_name_from_path(current_buffer)
+--
+--   -- build command string
+--   local test_command = "nx test " .. project_name .. " --testFile " .. current_buffer .. " --watch"
+--
+--   -- execute the nx command in a new terminal buffer
+--   vim.fn.execute("80 vnew | terminal " .. test_command)
+-- end
 
 return M
