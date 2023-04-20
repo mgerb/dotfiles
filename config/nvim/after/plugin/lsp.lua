@@ -1,3 +1,4 @@
+local nvim_lsp = require("lspconfig")
 local lsp = require("lsp-zero")
 local telescope = require("telescope.builtin")
 
@@ -22,6 +23,10 @@ lsp.configure("tsserver", {
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
+})
+
+lsp.configure("angularls", {
+	root_dir = nvim_lsp.util.root_pattern("package.json"),
 })
 
 local cmp = require("cmp")
@@ -107,7 +112,7 @@ require("mason-null-ls").setup({
 	ensure_installed = nil,
 	automatic_installation = true, -- You can still set this to `true`
 	automatic_setup = true,
-    handlers = {}
+	handlers = {},
 })
 
 -- setup null-ls
@@ -131,4 +136,3 @@ null_ls.setup({
 	sources = { -- You can add tools not supported by mason.nvim
 	},
 })
-
