@@ -3,11 +3,6 @@ local util = require("mg.util")
 -- Only required if you have packer configured as `opt`
 vim.cmd([[packadd packer.nvim]])
 
-local config = {
-	-- set our snapshot directory inside the nvim config folder
-	snapshot_path = util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
-}
-
 return require("packer").startup({
 	function(use)
 		-- Packer can manage itself
@@ -78,6 +73,7 @@ return require("packer").startup({
 		use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
 		use("justinrassier/jesting.nvim")
 		use("editorconfig/editorconfig-vim")
+		use({ "echasnovski/mini.map", branch = "stable" })
 
 		use("windwp/nvim-ts-autotag")
 		use("norcalli/nvim-colorizer.lua")

@@ -107,9 +107,9 @@ source $ZSH/oh-my-zsh.sh
 # Define an alias for easily invoking Homebrew for Intel
 # ---- apple m1 brew stuff ----
 alias intel_brew='arch --x86_64 /usr/local/Homebrew/bin/brew'
-# Default `brew` to Homebrew for Intel
-alias brew=intel_brew
 alias apple_brew='arch --arm64e /opt/homebrew/bin/brew'
+# Default `brew` to Homebrew for Apple
+alias brew=apple_brew
 # ---- ----
 
 # aws

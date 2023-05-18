@@ -12,4 +12,12 @@ util.join_paths = function(...)
 	return table.concat({ ... }, separator)
 end
 
+util.create_folder_if_not_exists = function(folder_path)
+	-- Check if the folder exists
+	if vim.fn.isdirectory(folder_path) == 0 then
+		-- If it doesn't exist, create it
+		vim.fn.mkdir(folder_path, "p")
+	end
+end
+
 return util
