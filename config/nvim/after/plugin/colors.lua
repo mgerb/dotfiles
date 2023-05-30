@@ -16,6 +16,9 @@ dracula.setup({
 		IncSearch = { fg = dracula.colors().black, bg = dracula.colors().orange },
 		CurSearch = { link = "IncSearch" },
 		["@property"] = { fg = dracula.colors().fg },
+		["@lsp.type.property"] = { fg = dracula.colors().fg },
+		["@lsp.type.typeParameter"] = { fg = dracula.colors().cyan },
+		["@lsp.type.enumMember"] = { fg = dracula.colors().fg },
 	},
 })
 

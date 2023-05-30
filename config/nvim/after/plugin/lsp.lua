@@ -77,9 +77,6 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
-	-- Maybe remove when fixed? Without this highlights are breaking.
-	client.server_capabilities.semanticTokensProvider = nil
-
 	vim.keymap.set("n", "gd", function()
 		telescope.lsp_definitions()
 	end, opts)
