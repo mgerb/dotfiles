@@ -5,9 +5,31 @@ local get_project_name_from_path = require("mg.custom.nx.utils").get_project_nam
 
 local M = {}
 
-function M.run_nx_generator(generator_type)
-	local node_path = nvim_tree_api.tree.get_node_under_cursor().absolute_path
-	local relative_path = path:new(node_path):make_relative()
+function M.run_nx_generator(generator_type, opts)
+	local buf = vim.api.nvim_get_current_buf()
+	local buf_ft = vim.api.nvim_buf_get_option(buf, "filetype")
+
+	local node_path = nil
+	local relative_path = nil
+
+	-- if in nvim tree, get either the parent directory or the directory under the cursor
+	-- depending on where you are at
+	if buf_ft == "NvimTree" then
+		local node = nil
+		node = nvim_tree_api.tree.get_node_under_cursor()
+		node_path = node.absolute_path
+
+		if node.type == "directory" then
+			relative_path = path:new(node_path):make_relative()
+		else
+			relative_path = path:new(node_path):parent():make_relative()
+		end
+	else
+		-- If not in nvim-tree, just get the directory of the current file
+		node_path = vim.fn.expand("%:p")
+		relative_path = path:new(node_path):parent():make_relative()
+	end
+
 	local project_name = get_project_name_from_path(node_path)
 
 	if generator_type == "component" then
@@ -25,11 +47,11 @@ function M.run_nx_generator(generator_type)
 		-- strip off the number from the string
 		local selected_clean = string.gsub(selected_option, "%d%. ", "")
 
-		Job:new({
+		local job = {
 			command = "nx",
 			args = {
-				"workspace-generator",
-				"cavo-component",
+				"generate",
+				"@cavo/workspace-plugin:cavo-component",
 				component_name,
 				"--project",
 				project_name,
@@ -38,8 +60,36 @@ function M.run_nx_generator(generator_type)
 				"--componentType",
 				selected_clean,
 			},
-			cwd = node_path,
-		}):sync(10000)
+			on_exit = function(j, return_val)
+				-- if we pass in selected text, take that text and put it insie the HTML file that was generated
+				local selected_text = ""
+				if opts ~= nil and opts.selected_text ~= nil then
+					selected_text = opts.selected_text
+				end
+
+				-- Look at the output of the nx generator to fine the HTML file that was created. A little hacky, but it works!
+				for _, v in pairs(j:result()) do
+					if v:find("CREATE .*%.html") then
+						local file_path = v:match("CREATE (.*)")
+						file_path = path:new(file_path):absolute()
+						print("selected_text", selected_text)
+						print("file_path", file_path)
+						if selected_text ~= "" then
+							-- write the contents of selected_text to the file
+							local file = io.open(file_path, "w")
+							if file == nil then
+								print("Could not open file: ", file_path)
+								return
+							end
+							file:write(selected_text)
+							file:close()
+						end
+					end
+				end
+			end,
+		}
+
+		Job:new(job):sync(10000)
 	end
 
 	if generator_type == "service" then
@@ -56,7 +106,6 @@ function M.run_nx_generator(generator_type)
 				relative_path,
 				"--skipTests",
 			},
-			cwd = node_path,
 		}):sync(10000)
 	end
 
@@ -68,7 +117,7 @@ function M.run_nx_generator(generator_type)
 			args = {
 				"nx",
 				"generate",
-				"pipe",
+				"@nx/angular:pipe",
 				"--name",
 				pipe_name,
 				"--project",
@@ -76,9 +125,8 @@ function M.run_nx_generator(generator_type)
 				"--path",
 				relative_path,
 			},
-			cwd = node_path,
 			on_exit = function(j, return_val)
-				print(vim.inspect(j:result()))
+				-- print(vim.inspect(j:result()))
 				-- don't need to do anything here
 			end,
 		}):sync(10000)
@@ -92,7 +140,7 @@ function M.run_nx_generator(generator_type)
 			args = {
 				"nx",
 				"generate",
-				"directive",
+				"@nx/angular:directive",
 				"--name",
 				directive_name,
 				"--project",
@@ -100,7 +148,6 @@ function M.run_nx_generator(generator_type)
 				"--path",
 				relative_path,
 			},
-			cwd = node_path,
 		}):sync(10000)
 	end
 
@@ -111,8 +158,7 @@ function M.run_nx_generator(generator_type)
 			command = "npx",
 			args = {
 				"nx",
-				"workspace-generator",
-				"cavo-component-store",
+				"@cavo/workspace-plugin:cavo-component-store",
 				"--projectName",
 				project_name,
 				"--path",
@@ -127,8 +173,7 @@ function M.run_nx_generator(generator_type)
 			command = "npx",
 			args = {
 				"nx",
-				"workspace-generator",
-				"cavo-story",
+				"@cavo/workspace-plugin:cavo-story",
 				"--projectName",
 				project_name,
 				"--path",
@@ -137,17 +182,5 @@ function M.run_nx_generator(generator_type)
 		}):sync(10000)
 	end
 end
-
--- function M.run_nx_test_for_file()
---   -- get file name for the current buffer
---   local current_buffer = vim.api.nvim_buf_get_name(0)
---   local project_name = get_project_name_from_path(current_buffer)
---
---   -- build command string
---   local test_command = "nx test " .. project_name .. " --testFile " .. current_buffer .. " --watch"
---
---   -- execute the nx command in a new terminal buffer
---   vim.fn.execute("80 vnew | terminal " .. test_command)
--- end
 
 return M

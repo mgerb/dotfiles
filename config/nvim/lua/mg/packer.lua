@@ -88,6 +88,7 @@ return require("packer").startup({
 
 		-- angular
 		use("johnpapa/vscode-angular-snippets")
+		use({ "justinrassier/nvim-treesitter-angular", branch = "topic/jsx-fix" })
 	end,
 	config = config,
 })

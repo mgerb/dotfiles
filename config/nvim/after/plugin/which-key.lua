@@ -31,6 +31,10 @@ local mappings = {
 				"<cmd>lua require('mg.custom.nx').run_nx_generator('component')<cr>",
 				"Component",
 			},
+			C = {
+				"<cmd>lua require('mg.custom.nx').run_nx_generator('component-store')<cr>",
+				"Component Store",
+			},
 			d = {
 				"<cmd>lua require('mg.custom.nx').run_nx_generator('directive')<cr>",
 				"Directive",
