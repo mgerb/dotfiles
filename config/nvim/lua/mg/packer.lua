@@ -84,11 +84,11 @@ return require("packer").startup({
 
 		-- color schemes
 		-- use("folke/tokyonight.nvim")
-		use("Mofiqul/dracula.nvim")
+		use({ "Mofiqul/dracula.nvim" })
 
 		-- angular
 		use("johnpapa/vscode-angular-snippets")
-		use({ "justinrassier/nvim-treesitter-angular", branch = "topic/jsx-fix" })
+		use({ "justinrassier/nvim-treesitter-angular", branch = "fixes" })
 	end,
 	config = config,
 })
