@@ -85,6 +85,7 @@ return require("packer").startup({
 		-- color schemes
 		-- use("folke/tokyonight.nvim")
 		use({ "Mofiqul/dracula.nvim" })
+		use("rebelot/kanagawa.nvim")
 
 		-- angular
 		use("johnpapa/vscode-angular-snippets")

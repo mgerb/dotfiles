@@ -22,7 +22,8 @@ dracula.setup({
 	},
 })
 
-vim.cmd([[colorscheme dracula]])
+-- vim.cmd([[colorscheme dracula]])
+vim.cmd([[colorscheme kanagawa-wave]])
 
 local highlight = function(group, fg, bg, attr, sp)
 	fg = fg and "guifg=" .. fg or "guifg=NONE"
