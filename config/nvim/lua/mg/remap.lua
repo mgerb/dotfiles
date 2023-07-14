@@ -19,7 +19,7 @@ vim.keymap.set(
 vim.keymap.set("i", "<C-/>", "<CMD>lua require('Comment.api').toggle.linewise.current()<CR>", { silent = true })
 
 -- better window navigation
-vim.keymap.set("n", "<C-h>", "<c-w>h", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
@@ -52,3 +52,10 @@ vim.keymap.set("v", "<CS-j>", "10j", { silent = true })
 vim.keymap.set("v", "<CS-k>", "10k", { silent = true })
 vim.keymap.set("v", "<CS-h>", "10h", { silent = true })
 vim.keymap.set("v", "<CS-l>", "10l", { silent = true })
+
+-- terminal
+vim.keymap.set("t", "<Esc>", [[<C-\><C-N><C-n>]])
+vim.keymap.set("t", "<C-h>", [[<C-\><C-N><C-w>h]], { silent = true })
+vim.keymap.set("t", "<C-j>", [[<C-\><C-N><C-w>j]], { silent = true })
+vim.keymap.set("t", "<C-k>", [[<C-\><C-N><C-w>k]], { silent = true })
+vim.keymap.set("t", "<C-l>", [[<C-\><C-N><C-w>l]], { silent = true })

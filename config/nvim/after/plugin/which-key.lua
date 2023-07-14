@@ -91,9 +91,20 @@ local mappings = {
 	h = {
 		name = "Harpoon",
 		a = { "<cmd> lua require 'harpoon.mark'.add_file()<cr>", "Add File" },
-		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 		h = { "<cmd> lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Menu" },
-		t = { "<cmd>Telescope harpoon marks<cr>", "Telescope" },
+		c = { "<cmd> lua require 'harpoon.cmd-ui'.toggle_quick_menu()<cr>", "CMD Commands" },
+		["1"] = {
+			"<cmd> lua require 'harpoon.term'.gotoTerminal(1)<cr>",
+			"Terminal 1",
+		},
+		["2"] = {
+			"<cmd> lua require 'harpoon.term'.gotoTerminal(2)<cr>",
+			"Terminal 2",
+		},
+		["3"] = {
+			"<cmd> lua require 'harpoon.term'.gotoTerminal(3)<cr>",
+			"Terminal 3",
+		},
 	},
 	l = {
 		name = "LSP",
@@ -120,6 +131,8 @@ local mappings = {
 	m = {
 		name = "MG Scripts",
 		o = { "<cmd>MGTSOrganizeImports<cr>", "TS Organize Imports" },
+		t = { "<cmd>MetricsGetTime<cr>", "Metrics Get Time" },
+		d = { "<cmd>MetricsDebug<cr>", "Metrics Debug" },
 	},
 	n = {
 		name = "Tree",
@@ -137,13 +150,7 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-	t = {
-		name = "Terminal",
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-		t = { "<cmd>ToggleTermToggleAll<cr>", "Toggle All" },
-	},
+	T = { name = "Telescope", h = { "<cmd>Telescope help_tags<cr>", "Help Tags" } },
 	["u"] = { "<cmd>:UndotreeToggle<cr>", "Undo Tree" },
 	["x"] = { "<cmd>:%bd<cr>", "Close All Buffers" },
 }
