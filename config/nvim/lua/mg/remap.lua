@@ -31,8 +31,8 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 -- Navigate buffers
-vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { silent = true })
-vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { silent = true })
+vim.keymap.set("n", "<S-l>", "<CMD>lua require('harpoon.ui').nav_next()<CR>", { silent = true })
+vim.keymap.set("n", "<S-h>", "<CMD>lua require('harpoon.ui').nav_prev()<CR>", { silent = true })
 
 -- nvim-tree
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })

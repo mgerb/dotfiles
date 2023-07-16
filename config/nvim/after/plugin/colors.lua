@@ -1,28 +1,3 @@
-local dracula = require("dracula")
-
-dracula.setup({
-	overrides = {
-		["@text"] = { fg = dracula.colors().bright_white },
-		["@text.strong"] = { fg = dracula.colors().bright_white },
-		["@tag"] = { fg = dracula.colors().pink },
-		["@tag.delimiter"] = { fg = dracula.colors().white },
-		["@comment"] = { fg = dracula.colors().comment },
-		htmlEndTag = { fg = dracula.colors().white },
-		htmlTag = { fg = dracula.colors().pink },
-		htmlTagN = { fg = dracula.colors().pink },
-		htmlTagName = { fg = dracula.colors().pink },
-		Function = { fg = dracula.colors().green },
-		Search = { fg = dracula.colors().orange, bg = dracula.colors().comment },
-		IncSearch = { fg = dracula.colors().black, bg = dracula.colors().orange },
-		CurSearch = { link = "IncSearch" },
-		["@property"] = { fg = dracula.colors().fg },
-		["@lsp.type.property"] = { fg = dracula.colors().fg },
-		["@lsp.type.typeParameter"] = { fg = dracula.colors().cyan },
-		["@lsp.type.enumMember"] = { fg = dracula.colors().fg },
-	},
-})
-
--- vim.cmd([[colorscheme dracula]])
 vim.cmd([[colorscheme kanagawa-wave]])
 
 local highlight = function(group, fg, bg, attr, sp)

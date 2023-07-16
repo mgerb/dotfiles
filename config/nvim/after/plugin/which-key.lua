@@ -43,12 +43,6 @@ local mappings = {
 			s = { "<cmd>lua require('mg.custom.nx').run_nx_generator('service')<cr>", "Service" },
 		},
 	},
-	b = {
-		name = "Bufferline",
-		h = { "<cmd>BufferLineMovePrev<cr>", "Move Previous" },
-		l = { "<cmd>BufferLineMoveNext<cr>", "Move Next" },
-		s = { "<cmd>BufferLineSortByDirectory<cr>", "Sort by Directory" },
-	},
 	["c"] = { "<cmd>:Bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["w"] = { "<cmd>:w<cr>", "Write" },
