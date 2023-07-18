@@ -46,6 +46,7 @@ lsp.configure("angularls", {
 local cmp = require("cmp")
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-Space>"] = cmp.mapping.complete(),
+	["<cr>"] = cmp.mapping.confirm({ select = true }),
 })
 
 cmp_mappings["<Tab>"] = nil
