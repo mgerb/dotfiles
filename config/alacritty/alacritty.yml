@@ -771,6 +771,9 @@ font:
 key_bindings:
   - { key: J, mods: Control|Shift, chars: "\x1b[74;6u" }
   - { key: K, mods: Control|Shift, chars: "\x1b[75;6u" }
+  # fix comment keybind in Neovim
+  - { key: Slash, mods: Control, chars: "\x1b[47;5u" }
+
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
