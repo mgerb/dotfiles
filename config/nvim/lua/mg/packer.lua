@@ -65,7 +65,14 @@ return require("packer").startup({
 		use("mbbill/undotree")
 		use("numToStr/Comment.nvim")
 		use("RRethy/vim-illuminate")
-		use({ "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && npm install" })
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && npm install",
+			setup = function()
+				vim.g.mkdp_filetypes = { "markdown" }
+			end,
+			ft = { "markdown" },
+		})
 		use("editorconfig/editorconfig-vim")
 		use("norcalli/nvim-colorizer.lua")
 		use("folke/todo-comments.nvim")
