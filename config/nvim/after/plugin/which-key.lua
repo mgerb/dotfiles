@@ -56,6 +56,7 @@ local mappings = {
 		"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('mg.custom.telescope').get_my_theme())<cr>",
 		"Live Grep",
 	},
+	["v"] = { "<cmd>vs<cr>", "V Split" },
 	["r"] = { "<cmd>Telescope resume<cr>", "Resume" },
 	d = {
 		name = "Diffview",
