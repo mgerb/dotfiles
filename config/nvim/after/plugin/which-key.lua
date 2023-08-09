@@ -53,7 +53,7 @@ local mappings = {
 		"Find files",
 	},
 	["F"] = {
-		"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('mg.custom.telescope').get_my_theme())<cr>",
+		"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({theme = require('mg.custom.telescope').get_my_theme()})<cr>",
 		"Live Grep",
 	},
 	["v"] = { "<cmd>vs<cr>", "V Split" },
