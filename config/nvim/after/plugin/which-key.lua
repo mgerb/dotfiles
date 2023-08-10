@@ -20,11 +20,14 @@ local mappings = {
 		s = { "<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('scss')<cr>", "SCSS" },
 		S = { "<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('spec%.ts')<cr>", "Test" },
 		t = { "<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('html')<cr>", "HTML" },
-		xr = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
-		xe = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
-		xa = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
-		xf = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
-		xs = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
+		x = {
+			name = "NGRX",
+			r = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('reducer')<cr>", "NGRX Reducer" },
+			e = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('effects')<cr>", "NGRX Effects" },
+			a = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('actions')<cr>", "NGRX Actions" },
+			f = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('facade')<cr>", "NGRX Facade" },
+			s = { "<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('selectors')<cr>", "NGRX Selectors" },
+		},
 		g = {
 			name = "Generate",
 			c = {
@@ -58,6 +61,7 @@ local mappings = {
 	},
 	["v"] = { "<cmd>vs<cr>", "V Split" },
 	["r"] = { "<cmd>Telescope resume<cr>", "Resume" },
+	["t"] = { "<cmd>tabnew<cr>", "New Tab" },
 	d = {
 		name = "Diffview",
 		c = { "<cmd>DiffviewClose<cr>", "Close" },
@@ -70,15 +74,14 @@ local mappings = {
 	},
 	g = {
 		name = "Git",
-		b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
-		B = { "<cmd>Telescope git_branches<cr>", "Branches" },
+		B = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
+		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		S = { "<cmd>Telescope git_stash<cr>", "Stashes" },
 		c = { "<cmd>Telescope git_commits<cr>", "Commits" },
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
 		t = { "<cmd>Telescope git_status<cr>", "Status" },
@@ -116,7 +119,7 @@ local mappings = {
 		f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		m = { "<cmd>Mason<cr>", "Mason" },
-		q = { "<cmd>lua vim.lsp.diagnostic.setloclist()<cr>", "Quickfix" },
+		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
@@ -132,7 +135,6 @@ local mappings = {
 	},
 	n = {
 		name = "Tree",
-		b = { "<cmd>Neotree buffers<cr>", "Buffers" },
 		c = { "<cmd>NvimTreeCollapse<cr>", "Collapse" },
 		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
 		e = { "<cmd>:NvimTreeToggle<cr>", "Toggle" },
@@ -146,7 +148,13 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-	T = { name = "Telescope", h = { "<cmd>Telescope help_tags<cr>", "Help Tags" } },
+	T = {
+		name = "Telescope",
+		c = { "<cmd>Telescope commands<cr>", "Commands" },
+		C = { "<cmd>Telescope command_history<cr>", "Command History" },
+		h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
+		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+	},
 	["u"] = { "<cmd>:UndotreeToggle<cr>", "Undo Tree" },
 	["x"] = { "<cmd>:%bd<cr>", "Close All Buffers" },
 }
