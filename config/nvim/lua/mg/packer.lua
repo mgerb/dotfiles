@@ -78,6 +78,12 @@ return require("packer").startup({
 		use("folke/todo-comments.nvim")
 		use("windwp/nvim-ts-autotag")
 		use("windwp/nvim-autopairs")
+		use({
+			"stevearc/aerial.nvim",
+			config = function()
+				require("aerial").setup()
+			end,
+		})
 
 		-- color schemes
 		use("rebelot/kanagawa.nvim")
