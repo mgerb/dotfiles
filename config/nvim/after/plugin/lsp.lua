@@ -44,16 +44,20 @@ lsp.configure("angularls", {
 })
 
 local cmp = require("cmp")
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-Space>"] = cmp.mapping.complete(),
-	["<cr>"] = cmp.mapping.confirm({ select = true }),
-})
 
-cmp_mappings["<Tab>"] = nil
-cmp_mappings["<S-Tab>"] = nil
+require("luasnip.loaders.from_vscode").lazy_load()
 
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings,
+cmp.setup({
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+	},
+	mapping = {
+		["<Tab>"] = nil,
+		["<S-Tab>"] = nil,
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-Space>"] = cmp.mapping.complete(),
+	},
 })
 
 -- `/` cmdline setup.
