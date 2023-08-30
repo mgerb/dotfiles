@@ -49,6 +49,7 @@ local mappings = {
 	["b"] = { "<cmd>:Telescope buffers<cr>", "Buffers" },
 	["c"] = { "<cmd>:bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
+	["Q"] = { "<cmd>:qa!<cr>", "Quit All Force" },
 	["w"] = { "<cmd>:w<cr>", "Write" },
 	["e"] = { "<cmd>lua vim.diagnostic.open_float({focusable = true})<cr>", "Open Diagnostics" },
 	["f"] = {
