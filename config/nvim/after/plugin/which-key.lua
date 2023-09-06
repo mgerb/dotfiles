@@ -106,6 +106,7 @@ local mappings = {
 			"Terminal 3",
 		},
 	},
+	["H"] = { "<cmd>:%!xxd<cr><cmd>:setlocal ft=xxd<cr>", "Hex View" },
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

@@ -93,7 +93,12 @@ return require("packer").startup({
 		use({ "justinrassier/nvim-treesitter-angular", branch = "fixes" })
 		use("justinrassier/jesting.nvim")
 
-		use("mgerb/metrics.nvim")
-		-- use("/Users/mgerber/Desktop/git/metrics.nvim")
+		-- use({
+		-- 	"mgerb/metrics.nvim",
+		-- 	-- "/Users/mgerber/Desktop/git/metrics.nvim",
+		-- 	setup = function()
+		-- 		require("metrics").setup()
+		-- 	end,
+		-- })
 	end,
 })
