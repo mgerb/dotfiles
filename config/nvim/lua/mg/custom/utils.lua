@@ -29,4 +29,15 @@ function M.table_length(T)
 	return count
 end
 
+function M.reverseTable(inputTable)
+	local reversedTable = {}
+	local length = #inputTable
+
+	for i = length, 1, -1 do
+		table.insert(reversedTable, inputTable[i])
+	end
+
+	return reversedTable
+end
+
 return M
