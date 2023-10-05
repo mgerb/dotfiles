@@ -46,12 +46,6 @@ return require("packer").startup({
 		use({
 			"github/copilot.vim",
 			branch = "release",
-			config = function()
-				local sysname = vim.loop.os_uname().sysname
-				if sysname == "Darwin" then
-					vim.g.copilot_node_command = "/Users/mgerber/.nvm/versions/node/v16.19.0/bin/node"
-				end
-			end,
 		})
 
 		-- git
