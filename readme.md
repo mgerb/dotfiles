@@ -20,7 +20,6 @@ ln -s $HOME/Desktop/git/dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/Desktop/git/dotfiles/config/starship.toml $HOME/.config/starship.toml
 ln -s $HOME/Desktop/git/dotfiles/config/nvim $HOME/.config/nvim
 ln -s $HOME/Desktop/git/dotfiles/.oh-my-zsh/dracula-theme/dracula.zsh-theme $HOME/.oh-my-zsh/themes/dracula.zsh-theme
-ln -s $HOME/Desktop/git/dotfiles/config/alacritty $HOME/.config/alacritty
 ln -s $HOME/Desktop/git/dotfiles/.tmux.conf $HOME/.tmux.conf
 ```
 
@@ -36,4 +35,5 @@ Old tools/configurations I no longer use
 ```
 ln -s $HOME/Desktop/git/dotfiles/.config/fish $HOME/.config/fish
 ln -s $HOME/Desktop/git/dotfiles/config/kitty $HOME/.config/kitty
+ln -s $HOME/Desktop/git/dotfiles/config/alacritty $HOME/.config/alacritty
 ```
