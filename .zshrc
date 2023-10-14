@@ -117,8 +117,10 @@ export AWS_SDK_LOAD_CONFIG=1
 export AWS_PROFILE=default
 
 # alias's
-alias dc="docker-compose"
+alias dc="docker compose"
 alias nv="neovide --multigrid"
+# update and restart docker container
+alias mgdu="dc pull && dc down && dc up -d"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
