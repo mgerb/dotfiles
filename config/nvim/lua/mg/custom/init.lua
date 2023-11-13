@@ -35,3 +35,11 @@ end, {})
 vim.api.nvim_create_user_command("MGHistory", function()
 	history_picker.list_shell_history()
 end, {})
+
+vim.api.nvim_create_user_command("MGToggleSpellCheck", function()
+	if vim.wo.spell then
+		vim.wo.spell = false
+	else
+		vim.wo.spell = true
+	end
+end, {})
