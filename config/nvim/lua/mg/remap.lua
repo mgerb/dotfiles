@@ -25,8 +25,8 @@ map("n", "<C-l>", "<C-w>l", { silent = true })
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", { silent = true })
 map("n", "<C-Down>", ":resize +2<CR>", { silent = true })
-map("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
-map("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
+map("n", "<C-,>", ":vertical resize -2<CR>", { silent = true })
+map("n", "<C-.>", ":vertical resize +2<CR>", { silent = true })
 
 -- Navigate buffers
 map("n", "<S-l>", "<CMD>lua require('harpoon.ui').nav_next()<CR>", { silent = true })
