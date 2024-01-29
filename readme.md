@@ -23,6 +23,12 @@ ln -s $HOME/Desktop/git/dotfiles/.oh-my-zsh/dracula-theme/dracula.zsh-theme $HOM
 ln -s $HOME/Desktop/git/dotfiles/.tmux.conf $HOME/.tmux.conf
 ```
 
+### Windows
+
+```
+mklink /J C:\Users\<User>\AppData\Local\nvim C:\Users\<User>\Desktop\git\dotfiles\config\nvim
+```
+
 ### Deprecated
 
 Old tools/configurations I no longer use
