@@ -53,7 +53,7 @@ return require("packer").startup({
 		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 		-- misc
-		use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" }, tag = "nightly" })
+		use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
 		use("folke/which-key.nvim")
 		use("theprimeagen/harpoon")
 		use("mbbill/undotree")

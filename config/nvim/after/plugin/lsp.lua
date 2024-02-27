@@ -39,6 +39,10 @@ lsp.configure("tsserver", {
 	end,
 })
 
+lsp.configure("htmx", {
+    filetypes = { "rs", "html", "rust" },
+})
+
 lsp.configure("angularls", {
 	root_dir = nvim_lsp.util.root_pattern("package.json"),
 })
