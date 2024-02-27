@@ -103,6 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Git
+export GIT_EDITOR=vim
 
 # Define an alias for easily invoking Homebrew for Intel
 # ---- apple m1 brew stuff ----
