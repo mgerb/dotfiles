@@ -40,7 +40,7 @@ lsp.configure("tsserver", {
 })
 
 lsp.configure("htmx", {
-    filetypes = { "rs", "html", "rust" },
+	filetypes = { "rs", "html", "rust" },
 })
 
 lsp.configure("angularls", {
