@@ -180,3 +180,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# zig
+export PATH=$PATH:~/.zig
+
+# go
+export PATH=$PATH:/usr/local/go/bin
+
