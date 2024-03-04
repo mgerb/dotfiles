@@ -141,6 +141,21 @@ return {
 					},
 				},
 			},
+			htmx = {
+				settings = {
+					filetypes = { "rs", "html", "rust" },
+				},
+			},
+			angularls = {
+				settings = {
+					root_dir = require("lspconfig").util.root_pattern("package.json"),
+				},
+			},
+			wgsl_analyzer = {
+				settings = {
+					filetypes = { "wgsl" },
+				},
+			},
 		}
 
 		-- Ensure the servers and tools above are installed
