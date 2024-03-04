@@ -18,6 +18,7 @@ return {
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			html = { { "prettierd", "prettier" } },
+			json = { { "prettierd", "prettier" } },
 		},
 	},
 }
