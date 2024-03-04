@@ -1,3 +1,5 @@
+local guifont = "FiraCode Nerd Font Mono"
+
 local options = {
 	backup = false, -- creates a backup file
 	-- clipboard = "unnamedplus",            -- allows neovim to access the system clipboard
@@ -32,17 +34,21 @@ local options = {
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
-	guifont = "FiraCode Nerd Font Mono:h14", -- the font used in graphical neovim applications
+	guifont = guifont .. ":h14", -- the font used in graphical neovim applications
 	spell = false,
 	spelllang = "en_us",
 	-- undodir = os.getenv("HOME") .. "/.vim/undodir",
 	undofile = true, -- enable persistent undo
 }
 
-vim.g.neovide_cursor_animation_length = 0.03
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
 vim.opt.isfname:append("@-@")
+
+-- if in neovide
+if vim.fn.exists("g:neovide") then
+	vim.opt.guifont = guifont .. ":h12"
+	vim.g.neovide_cursor_animation_length = 0.01
+end
