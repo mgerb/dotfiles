@@ -12,6 +12,7 @@ return {
 		"echasnovski/mini.cursorword",
 		version = "*",
 		event = "BufRead",
+		lazy = true,
 		opts = {
 			delay = 800,
 		},
@@ -36,14 +37,6 @@ return {
 		version = "*",
 		config = function()
 			require("mini.notify").setup()
-		end,
-	},
-	{
-		"echasnovski/mini.pairs",
-		event = "BufRead",
-		version = "*",
-		config = function()
-			require("mini.pairs").setup()
 		end,
 	},
 }

@@ -11,11 +11,6 @@ map("n", "J", "mzJ`z", { silent = true }) -- keep cursor in place when joining l
 map({ "n", "v" }, "<leader>y", [["+y]])
 map({ "n", "v" }, "<leader>P", [["+p]])
 
--- comment
-map("n", "<C-/>", "<CMD>lua require('Comment.api').toggle.linewise.current()<CR>", { silent = true })
-map("x", "<C-/>", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { silent = true })
-map("i", "<C-/>", "<CMD>lua require('Comment.api').toggle.linewise.current()<CR>", { silent = true })
-
 -- better window navigation
 map("n", "<C-h>", "<C-w>h", { silent = true })
 map("n", "<C-j>", "<C-w>j", { silent = true })
