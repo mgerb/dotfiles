@@ -111,7 +111,7 @@ local mappings = {
 			"<cmd>lua require('telescope.builtin').diagnostics()<cr>",
 			"Diagnostics (All)",
 		},
-		f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+		f = { "<cmd>lua require('conform').format()<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		m = { "<cmd>Mason<cr>", "Mason" },
 		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
@@ -134,7 +134,7 @@ local mappings = {
 		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
 		e = { "<cmd>:NvimTreeToggle<cr>", "Toggle" },
 	},
-	p = {"<cmd>Lazy<cr>", "Package Manager"},
+	p = { "<cmd>Lazy<cr>", "Package Manager" },
 	T = {
 		name = "Telescope",
 		c = { "<cmd>Telescope commands<cr>", "Commands" },
@@ -147,13 +147,13 @@ local mappings = {
 }
 
 return {
-    {
-        "folke/which-key.nvim",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            local wk = require("which-key")
-            wk.register(mappings, { prefix = "<leader>" })
-        end,
-    }
+	{
+		"folke/which-key.nvim",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			local wk = require("which-key")
+			wk.register(mappings, { prefix = "<leader>" })
+		end,
+	},
 }
