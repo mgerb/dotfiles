@@ -2,23 +2,26 @@ return {
 	"stevearc/conform.nvim",
 	event = "BufRead",
 	opts = {
-		notify_on_error = false,
-		format_on_save = {
-			timeout_ms = 500,
-			lsp_fallback = true,
-		},
+		notify_on_error = true,
+		-- format_on_save = {
+		-- 	timeout_ms = 500,
+		-- 	lsp_fallback = true,
+		-- },
 		formatters_by_ft = {
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 			lua = { "stylua" },
-			-- Conform can also run multiple formatters sequentially
-			-- python = { "isort", "black" },
-			--
+			python = { "black" },
 			rust = { "rust-analyzer" },
-			-- You can use a sub-list to tell conform to run *until* a formatter
-			-- is found.
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
+		},
+	},
+	formatters = {
+		["clang-format"] = {
+			prepend_args = { "-style={BasedOnStyle: llvm, IndentWidth: 4}" },
 		},
 	},
 }

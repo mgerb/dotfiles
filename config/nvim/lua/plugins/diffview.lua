@@ -1,6 +1,6 @@
 return {
 	"sindrets/diffview.nvim",
-	cmd = { "DiffviewOpen" },
+	cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewLog" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 	lazy = true,
 	init = function()

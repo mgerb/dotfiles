@@ -62,7 +62,7 @@ local mappings = {
 		d = { "<cmd>DiffviewOpen<cr>", "Open" },
 		h = { "<cmd>DiffviewOpen HEAD~1<cr>", "Open HEAD~1" },
 		f = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
-		l = { "<cmd>DiffViewLog<cr>", "Log" },
+		l = { "<cmd>DiffviewLog<cr>", "Log" },
 		r = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
 		t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle Files" },
 	},
