@@ -18,10 +18,10 @@ return {
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
 		},
-	},
-	formatters = {
-		["clang-format"] = {
-			prepend_args = { "-style={BasedOnStyle: llvm, IndentWidth: 4}" },
+		formatters = {
+			["clang-format"] = {
+				prepend_args = { "-style={BasedOnStyle: llvm, IndentWidth: 4}" },
+			},
 		},
 	},
 }
