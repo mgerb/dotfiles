@@ -111,7 +111,7 @@ local mappings = {
 			"<cmd>lua require('telescope.builtin').diagnostics()<cr>",
 			"Diagnostics (All)",
 		},
-		f = { "<cmd>lua require('conform').format()<cr>", "Format" },
+		f = { "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		m = { "<cmd>Mason<cr>", "Mason" },
 		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
