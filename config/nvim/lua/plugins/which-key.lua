@@ -134,6 +134,7 @@ local mappings = {
 		r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
 		e = { "<cmd>:NvimTreeToggle<cr>", "Toggle" },
 	},
+	o = { "<cmd>Oil<cr>", "Oil" },
 	p = { "<cmd>Lazy<cr>", "Package Manager" },
 	T = {
 		name = "Telescope",
