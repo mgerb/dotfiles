@@ -1,5 +1,5 @@
 return {
-    "justinrassier/jesting.nvim",
-    cmd = {"JestingAttachNx", "JestingAttachSingleTestNx", "JestingUnattach"},
-    lazy = true
+	"justinrassier/jesting.nvim",
+	cmd = { "JestingAttachNx", "JestingAttachSingleTestNx", "JestingUnattach" },
+	lazy = true,
 }

@@ -17,7 +17,6 @@ return {
 			cpp = { "clang-format" },
 			lua = { "stylua" },
 			python = { "black" },
-			-- rust = { "rust_analyzer" },
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			html = { { "prettierd", "prettier" } },
