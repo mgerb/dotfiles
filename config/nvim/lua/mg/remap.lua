@@ -30,8 +30,6 @@ map("n", "<S-h>", "<CMD>lua require('harpoon.ui').nav_prev()<CR>", { silent = tr
 -- nvim-tree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 
-map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { silent = true })
-map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { silent = true })
 map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 

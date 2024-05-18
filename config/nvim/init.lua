@@ -6,6 +6,10 @@ if vim.fn.has("win32") == 1 then
 	vim.cmd("set shellcmdflag=-NoProfile\\ -Command")
 end
 
+-- NOTE: This only works when NOT using oil
+-- this is currently handled in the oil config, but we'll
+-- leave this here in case we stop using oil.
+--
 -- Set the current working directory to the directory of
 -- the current file or path in which Neovim was opened with.
 -- e.g. `nvim . or nvim /path/to/file`
