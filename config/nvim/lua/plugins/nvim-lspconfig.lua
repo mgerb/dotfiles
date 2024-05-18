@@ -51,11 +51,6 @@ return {
 					root_dir = require("lspconfig").util.root_pattern("package.json"),
 				},
 			},
-			wgsl_analyzer = {
-				settings = {
-					filetypes = { "wgsl" },
-				},
-			},
 		}
 
 		require("mason").setup()
