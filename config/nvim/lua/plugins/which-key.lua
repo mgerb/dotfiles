@@ -40,6 +40,11 @@ local mappings = {
 		},
 	},
 	["b"] = { "<cmd>:Telescope buffers<cr>", "Buffers" },
+
+	-- DAP
+	["B"] = { "<cmd>:DapToggleBreakpoint<cr>", "DAP Toggle Breakpoint" },
+	["?"] = { "<cmd>lua require('dapui').eval(nil, { enter = true })<cr>", "DAP Eval" },
+
 	["c"] = { "<cmd>:bdelete<cr>", "Close" },
 	["q"] = { "<cmd>:q<cr>", "Quit" },
 	["Q"] = { "<cmd>:qa!<cr>", "Quit All Force" },
