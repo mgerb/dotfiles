@@ -42,14 +42,13 @@ return {
 				},
 			},
 			htmx = {
-				settings = {
-					filetypes = { "rs", "html", "rust" },
-				},
+				filetypes = { "rs", "html", "rust" },
 			},
 			angularls = {
-				settings = {
-					root_dir = require("lspconfig").util.root_pattern("package.json"),
-				},
+				root_dir = require("lspconfig").util.root_pattern("package.json"),
+			},
+			docker_compose_language_service = {
+				filetypes = { "yml", "yaml" },
 			},
 		}
 
