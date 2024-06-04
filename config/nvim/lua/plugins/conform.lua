@@ -21,6 +21,7 @@ return {
 			typescript = { { "prettierd", "prettier" } },
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
+			markdown = { { "prettierd", "prettier" } },
 		},
 		formatters = {
 			["clang-format"] = {
