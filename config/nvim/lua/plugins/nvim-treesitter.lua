@@ -1,9 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	cmd = "TSUpdate",
+	cmd = { "TSUpdate", "TSInstall" },
 	event = "BufRead",
 	config = function()
+		require("nvim-treesitter.install").compilers = { "zig", "cc", "gcc", "clang", "cl" }
+
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {},
 			-- Install parsers synchronously (only applied to `ensure_installed`)
