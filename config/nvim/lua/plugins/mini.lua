@@ -29,6 +29,7 @@ return {
 			vim.api.nvim_command("highlight MatchWordCur guibg=" .. palette.waveBlue1)
 
 			vim.api.nvim_command("highlight MiniCursorword gui=NONE guibg=" .. palette.waveBlue1)
+			vim.api.nvim_command("highlight MiniCursorwordCurrent gui=NONE guibg=" .. palette.waveBlue1)
 			vim.api.nvim_command("highlight MiniCursorwordWrite gui=NONE guibg=" .. palette.waveBlue1)
 		end,
 	},
