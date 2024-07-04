@@ -22,6 +22,7 @@ return {
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
 			markdown = { { "prettierd", "prettier" } },
+            nix = { "nixpkgs-fmt" }
 		},
 		formatters = {
 			["clang-format"] = {
