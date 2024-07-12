@@ -21,6 +21,7 @@ return {
 			typescript = { { "prettierd", "prettier" } },
 			html = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
+			jsonc = { { "prettierd", "prettier" } },
 			markdown = { { "prettierd", "prettier" } },
 			nix = { "alejandra", "nixpkgs-fmt", "nixfmt" },
 		},
