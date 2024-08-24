@@ -30,6 +30,7 @@
 
           ../modules/desktop/audio.nix
           ../modules/desktop/hyprland.nix
+          ../modules/desktop/sway.nix
           ../modules/desktop/networking.nix
           ../modules/desktop/disable-keyboard.nix
 

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -42,52 +43,23 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim" = {
+      # this must be a symlink because neovim makes file modifications at runtime
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/config/nvim";
     };
 
-    ".config/starship.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/config/starship.toml";
-    };
+    ".config/starship.toml".source = ../../config/starship.toml;
+    ".tmux.conf".source = ../../.tmux.conf;
+    ".config/kitty/kitty.conf".source = ../../config/kitty/kitty.conf;
+    ".config/waybar/config.jsonc".source = ../../config/waybar/config.jsonc;
+    ".config/waybar/style.css".source = ../../config/waybar/style.css;
 
-    ".config/hypr/hyprland.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/hyprland.conf";
-    };
-
-    ".config/hypr/hyprpaper.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/hyprpaper.conf";
-    };
-
-    ".config/hypr/hypridle.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/hypridle.conf";
-    };
-
-    ".config/hypr/hyprlock.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/hyprlock.conf";
-    };
-
-    ".config/hypr/hyprshade.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/hyprshade.toml";
-    };
-
-    ".config/hypr/shaders" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/hypr/shaders";
-    };
-
-    ".tmux.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/.tmux.conf";
-    };
-
-    ".config/kitty/kitty.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/config/kitty/kitty.conf";
-    };
-
-    ".config/waybar/config.jsonc" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/config/waybar/config.jsonc";
-    };
-
-    ".config/waybar/style.css" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/config/waybar/style.css";
-    };
+    # hyprland
+    ".config/hypr/hyprland.conf".source = ../../hypr/hyprland.conf;
+    ".config/hypr/hyprpaper.conf".source = ../../hypr/hyprpaper.conf;
+    ".config/hypr/hypridle.conf".source = ../../hypr/hypridle.conf;
+    ".config/hypr/hyprlock.conf".source = ../../hypr/hyprlock.conf;
+    ".config/hypr/hyprshade.toml".source = ../../hypr/hyprshade.toml;
+    ".config/hypr/shaders".source = ../../hypr/shaders;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -118,4 +90,44 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  wayland.windowManager.sway = {
+    enable = true;
+    extraConfig = ''
+      bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+      bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+
+      bar {
+        font pango:monospace 8.000000
+        mode dock
+        hidden_state hide
+        position top
+        status_command ${pkgs.i3status}/bin/i3status
+        swaybar_command ${pkgs.sway}/bin/swaybar
+        workspace_buttons yes
+        strip_workspace_numbers no
+        tray_output primary
+        colors {
+          background #000000
+          statusline #ffffff
+          separator #666666
+          focused_workspace #4c7899 #285577 #ffffff
+          active_workspace #333333 #5f676a #ffffff
+          inactive_workspace #333333 #222222 #888888
+          urgent_workspace #2f343a #900000 #ffffff
+          binding_mode #2f343a #900000 #ffffff
+        }
+      }
+    '';
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "kitty";
+      # set bars to none so that we can set it in extraConfig
+      bars = [];
+      startup = [
+        {command = "kitty";}
+      ];
+    };
+  };
 }
