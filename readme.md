@@ -1,5 +1,11 @@
 # Dotfiles
 
+# Nix
+
+Recently switched over to NixOS. See [readme](./nix/readme.md).
+
+The following setup steps are obsolete for Nix, but still can be used for Ubuntu.
+
 ## Setup
 
 - Install Neovim
@@ -43,9 +49,3 @@ ln -s $HOME/Desktop/git/dotfiles/.config/fish $HOME/.config/fish
 ln -s $HOME/Desktop/git/dotfiles/config/kitty $HOME/.config/kitty
 ln -s $HOME/Desktop/git/dotfiles/config/alacritty $HOME/.config/alacritty
 ```
-
-# 02/29/24 Breaking Changes
-- switch from packer to lazy
-- autopair to mini.pairs
-- remove none_ls - use conform for formatting instead
-- remove lsp-zero
