@@ -7,6 +7,10 @@
     kitty
     wofi
     polkit
+    swaylock-effects
+    wlsunset
+    gammastep
+    wl-gammactl
   ];
 
   # Enable the gnome-keyring secrets vault.
@@ -22,5 +26,5 @@
   # for sway
   security.polkit.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 }

@@ -24,6 +24,13 @@ sudo nixos-rebuild switch . --upgrade
 
 `sudo nixos-rebuild switch --flake ./home-server`
 
+### Misc
+
+#### Connect to Wifi
+
+1. Use `nmcli dev wifi` to locate the access point(AP) name.
+2. Use `nmcli device wifi` connect APname password password
+
 ### TODO
 
 - thinkpad

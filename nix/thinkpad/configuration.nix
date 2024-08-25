@@ -42,7 +42,7 @@
   users.users.mg = {
     isNormalUser = true;
     description = "mg";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "video"];
   };
 
   # Install firefox.

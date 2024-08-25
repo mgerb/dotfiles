@@ -32,7 +32,7 @@
           ../modules/desktop/hyprland.nix
           ../modules/desktop/sway.nix
           ../modules/desktop/networking.nix
-          ../modules/desktop/disable-keyboard.nix
+          # ../modules/desktop/disable-keyboard.nix
 
           ./modules/packages.nix
           ./configuration.nix

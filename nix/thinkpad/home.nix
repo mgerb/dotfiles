@@ -97,27 +97,15 @@
       bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
       bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 
+
       bar {
-        font pango:monospace 8.000000
-        mode dock
-        hidden_state hide
         position top
         status_command ${pkgs.i3status}/bin/i3status
         swaybar_command ${pkgs.sway}/bin/swaybar
-        workspace_buttons yes
-        strip_workspace_numbers no
-        tray_output primary
-        colors {
-          background #000000
-          statusline #ffffff
-          separator #666666
-          focused_workspace #4c7899 #285577 #ffffff
-          active_workspace #333333 #5f676a #ffffff
-          inactive_workspace #333333 #222222 #888888
-          urgent_workspace #2f343a #900000 #ffffff
-          binding_mode #2f343a #900000 #ffffff
-        }
       }
+
+      exec nm-applet --indicator
+      exec blueman-applet
     '';
     config = rec {
       modifier = "Mod4";
@@ -129,5 +117,49 @@
         {command = "kitty";}
       ];
     };
+  };
+
+  # currently broken
+  # services.gammastep = {
+  #   enable = true;
+  #   provider = "manual";
+  #   latitude = 45.0;
+  #   longitude = 93.0;
+  #   settings = {
+  #     general = {
+  #       adjustment-method = "wayland";
+  #     };
+  #   };
+  # };
+
+  # services.wlsunset = {
+  #   enable = true;
+  #   latitude = "45.00";
+  #   longitude = "93.00";
+  #   temperature = {
+  #     day = 4500;
+  #     night = 3000;
+  #   };
+  # };
+
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 300;
+        command = "${pkgs.swaylock}/bin/swaylock -f --clock --screenshots --indicator --effect-blur 7x5";
+      }
+      {
+        timeout = 600;
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f --clock --screenshots --indicator --effect-blur 7x5";
+      }
+    ];
   };
 }
