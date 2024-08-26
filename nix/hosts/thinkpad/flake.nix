@@ -34,6 +34,7 @@
           ../../modules/neovim.nix
           ../../modules/shell-aliases.nix
           ../../modules/systemd.nix
+          ../../modules/desktop/disable-keyboard-sway.nix
 
           ../../modules/desktop
 
