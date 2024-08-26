@@ -1,6 +1,7 @@
 {
-  pkgs,
   inputs,
+  user,
+  hmModules,
   ...
 }: {
   imports = [
@@ -11,22 +12,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  users.users.mg = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "mg";
+    description = user;
     extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [];
   };
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
-    users = {
-      "mg" = import ./home.nix;
-    };
+    users.${user} = hmModules;
   };
 
   # Enable automatic login for the user.
-  services.getty.autologinUser = "mg";
+  services.getty.autologinUser = user;
 
   services.openssh.enable = true;
   services.openssh.settings = {

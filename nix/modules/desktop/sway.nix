@@ -23,7 +23,6 @@
     wrapperFeatures.gtk = true;
   };
 
-  # for sway
   security.polkit.enable = true;
 
   hardware.graphics.enable = true;

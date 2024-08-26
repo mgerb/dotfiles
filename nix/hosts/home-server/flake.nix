@@ -12,24 +12,24 @@
     self,
     nixpkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    user = "mg";
+    hmModules = [(import ../../modules/home-manager/home.nix)];
+  in {
     nixosConfigurations = {
-      # hostname
       snixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs user hmModules;};
         system = "x86_64-linux";
         modules = [
-          ../modules/base.nix
-          ../modules/packages.nix
-          ../modules/neovim.nix
-          ../modules/shell-aliases.nix
-          ../modules/zsh.nix
-          ../modules/fonts.nix
-          ../modules/systemd.nix
+          ../../modules/base.nix
+          ../../modules/neovim.nix
+          ../../modules/shell-aliases.nix
+          ../../modules/zsh.nix
+          ../../modules/fonts.nix
+          ../../modules/systemd.nix
 
           ./modules/zfs.nix
           ./modules/networking.nix
-          ./modules/packages.nix
           ./modules/samba.nix
 
           ./configuration.nix

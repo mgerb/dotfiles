@@ -26,10 +26,16 @@ sudo nixos-rebuild switch . --upgrade
 
 ### Misc
 
-#### Connect to Wifi
-
-1. Use `nmcli dev wifi` to locate the access point(AP) name.
-2. Use `nmcli device wifi` connect APname password password
+- Wifi
+  - nmcli
+    - `nmcli dev wifi` to locate the access point(AP) name.
+    - `nmcli device wifi connect APname password`
+  - `nm-connection-editor`
+  - `nmtui`
+- bluetooth
+  - `blueman-manager`
+- audio
+  - `pavucontrol`
 
 ### TODO
 

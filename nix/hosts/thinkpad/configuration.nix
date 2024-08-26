@@ -1,7 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{inputs, ...}: {
+{
+  inputs,
+  user,
+  hmModules,
+  pkgs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -39,9 +45,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mg = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "mg";
+    description = user;
     extraGroups = ["networkmanager" "wheel" "docker" "video"];
   };
 
@@ -49,24 +55,15 @@
   programs.firefox.enable = true;
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "mg" = import ./home.nix;
+    extraSpecialArgs = {inherit inputs user;};
+    users.${user} = {
+      imports = hmModules;
     };
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  environment.systemPackages = with pkgs; [
+    discord
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
