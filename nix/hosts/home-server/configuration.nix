@@ -19,8 +19,10 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users.${user} = hmModules;
+    extraSpecialArgs = {inherit inputs user;};
+    users.${user} = {
+      imports = hmModules;
+    };
   };
 
   # Enable automatic login for the user.

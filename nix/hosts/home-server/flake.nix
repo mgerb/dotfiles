@@ -14,7 +14,9 @@
     ...
   } @ inputs: let
     user = "mg";
-    hmModules = [(import ../../modules/home-manager/home.nix)];
+    hmModules =
+      [(import ../../modules/home-manager/home.nix)]
+      ++ [(import ../../modules/home-manager/files.nix)];
   in {
     nixosConfigurations = {
       snixos = nixpkgs.lib.nixosSystem {
