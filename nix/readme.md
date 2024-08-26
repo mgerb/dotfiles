@@ -36,6 +36,8 @@ sudo nixos-rebuild switch . --upgrade
   - `blueman-manager`
 - audio
   - `pavucontrol`
+- files
+  - nautilus
 
 ### TODO
 
