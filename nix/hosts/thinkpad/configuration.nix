@@ -34,6 +34,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.tlp.enable = true;
   # should help with performance??
   # https://wiki.hyprland.org/Configuring/Performance/
   services.tlp.settings = {

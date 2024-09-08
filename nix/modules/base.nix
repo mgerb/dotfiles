@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./mg-scripts.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     vim
     killall

@@ -5,7 +5,6 @@
       bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
       bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 
-
       bar {
         position top
         status_command ${pkgs.i3status}/bin/i3status

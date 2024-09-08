@@ -48,7 +48,6 @@ in {
   environment.systemPackages = [
     mgKeyboard
     pkgs.libnotify
-    pkgs.hyprland
   ];
 
   # run systemd like this because I had issues with the other method below
