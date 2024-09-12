@@ -1,9 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    samba
-    wsdd
-  ];
-
+{...}: {
   services.samba = {
     enable = true;
     openFirewall = true;

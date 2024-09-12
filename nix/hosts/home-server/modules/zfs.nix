@@ -3,11 +3,7 @@
 #
 # Prune snapshots over a week old
 # `zfs-prune-snapshots 1w`
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    zfs
-    zfs-prune-snapshots
-  ];
+{...}: {
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.extraPools = ["raid-pool" "wd1" "wd2"];
 

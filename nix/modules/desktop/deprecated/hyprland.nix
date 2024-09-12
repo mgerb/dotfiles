@@ -1,3 +1,4 @@
+# DEPRECATED: No longer used - switched to sway
 # packages for hyprland environment
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [

@@ -1,9 +1,9 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+{pkgs-stable, ...}: {
+  environment.systemPackages = with pkgs-stable; [
     nerdfonts
   ];
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with pkgs-stable; [
     fira-code
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];

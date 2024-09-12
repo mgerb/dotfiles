@@ -1,12 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    # wireless network TUI
-    # impala # iwd TUI
-    # iwd
-    networkmanagerapplet
-    blueman
-  ];
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

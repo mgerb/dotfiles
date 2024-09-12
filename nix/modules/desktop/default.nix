@@ -1,7 +1,7 @@
 {...}: {
   imports = [
+    ./packages.nix
     ./audio.nix
-    ./hyprland.nix
     ./networking.nix
     ./sway.nix
   ];

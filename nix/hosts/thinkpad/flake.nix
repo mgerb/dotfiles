@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,8 +14,10 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     ...
   } @ inputs: let
+    system = "x86_64-linux";
     user = "mg";
     hmModules =
       [(import ../../modules/home-manager/home.nix)]
@@ -25,16 +28,26 @@
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs user hmModules;};
-        system = "x86_64-linux";
+        system = system;
+        specialArgs = {
+          inherit inputs user hmModules;
+          # To use packages from nixpkgs-stable,
+          # we configure some parameters for it first
+          pkgs-stable = import nixpkgs-stable {
+            # Refer to the `system` parameter from
+            # the outer scope recursively
+            inherit system;
+            # To use Chrome, we need to allow the
+            # installation of non-free software.
+            config.allowUnfree = true;
+          };
+        };
         modules = [
           ../../modules/base.nix
           ../../modules/zsh.nix
           ../../modules/fonts.nix
-          ../../modules/neovim.nix
           ../../modules/shell-aliases.nix
           ../../modules/systemd.nix
-          ../../modules/desktop/disable-keyboard-sway.nix
 
           ../../modules/desktop
 

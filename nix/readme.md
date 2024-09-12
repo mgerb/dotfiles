@@ -1,9 +1,13 @@
 # NixOS
 
+## Issues
+
 - collect garbage and delete
   `sudo nix-collect-garbage -d`
 - build without cache
   `sudo nixos-rebuild switch --flake ./thinkpad --option eval-cache false`
+- clean store
+  - `nix store verify --all --no-trust`
 
 ## Updating
 
@@ -13,7 +17,7 @@ sudo nix-channel --update
 # cd into host config
 cd thinkpad
 sudo nix flake update
-sudo nixos-rebuild switch . --upgrade
+sudo nixos-rebuild switch --upgrade --flake .
 ```
 
 ## Thinkpad

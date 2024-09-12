@@ -24,7 +24,6 @@
         system = "x86_64-linux";
         modules = [
           ../../modules/base.nix
-          ../../modules/neovim.nix
           ../../modules/shell-aliases.nix
           ../../modules/zsh.nix
           ../../modules/fonts.nix

@@ -1,28 +1,10 @@
 {pkgs, ...}: {
   imports = [
     ./mg-scripts.nix
+    ./stable-base.nix
+    ./packages.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    vim
-    killall
-    git
-    wget
-    ripgrep
-    fd
-    tmux
-    wl-clipboard
-    unzip
-    htop
-    jq
-    rustup
-    go
-    nodejs
-    gnumake
-    gcc
-    clang
-    zig
-  ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   nix.gc = {

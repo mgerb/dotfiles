@@ -34,7 +34,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  services.tlp.enable = true;
+  # services.tlp.enable = true;
   # should help with performance??
   # https://wiki.hyprland.org/Configuring/Performance/
   services.tlp.settings = {
@@ -61,10 +61,6 @@
       imports = hmModules;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    discord
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
