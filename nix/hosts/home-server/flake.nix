@@ -17,9 +17,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     user = "mg";
-    hmModules =
-      [(import ../../modules/home-manager/home.nix)]
-      ++ [(import ../../modules/home-manager/files.nix)];
+    hmModules = [(import ../../modules/home-manager)];
   in {
     nixosConfigurations = {
       snixos = nixpkgs.lib.nixosSystem {
@@ -39,16 +37,8 @@
         };
         modules = [
           ../../modules/base.nix
-          ../../modules/shell-aliases.nix
-          ../../modules/zsh.nix
-          ../../modules/fonts.nix
-          ../../modules/systemd.nix
-
-          ./modules/zfs.nix
-          ./modules/networking.nix
-          ./modules/samba.nix
-
           ./configuration.nix
+
           inputs.home-manager.nixosModules.default
         ];
       };

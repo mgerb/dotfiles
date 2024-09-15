@@ -2,11 +2,13 @@
   inputs,
   user,
   hmModules,
+  pkgs-stable,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    ./modules
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -19,10 +21,11 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs user;};
+    extraSpecialArgs = {inherit inputs user pkgs-stable;};
     users.${user} = {
       imports = hmModules;
     };
+    backupFileExtension = ".bak";
   };
 
   # Enable automatic login for the user.

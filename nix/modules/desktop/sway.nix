@@ -12,4 +12,13 @@
   security.polkit.enable = true;
 
   hardware.graphics.enable = true;
+
+  security.pam.loginLimits = [
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
+  ];
 }

@@ -1,8 +1,14 @@
-{
-  pkgs,
-  user,
-  ...
-}: {
+{user, pkgs, ...}: {
+  imports = [
+    ./files.nix
+    ./fonts.nix
+    ./mg-scripts.nix
+    ./packages.nix
+    ./packages-stable.nix
+    ./shell-aliases.nix
+    ./zsh.nix
+  ];
+
   home.username = user;
   home.homeDirectory = "/home/${user}";
 
@@ -15,13 +21,17 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [
-  ];
-
   home.sessionVariables = {
     EDITOR = "neovim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 }

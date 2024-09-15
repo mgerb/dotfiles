@@ -1,7 +1,8 @@
 {...}: {
   imports = [
-    ./audio.nix
     ./networking.nix
-    ./sway.nix
+    ./packages.nix
+    ./samba.nix
+    ./zfs.nix
   ];
 }

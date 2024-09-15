@@ -1,10 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./mg-scripts.nix
-    ./stable-base.nix
-    ./packages.nix
-  ];
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   nix.gc = {
@@ -36,4 +30,9 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
 }

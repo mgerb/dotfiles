@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+{pkgs, pkgs-stable, ...}: {
+  home.packages = with pkgs; [
     # sway stuff
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -13,7 +13,7 @@
     gammastep
     wl-gammactl
 
-    discord
+    pkgs-stable.discord
 
     # networking tools
     networkmanagerapplet
@@ -22,4 +22,5 @@
     # impala # iwd TUI
     # iwd
   ];
+
 }

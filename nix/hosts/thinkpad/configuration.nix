@@ -5,12 +5,13 @@
   inputs,
   user,
   hmModules,
-  pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./packages.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -56,10 +57,11 @@
   programs.firefox.enable = true;
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs user;};
+    extraSpecialArgs = {inherit inputs user pkgs-stable;};
     users.${user} = {
       imports = hmModules;
     };
+    backupFileExtension = ".bak";
   };
 
   # This value determines the NixOS release from which the default

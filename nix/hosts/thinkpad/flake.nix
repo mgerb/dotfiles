@@ -20,11 +20,8 @@
     system = "x86_64-linux";
     user = "mg";
     hmModules =
-      [(import ../../modules/home-manager/home.nix)]
-      ++ [(import ../../modules/home-manager/gammastep.nix)]
-      ++ [(import ../../modules/home-manager/files.nix)]
-      ++ [(import ../../modules/home-manager/files-desktop.nix)]
-      ++ [(import ../../modules/home-manager/sway.nix)];
+      [(import ../../modules/home-manager)]
+      ++ [(import ../../modules/home-manager/desktop)];
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -44,11 +41,6 @@
         };
         modules = [
           ../../modules/base.nix
-          ../../modules/zsh.nix
-          ../../modules/fonts.nix
-          ../../modules/shell-aliases.nix
-          ../../modules/systemd.nix
-
           ../../modules/desktop
 
           ./configuration.nix

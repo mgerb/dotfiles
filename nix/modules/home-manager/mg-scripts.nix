@@ -62,7 +62,7 @@
      fi
   '';
 in {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     libnotify
     mgLock
     mgPower

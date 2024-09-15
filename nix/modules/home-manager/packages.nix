@@ -9,8 +9,6 @@
     ripgrep
     fd
     tmux
-    # TODO: move to desktop only - not required for WSL
-    #wl-clipboard
     unzip
 
     # software tools
