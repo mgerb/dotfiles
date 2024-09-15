@@ -28,6 +28,26 @@ sudo nixos-rebuild switch --upgrade --flake .
 
 `sudo nixos-rebuild switch --flake ./home-server`
 
+## Nix as a package manager (without NixOS)
+
+See `./hosts/ubuntu/flake.nix` for example.
+
+- first install [nix package manager](https://nixos.org/download)
+- install home mananger
+  ```sh
+  nix run home-manager/master -- init --switch
+  ```
+  - this will install with a basic flake, then run the next rebuild command
+- rebuild
+  ```sh
+  home-manager switch --flake ./nix/hosts/ubuntu
+  ```
+- NOTE: must manually set zsh as default shell
+  ```sh
+  which zsh >> /etc/shells
+  chsh -s $(which zsh)
+  ```
+
 ### Misc
 
 - Wifi

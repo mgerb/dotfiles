@@ -1,0 +1,3 @@
+{hmModules, ...}: {
+  imports = hmModules;
+}

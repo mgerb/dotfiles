@@ -1,3 +1,4 @@
+# TODO: move to home-mananger
 {pkgs, ...}: {
   programs.zsh = {
     enable = true;

@@ -1,6 +1,5 @@
-# TODO: move to home-mananger
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     vim
     killall
     git
@@ -10,15 +9,17 @@
     ripgrep
     fd
     tmux
-    wl-clipboard
+    # TODO: move to desktop only - not required for WSL
+    #wl-clipboard
     unzip
 
     # software tools
-    rustup
+    #rustup
+    cargo
     go
     nodejs
     gnumake
-    gcc
+    #gcc
     clang
     zig
 
