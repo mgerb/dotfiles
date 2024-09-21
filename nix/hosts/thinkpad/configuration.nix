@@ -1,18 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  inputs,
-  user,
-  hmModules,
-  pkgs-stable,
-  ...
-}: {
+{user, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -57,14 +50,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs user pkgs-stable;};
-    users.${user} = {
-      imports = hmModules;
-    };
-    backupFileExtension = ".bak";
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

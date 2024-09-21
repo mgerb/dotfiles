@@ -1,13 +1,6 @@
-{
-  inputs,
-  user,
-  hmModules,
-  pkgs-stable,
-  ...
-}: {
+{user, ...}: {
   imports = [
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
     ./modules
   ];
 
@@ -18,14 +11,6 @@
     isNormalUser = true;
     description = user;
     extraGroups = ["networkmanager" "wheel" "docker"];
-  };
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs user pkgs-stable;};
-    users.${user} = {
-      imports = hmModules;
-    };
-    backupFileExtension = ".bak";
   };
 
   # Enable automatic login for the user.
