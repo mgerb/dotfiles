@@ -27,6 +27,7 @@
 
   # docker
   virtualisation.docker.enable = true;
+  users.users.${user}.extraGroups = ["docker"];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";

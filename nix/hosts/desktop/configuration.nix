@@ -84,7 +84,7 @@
   users.users.mg = {
     isNormalUser = true;
     description = "mg";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "video"];
     packages = with pkgs; [
       kdePackages.kate
       #  thunderbird
