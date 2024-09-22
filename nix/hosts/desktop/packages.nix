@@ -10,5 +10,6 @@
     gparted
     steam
     lutris
+    wine
   ];
 }
