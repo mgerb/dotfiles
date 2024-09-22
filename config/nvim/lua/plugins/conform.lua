@@ -24,6 +24,7 @@ return {
 			jsonc = { "prettierd", "prettier" },
 			markdown = { "prettierd", "prettier" },
 			nix = { "alejandra", "nixpkgs-fmt", "nixfmt" },
+			rust = { "rustfmt", lsp_format = "fallback" },
 		},
 		formatters = {
 			["clang-format"] = {

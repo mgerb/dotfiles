@@ -12,8 +12,7 @@
     unzip
 
     # software tools
-    #rustup
-    cargo
+    rustup
     go
     nodejs
     gnumake

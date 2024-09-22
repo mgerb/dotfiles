@@ -76,5 +76,8 @@ return {
 				end,
 			},
 		})
+
+		-- manually add LSP here
+		require("lspconfig").rust_analyzer.setup({})
 	end,
 }
