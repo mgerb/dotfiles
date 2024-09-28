@@ -10,6 +10,9 @@
     gparted
     steam
     lutris
-    wine
+    wine64
+    libresprite
+    google-chrome
+    spotify
   ];
 }

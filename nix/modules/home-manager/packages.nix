@@ -22,9 +22,11 @@
 
     # neovim
     neovim
-    alejandra
+    lua-language-server
     stylua
     prettierd
+    nil # nix lsp
+    alejandra # nix formatter
 
     # zsh
     zsh
