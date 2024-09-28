@@ -78,6 +78,9 @@ return {
 		})
 
 		-- manually add LSP here
-		require("lspconfig").rust_analyzer.setup({})
+		local lspconfig = require("lspconfig")
+		lspconfig.rust_analyzer.setup({})
+		lspconfig.nil_ls.setup({})
+		lspconfig.lua_ls.setup({})
 	end,
 }
