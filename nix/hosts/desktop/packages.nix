@@ -1,3 +1,4 @@
+# home manager packages for desktop
 {
   pkgs,
   pkgs-stable,

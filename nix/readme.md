@@ -1,34 +1,17 @@
 # NixOS
 
-## Issues
+## Configuring a new NixOS machine
 
-- collect garbage and delete
-  `sudo nix-collect-garbage -d`
-- build without cache
-  `sudo nixos-rebuild switch --flake ./thinkpad --option eval-cache false`
-- clean store
-  - `nix store verify --all --no-trust`
+- run the basic installation
+- clone dotfiles (this repo) into `~/git/`
+- create a new host in `./hosts/<new host>`
+- copy the following files to `./hosts/<new host>/`
+  - `/etc/nixos/configuration.nix`
+  - `/etc/nixos/hardware-configuration.nix`
+- copy `flake.nix` from one of the existing hosts and modify appropriately
+- `sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/hosts/<new host>`
 
-## Updating
-
-```sh
-sudo nix-channel --update
-
-# cd into host config
-cd thinkpad
-sudo nix flake update
-sudo nixos-rebuild switch --upgrade --flake .
-```
-
-## Thinkpad
-
-`sudo nixos-rebuild switch --flake ./thinkpad`
-
-## Home Server
-
-`sudo nixos-rebuild switch --flake ./home-server`
-
-## Nix as a package manager (without NixOS)
+## Configuring a new Nix machine (non NixOS)
 
 See `./hosts/ubuntu/flake.nix` for example.
 
@@ -48,6 +31,28 @@ See `./hosts/ubuntu/flake.nix` for example.
   chsh -s $(which zsh)
   ```
 
+## Misc
+
+- rebuild with flake
+  - `sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/hosts/thinkpad/`
+- collect garbage and delete
+  `sudo nix-collect-garbage -d`
+- build without cache
+  `sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/hosts/thinkpad/ --option eval-cache false`
+- clean store
+  - `nix store verify --all --no-trust`
+
+## Updating
+
+```sh
+sudo nix-channel --update
+
+# cd into host config
+cd thinkpad
+sudo nix flake update
+sudo nixos-rebuild switch --upgrade --flake .
+```
+
 ### Misc
 
 - Wifi
@@ -62,10 +67,3 @@ See `./hosts/ubuntu/flake.nix` for example.
   - `pavucontrol`
 - files
   - nautilus
-
-### TODO
-
-- thinkpad
-  - kvm
-  - configure a status bar
-    - volume control

@@ -1,12 +1,35 @@
 # Dotfiles
 
+Clone to `~/git/dotfiles`
+
 # Nix
 
-Recently switched over to NixOS. See [readme](./nix/readme.md).
+See [Nix readme](./nix/readme.md) for setup.
 
-The following setup steps are obsolete for Nix, but still can be used for Ubuntu.
+## Windows
 
-## Setup
+```
+mklink /J C:\Users\<User>\AppData\Local\nvim C:\Users\<User>\Desktop\git\dotfiles\config\nvim
+```
+
+## Deprecated
+
+Old tools/configurations I no longer use
+
+- [Install Kitty](https://sw.kovidgoyal.net/kitty/)
+- [Install fish](https://fishshell.com/)
+- [Install Neovide](https://github.com/neovide/neovide)
+  - place neovide in `/usr/local/bin`
+
+```
+ln -s $HOME/Desktop/git/dotfiles/.config/fish $HOME/.config/fish
+ln -s $HOME/Desktop/git/dotfiles/config/kitty $HOME/.config/kitty
+ln -s $HOME/Desktop/git/dotfiles/config/alacritty $HOME/.config/alacritty
+```
+
+### Setup
+
+This is my old setup. Replaced by Nix.
 
 - Install Neovim
   - [Download appimage from releases page](https://github.com/neovim/neovim/releases)
@@ -27,25 +50,4 @@ ln -s $HOME/Desktop/git/dotfiles/config/starship.toml $HOME/.config/starship.tom
 ln -s $HOME/Desktop/git/dotfiles/config/nvim $HOME/.config/nvim
 ln -s $HOME/Desktop/git/dotfiles/.oh-my-zsh/dracula-theme/dracula.zsh-theme $HOME/.oh-my-zsh/themes/dracula.zsh-theme
 ln -s $HOME/Desktop/git/dotfiles/.tmux.conf $HOME/.tmux.conf
-```
-
-### Windows
-
-```
-mklink /J C:\Users\<User>\AppData\Local\nvim C:\Users\<User>\Desktop\git\dotfiles\config\nvim
-```
-
-### Deprecated
-
-Old tools/configurations I no longer use
-
-- [Install Kitty](https://sw.kovidgoyal.net/kitty/)
-- [Install fish](https://fishshell.com/)
-- [Install Neovide](https://github.com/neovide/neovide)
-  - place neovide in `/usr/local/bin`
-
-```
-ln -s $HOME/Desktop/git/dotfiles/.config/fish $HOME/.config/fish
-ln -s $HOME/Desktop/git/dotfiles/config/kitty $HOME/.config/kitty
-ln -s $HOME/Desktop/git/dotfiles/config/alacritty $HOME/.config/alacritty
 ```

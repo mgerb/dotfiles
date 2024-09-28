@@ -1,4 +1,8 @@
-{user, pkgs, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   imports = [
     ./files.nix
     ./fonts.nix
@@ -22,7 +26,7 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.sessionVariables = {
-    EDITOR = "neovim";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
