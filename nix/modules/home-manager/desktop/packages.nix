@@ -13,7 +13,7 @@
     gammastep
     wl-gammactl
 
-    pkgs-stable.discord
+    discord
 
     # networking tools
     networkmanagerapplet

@@ -20,7 +20,7 @@
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -54,10 +54,10 @@
   # services.tlp.enable = true;
   # should help with performance??
   # https://wiki.hyprland.org/Configuring/Performance/
-  services.tlp.settings = {
-    INTEL_GPU_MIN_FREQ_ON_AC = 500;
-    INTEL_GPU_MIN_FREQ_ON_BAT = 500;
-  };
+  # services.tlp.settings = {
+  #   INTEL_GPU_MIN_FREQ_ON_AC = 500;
+  #   INTEL_GPU_MIN_FREQ_ON_BAT = 500;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
