@@ -15,5 +15,6 @@
     libresprite
     google-chrome
     spotify
+    exiftool
   ];
 }

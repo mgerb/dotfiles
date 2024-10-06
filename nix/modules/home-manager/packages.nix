@@ -13,7 +13,6 @@
 
     # software tools
     rustup
-    go
     nodejs
     gnumake
     #gcc
