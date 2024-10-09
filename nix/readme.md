@@ -16,6 +16,11 @@
 See `./hosts/ubuntu/flake.nix` for example.
 
 - first install [nix package manager](https://nixos.org/download)
+- enable flakes
+  - add the following line to `/etc/nix/nix.conf`
+    ```
+    experimental-features = nix-command flakes
+    ```
 - install home mananger
   ```sh
   nix run home-manager/master -- init --switch

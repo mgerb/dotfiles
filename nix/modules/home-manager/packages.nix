@@ -15,9 +15,19 @@
     rustup
     nodejs
     gnumake
-    #gcc
-    clang
+    gcc
+    libffi
+
+    # clang
+
+    # python
+    python3
+    python312Packages.cffi
+    python312Packages.pip
+    poetry
+
     zig
+    zls
 
     # neovim
     neovim

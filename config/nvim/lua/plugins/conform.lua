@@ -25,6 +25,7 @@ return {
 			markdown = { "prettierd", "prettier" },
 			nix = { "alejandra", "nixpkgs-fmt", "nixfmt" },
 			rust = { "rustfmt", lsp_format = "fallback" },
+			zig = { "zigfmt", lsp_format = "fallback" },
 		},
 		formatters = {
 			["clang-format"] = {
