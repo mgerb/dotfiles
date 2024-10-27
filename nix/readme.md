@@ -50,12 +50,10 @@ See `./hosts/ubuntu/flake.nix` for example.
 ## Updating
 
 ```sh
-sudo nix-channel --update
-
 # cd into host config
 cd thinkpad
 sudo nix flake update
-sudo nixos-rebuild switch --upgrade --flake .
+sudo nixos-rebuild switch --flake .
 ```
 
 ### Misc

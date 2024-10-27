@@ -16,5 +16,8 @@
     google-chrome
     spotify
     exiftool
+    pkgs-stable.obsidian
+
+    xwayland
   ];
 }

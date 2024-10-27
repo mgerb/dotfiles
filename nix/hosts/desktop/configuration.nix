@@ -31,6 +31,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # firefox was super slow and this might help?
+  # networking.enableIPv6 = false;
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 

@@ -82,6 +82,7 @@ return {
 		lspconfig.rust_analyzer.setup({})
 		lspconfig.nil_ls.setup({})
 		lspconfig.lua_ls.setup({})
+		lspconfig.clangd.setup({})
 
 		-- zig
 		lspconfig.zls.setup({})
