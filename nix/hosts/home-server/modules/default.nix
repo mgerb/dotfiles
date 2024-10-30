@@ -4,5 +4,6 @@
     ./packages.nix
     ./samba.nix
     ./zfs.nix
+    ./wireguard.nix
   ];
 }
