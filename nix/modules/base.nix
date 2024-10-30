@@ -29,6 +29,10 @@
   virtualisation.docker.enable = true;
   users.users.${user}.extraGroups = ["docker"];
 
+  # kvm
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 

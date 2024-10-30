@@ -10,6 +10,8 @@
     fd
     tmux
     unzip
+    nix-search-cli
+    wireguard-tools
 
     # software tools
     rustup
