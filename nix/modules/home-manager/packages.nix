@@ -23,10 +23,12 @@
     # clang
 
     # python
-    python3
+    python312Full
     python312Packages.cffi
     python312Packages.pip
+    black # python formatter
     poetry
+    pyright
 
     zig
     zls

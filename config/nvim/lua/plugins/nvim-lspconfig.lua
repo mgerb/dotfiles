@@ -83,6 +83,7 @@ return {
 		lspconfig.nil_ls.setup({})
 		lspconfig.lua_ls.setup({})
 		lspconfig.clangd.setup({})
+		lspconfig.pyright.setup({})
 
 		-- zig
 		lspconfig.zls.setup({})

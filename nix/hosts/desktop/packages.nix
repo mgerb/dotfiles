@@ -19,5 +19,7 @@
     pkgs-stable.obsidian
 
     xwayland
+    vlc
+    postgresql_17
   ];
 }
