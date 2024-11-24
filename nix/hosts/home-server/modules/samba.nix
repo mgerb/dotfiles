@@ -23,6 +23,11 @@
         browsable = "yes";
         "read only" = "no";
       };
+      wd1 = {
+        path = "/wd1";
+        browsable = "yes";
+        "read only" = "no";
+      };
     };
   };
 
