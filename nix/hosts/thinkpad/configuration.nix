@@ -6,7 +6,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
-    ./sway.nix
+    # ./sway.nix
+    ./steam.nix
   ];
 
   # Bootloader.
