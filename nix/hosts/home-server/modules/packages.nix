@@ -4,6 +4,8 @@
     samba
     wsdd
 
+    usbutils # for lsusb
+
     # zfs
     zfs
     zfs-prune-snapshots
