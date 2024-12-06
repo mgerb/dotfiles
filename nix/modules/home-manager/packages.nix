@@ -36,8 +36,11 @@
     # neovim
     neovim
     lua-language-server
+    typescript-language-server
+    angular-language-server
     stylua
     prettierd
+    eslint_d
     nil # nix lsp
     alejandra # nix formatter
 
