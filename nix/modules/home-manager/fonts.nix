@@ -1,13 +1,6 @@
 {pkgs, ...}: {
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
+    nerd-fonts.fira-code
   ];
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      serif = ["FiraCode"];
-      sansSerif = ["FiraCode"];
-      monospace = ["FiraCode"];
-    };
-  };
 }

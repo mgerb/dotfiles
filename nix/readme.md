@@ -69,4 +69,8 @@ sudo nixos-rebuild switch --flake .
 - audio
   - `pavucontrol`
 - files
+
   - nautilus
+
+- font issues after updated
+  - `fc-cache -rv` - this cleans the font cache

@@ -13,7 +13,6 @@
     lutris
     wine64
     libresprite
-    google-chrome
     spotify
     exiftool
     pkgs-stable.obsidian
@@ -21,5 +20,9 @@
     xwayland
     vlc
     postgresql_17
+
+    # browsers
+    google-chrome
+    brave
   ];
 }
