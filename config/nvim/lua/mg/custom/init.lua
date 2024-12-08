@@ -1,5 +1,6 @@
 require("mg.custom.nx")
 require("mg.custom.angular")
+require("mg.custom.playground")
 local history_picker = require("mg.custom.history_picker")
 
 vim.api.nvim_create_user_command("MGTSOrganizeImports", function()
