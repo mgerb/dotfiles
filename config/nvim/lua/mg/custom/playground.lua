@@ -39,6 +39,13 @@ local test_func = function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end
 
-vim.api.nvim_create_user_command("MGRun", function(opts)
-	test_func()
-end, {})
+local handler = function(args)
+	vim.print(args)
+end
+
+vim.api.nvim_create_user_command("MGRun", handler, {
+	nargs = 1,
+	complete = function()
+		return { "test", "run" }
+	end,
+})

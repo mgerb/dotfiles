@@ -37,4 +37,25 @@ M.get_my_theme = function(opts)
 	return vim.tbl_deep_extend("force", theme_opts, opts)
 end
 
+M.telescope_with_selected_text = function()
+	local function getVisualSelection()
+		vim.cmd('noau normal! "vy"')
+		local text = vim.fn.getreg("v")
+		vim.fn.setreg("v", {})
+
+		text = string.gsub(text, "\n", "")
+		if #text > 0 then
+			return text
+		else
+			return ""
+		end
+	end
+
+	local text = getVisualSelection()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		theme = require("mg.custom.telescope").get_my_theme(),
+		default_text = text,
+	})
+end
+
 return M

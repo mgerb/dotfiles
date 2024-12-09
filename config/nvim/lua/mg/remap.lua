@@ -5,44 +5,22 @@ vim.g.mapleader = " "
 
 map("n", "<esc>", ":noh<CR>", { silent = true }) -- clear highlighted searches
 
-map("n", "J", "mzJ`z", { silent = true }) -- keep cursor in place when joining lines
-
--- copy/paste from system clipboard
-map({ "n", "v" }, "<leader>y", [["+y]])
-map({ "n", "v" }, "<leader>P", [["+p]])
-
--- better window navigation
-map("n", "<C-h>", "<C-w>h", { silent = true })
-map("n", "<C-j>", "<C-w>j", { silent = true })
-map("n", "<C-k>", "<C-w>k", { silent = true })
-map("n", "<C-l>", "<C-w>l", { silent = true })
-
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", { silent = true })
 map("n", "<C-Down>", ":resize +2<CR>", { silent = true })
 map("n", "<C-,>", ":vertical resize -2<CR>", { silent = true })
 map("n", "<C-.>", ":vertical resize +2<CR>", { silent = true })
 
--- Navigate buffers
-map("n", "<S-l>", "<CMD>lua require('harpoon.ui').nav_next()<CR>", { silent = true })
-map("n", "<S-h>", "<CMD>lua require('harpoon.ui').nav_prev()<CR>", { silent = true })
-
--- nvim-tree
-map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
-
-map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
-map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
-
--- jump around 10 lines at a time
-map("n", "<CS-j>", "10j", { silent = true })
-map("n", "<CS-k>", "10k", { silent = true })
-map("n", "<CS-h>", "10h", { silent = true })
-map("n", "<CS-l>", "10l", { silent = true })
-
-map("v", "<CS-j>", "10j", { silent = true })
-map("v", "<CS-k>", "10k", { silent = true })
-map("v", "<CS-h>", "10h", { silent = true })
-map("v", "<CS-l>", "10l", { silent = true })
+-- jump around 10 lines at a time (not used anymore)
+-- map("n", "<CS-j>", "10j", { silent = true })
+-- map("n", "<CS-k>", "10k", { silent = true })
+-- map("n", "<CS-h>", "10h", { silent = true })
+-- map("n", "<CS-l>", "10l", { silent = true })
+--
+-- map("v", "<CS-j>", "10j", { silent = true })
+-- map("v", "<CS-k>", "10k", { silent = true })
+-- map("v", "<CS-h>", "10h", { silent = true })
+-- map("v", "<CS-l>", "10l", { silent = true })
 
 -- terminal
 map("t", "<Esc>", [[<C-\><C-N><C-n>]])
@@ -65,10 +43,10 @@ local function getVisualSelection()
 	end
 end
 
-map("v", "<leader>F", function()
-	local text = getVisualSelection()
-	require("telescope").extensions.live_grep_args.live_grep_args({
-		theme = require("mg.custom.telescope").get_my_theme(),
-		default_text = text,
-	})
-end, opts)
+-- map("v", "<leader>F", function()
+-- 	local text = getVisualSelection()
+-- 	require("telescope").extensions.live_grep_args.live_grep_args({
+-- 		theme = require("mg.custom.telescope").get_my_theme(),
+-- 		default_text = text,
+-- 	})
+-- end, opts)

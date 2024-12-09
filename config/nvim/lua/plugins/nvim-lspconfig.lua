@@ -24,26 +24,7 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		local lua_ls_settings = {
-			Lua = {
-				runtime = { version = "LuaJIT" },
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						"${3rd}/luv/library",
-						unpack(vim.api.nvim_get_runtime_file("", true)),
-					},
-				},
-				completion = {
-					callSnippet = "Replace",
-				},
-			},
-		}
-
 		local servers = {
-			lua_ls = {
-				settings = lua_ls_settings,
-			},
 			htmx = {
 				filetypes = { "rs", "html", "rust" },
 			},
@@ -84,9 +65,7 @@ return {
 		local lspconfig = require("lspconfig")
 		lspconfig.rust_analyzer.setup({})
 		lspconfig.nil_ls.setup({})
-		lspconfig.lua_ls.setup({
-			settings = lua_ls_settings,
-		})
+		lspconfig.lua_ls.setup({})
 		lspconfig.clangd.setup({})
 		lspconfig.pyright.setup({})
 		lspconfig.ts_ls.setup({})
