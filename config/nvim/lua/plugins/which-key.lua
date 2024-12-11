@@ -38,6 +38,10 @@ return {
 				{ "<CS-k>", "10k", desc = "10k" },
 				{ "<CS-h>", "10h", desc = "10h" },
 				{ "<CS-l>", "10l", desc = "10l" },
+
+				-- MG scripts
+				{ "<leader>m", group = "MG Scripts" },
+				{ "<leader>mp", ":MG playground<CR>", desc = "Playground" },
 			},
 
 			{
@@ -170,10 +174,6 @@ return {
 				{ "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
 				{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
 				{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-				{ "<leader>m", group = "MG Scripts" },
-				{ "<leader>md", "<cmd>MetricsDebug<cr>", desc = "Metrics Debug" },
-				{ "<leader>mo", "<cmd>MGTSOrganizeImports<cr>", desc = "TS Organize Imports" },
-				{ "<leader>mt", "<cmd>MetricsGetTime<cr>", desc = "Metrics Get Time" },
 				{ "<leader>n", group = "Tree" },
 				{ "<leader>nc", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse" },
 				{ "<leader>ne", "<cmd>:NvimTreeToggle<cr>", desc = "Toggle" },

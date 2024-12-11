@@ -40,7 +40,7 @@ M.get_theme = function(opts)
 end
 
 M.live_grep_with_selection = function()
-	local text = require("mg.util").get_visual_selection()
+	local text = require("mg._util").get_visual_selection()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		theme = M.get_theme(),
 		default_text = text,

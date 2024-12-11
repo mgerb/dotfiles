@@ -32,8 +32,8 @@ M.telescope_find_files_oil = function()
 end
 
 M.setup = function()
-	vim.api.nvim_create_user_command("MG", function(input)
-		M[input.args]()
+	vim.api.nvim_create_user_command("MG", function(args)
+		M[args.args](args)
 	end, {
 		nargs = 1,
 		complete = function()
@@ -46,6 +46,7 @@ M.setup = function()
 			end
 			return output
 		end,
+		range = true,
 	})
 end
 
