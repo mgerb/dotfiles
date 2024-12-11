@@ -24,18 +24,6 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		local servers = {
-			htmx = {
-				filetypes = { "rs", "html", "rust" },
-			},
-			angularls = {
-				root_dir = require("lspconfig").util.root_pattern("package.json"),
-			},
-			docker_compose_language_service = {
-				filetypes = { "yml", "yaml" },
-			},
-		}
-
 		require("mason").setup()
 		require("mason-tool-installer").setup({})
 
@@ -51,6 +39,15 @@ return {
 			underline = true,
 		})
 
+		local servers = {
+			htmx = {
+				filetypes = { "rs", "html", "rust" },
+			},
+			docker_compose_language_service = {
+				filetypes = { "yml", "yaml" },
+			},
+		}
+		---@diagnostic disable-next-line: missing-fields
 		require("mason-lspconfig").setup({
 			handlers = {
 				function(server_name)
@@ -72,6 +69,8 @@ return {
 		lspconfig.angularls.setup({
 			root_dir = require("lspconfig").util.root_pattern("package.json"),
 		})
+		lspconfig.eslint.setup({})
+		lspconfig.tailwindcss.setup({})
 
 		-- zig
 		lspconfig.zls.setup({})

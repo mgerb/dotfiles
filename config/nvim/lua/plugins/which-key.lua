@@ -15,10 +15,29 @@ return {
 
 		wk.add({
 			{
+				mode = { "t" },
+				{ "<Esc>", [[<C-\><C-N><C-n>]], desc = "Terminal Esc" },
+				{ "<C-h>", [[<C-\><C-N><C-w>h]], desc = "Terminal Left" },
+				{ "<C-j>", [[<C-\><C-N><C-w>j]], desc = "Terminal Down" },
+				{ "<C-k>", [[<C-\><C-N><C-w>k]], desc = "Terminal Up" },
+				{ "<C-l>", [[<C-\><C-N><C-w>l]], desc = "Terminal Right" },
+			},
+			{
 				mode = { "n", "v" },
 				{ "<leader>y", [["+y]], desc = "System Copy" },
 				{ "<leader>p", [["+p]], desc = "System Paste" },
 				{ "<C-n>", ":NvimTreeToggle<CR>", desc = "Toggle Nvim Tree" },
+				{
+					"<leader>lf",
+					"<cmd>lua require('conform').format({ async = true, lsp_format = 'fallback' })<cr>",
+					desc = "Format",
+				},
+
+				-- jump around 10 lines at a time (not really used anymore)
+				{ "<CS-j>", "10j", desc = "10j" },
+				{ "<CS-k>", "10k", desc = "10k" },
+				{ "<CS-h>", "10h", desc = "10h" },
+				{ "<CS-l>", "10l", desc = "10l" },
 			},
 
 			{
@@ -30,13 +49,20 @@ return {
 				{ "K", ":m '<-2<CR>gv=gv", desc = "Line Up" },
 				{
 					"<leader>F",
-					"<CMD>lua require('mg.custom.telescope').telescope_with_selected_text()<CR>",
+					"<CMD>lua require('mg').telescope.live_grep_with_selection()<CR>",
 					desc = "Live Grep",
 				},
 			},
 
 			{
 				mode = { "n" },
+				{ "<esc>", ":noh<CR>", desc = "Clear highlighted searches" },
+
+				-- Resize with arrows
+				{ "<C-Up>", ":resize -2<CR>", desc = "Resize -" },
+				{ "<C-Down>", ":resize +2<CR>", desc = "Resize +" },
+				{ "<C-,>", ":vertical resize -2<CR>", desc = "V Resize -" },
+				{ "<C-.>", ":vertical resize +2<CR>", desc = "V Resize +" },
 
 				-- better window navigation
 				{ "<C-h>", "<C-w>h", desc = "Move Left" },
@@ -54,7 +80,7 @@ return {
 				{ "<leader>B", "<cmd>:DapToggleBreakpoint<cr>", desc = "DAP Toggle Breakpoint" },
 				{
 					"<leader>F",
-					"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({theme = require('mg.custom.telescope').get_my_theme()})<cr>",
+					"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({theme = require('mg').telescope.get_theme()})<cr>",
 					desc = "Live Grep",
 				},
 				{ "<leader>H", "<cmd>:%!xxd<cr><cmd>:setlocal ft=xxd<cr>", desc = "Hex View" },
@@ -67,73 +93,28 @@ return {
 				{ "<leader>a", group = "Angular Scripts" },
 				{
 					"<leader>aS",
-					"<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('spec%.ts')<cr>",
+					"<cmd>lua require('mg').angular.jump_to_angular_component_part('spec%.ts')<cr>",
 					desc = "Test",
 				},
 				{
 					"<leader>ac",
-					"<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('ts')<cr>",
+					"<cmd>lua require('mg').angular.jump_to_angular_component_part('ts')<cr>",
 					desc = "Component",
 				},
-				{ "<leader>ag", group = "Generate" },
-				{
-					"<leader>agC",
-					"<cmd>lua require('mg.custom.nx').run_nx_generator('component-store')<cr>",
-					desc = "Component Store",
-				},
-				{
-					"<leader>agc",
-					"<cmd>lua require('mg.custom.nx').run_nx_generator('component')<cr>",
-					desc = "Component",
-				},
-				{
-					"<leader>agd",
-					"<cmd>lua require('mg.custom.nx').run_nx_generator('directive')<cr>",
-					desc = "Directive",
-				},
-				{ "<leader>agp", "<cmd>lua require('mg.custom.nx').run_nx_generator('pipe')<cr>", desc = "Pipe" },
-				{ "<leader>ags", "<cmd>lua require('mg.custom.nx').run_nx_generator('service')<cr>", desc = "Service" },
-				{ "<leader>aj", group = "Jesting" },
-				{ "<leader>ajf", "<cmd>JestingAttachNx<cr>", desc = "Attach to File" },
-				{ "<leader>ajt", "<cmd>JestingAttachSingleTestNx<cr>", desc = "Attach to Single Test" },
-				{ "<leader>aju", "<cmd>JestingUnattach<cr>", desc = "Unattach from Test" },
-				{ "<leader>am", "<cmd>lua require('mg.custom.angular').jump_to_nearest_module()<cr>", desc = "Module" },
 				{
 					"<leader>as",
-					"<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('scss')<cr>",
+					"<cmd>lua require('mg').angular.jump_to_angular_component_part('scss')<cr>",
 					desc = "SCSS",
 				},
 				{
 					"<leader>at",
-					"<cmd>lua require('mg.custom.angular').jump_to_angular_component_part('html')<cr>",
+					"<cmd>lua require('mg').angular.jump_to_angular_component_part('html')<cr>",
 					desc = "HTML",
 				},
-				{ "<leader>ax", group = "NGRX" },
-				{
-					"<leader>axa",
-					"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('actions')<cr>",
-					desc = "NGRX Actions",
-				},
-				{
-					"<leader>axe",
-					"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('effects')<cr>",
-					desc = "NGRX Effects",
-				},
-				{
-					"<leader>axf",
-					"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('facade')<cr>",
-					desc = "NGRX Facade",
-				},
-				{
-					"<leader>axr",
-					"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('reducer')<cr>",
-					desc = "NGRX Reducer",
-				},
-				{
-					"<leader>axs",
-					"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('selectors')<cr>",
-					desc = "NGRX Selectors",
-				},
+				{ "<leader>aj", group = "Jesting" },
+				{ "<leader>ajf", "<cmd>JestingAttachNx<cr>", desc = "Attach to File" },
+				{ "<leader>ajt", "<cmd>JestingAttachSingleTestNx<cr>", desc = "Attach to Single Test" },
+				{ "<leader>aju", "<cmd>JestingUnattach<cr>", desc = "Unattach from Test" },
 				{ "<leader>b", "<cmd>:Telescope buffers<cr>", desc = "Buffers" },
 				{ "<leader>c", "<cmd>:bd<cr>", desc = "Close" },
 				{ "<leader>C", "<cmd>:bd!<cr>", desc = "Close (Force)" },
@@ -152,7 +133,7 @@ return {
 				},
 				{
 					"<leader>f",
-					"<cmd>lua require('telescope.builtin').find_files(require('mg.custom.telescope').get_my_theme())<cr>",
+					"<cmd>lua require('telescope.builtin').find_files(require('mg').telescope.get_theme())<cr>",
 					desc = "Find files",
 				},
 				{ "<leader>g", group = "Git" },
@@ -184,11 +165,6 @@ return {
 					"<cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<cr>",
 					desc = "Diagnostics (File)",
 				},
-				{
-					"<leader>lf",
-					"<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<cr>",
-					desc = "Format",
-				},
 				{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
 				{ "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
 				{ "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
@@ -211,6 +187,53 @@ return {
 				{ "<leader>v", "<cmd>vs<cr>", desc = "V Split" },
 				{ "<leader>w", "<cmd>:w<cr>", desc = "Write" },
 				{ "<leader>x", "<cmd>:%bd<cr>", desc = "Close All Buffers" },
+
+				---@deprecated or just broken and not used anymore
+				-- { "<leader>ag", group = "Generate" },
+				-- {
+				-- 	"<leader>agC",
+				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('component-store')<cr>",
+				-- 	desc = "Component Store",
+				-- },
+				-- {
+				-- 	"<leader>agc",
+				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('component')<cr>",
+				-- 	desc = "Component",
+				-- },
+				-- {
+				-- 	"<leader>agd",
+				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('directive')<cr>",
+				-- 	desc = "Directive",
+				-- },
+				-- { "<leader>agp", "<cmd>lua require('mg.custom.nx').run_nx_generator('pipe')<cr>", desc = "Pipe" },
+				-- { "<leader>ags", "<cmd>lua require('mg.custom.nx').run_nx_generator('service')<cr>", desc = "Service" },
+				-- { "<leader>am", "<cmd>lua require('mg.custom.angular').jump_to_nearest_module()<cr>", desc = "Module" },
+				-- { "<leader>ax", group = "NGRX" },
+				-- {
+				-- 	"<leader>axa",
+				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('actions')<cr>",
+				-- 	desc = "NGRX Actions",
+				-- },
+				-- {
+				-- 	"<leader>axe",
+				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('effects')<cr>",
+				-- 	desc = "NGRX Effects",
+				-- },
+				-- {
+				-- 	"<leader>axf",
+				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('facade')<cr>",
+				-- 	desc = "NGRX Facade",
+				-- },
+				-- {
+				-- 	"<leader>axr",
+				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('reducer')<cr>",
+				-- 	desc = "NGRX Reducer",
+				-- },
+				-- {
+				-- 	"<leader>axs",
+				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('selectors')<cr>",
+				-- 	desc = "NGRX Selectors",
+				-- },
 			},
 		})
 	end,

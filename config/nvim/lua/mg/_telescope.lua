@@ -1,6 +1,8 @@
+local util = require("mg._util")
+
 local M = {}
 
-M.get_my_theme = function(opts)
+M.get_theme = function(opts)
 	opts = opts or {}
 
 	local theme_opts = {
@@ -37,25 +39,32 @@ M.get_my_theme = function(opts)
 	return vim.tbl_deep_extend("force", theme_opts, opts)
 end
 
-M.telescope_with_selected_text = function()
-	local function getVisualSelection()
-		vim.cmd('noau normal! "vy"')
-		local text = vim.fn.getreg("v")
-		vim.fn.setreg("v", {})
-
-		text = string.gsub(text, "\n", "")
-		if #text > 0 then
-			return text
-		else
-			return ""
-		end
-	end
-
-	local text = getVisualSelection()
+M.live_grep_with_selection = function()
+	local text = require("mg.util").get_visual_selection()
 	require("telescope").extensions.live_grep_args.live_grep_args({
-		theme = require("mg.custom.telescope").get_my_theme(),
+		theme = M.get_theme(),
 		default_text = text,
 	})
+end
+
+---Live grep within the cursor folder in Oil
+M.live_grep_oil = function()
+	local cursor_dir = util.oil_get_cursor_dir()
+	if cursor_dir then
+		require("telescope").extensions.live_grep_args.live_grep_args({
+			theme = M.get_theme(),
+			cwd = cursor_dir,
+		})
+	end
+end
+
+---Find files within the cursor folder in Oil
+M.find_files_oil = function()
+	local cursor_dir = util.oil_get_cursor_dir()
+	if cursor_dir then
+		local opts = vim.tbl_deep_extend("force", M.get_theme(), { cwd = cursor_dir })
+		require("telescope.builtin").find_files(opts)
+	end
 end
 
 return M

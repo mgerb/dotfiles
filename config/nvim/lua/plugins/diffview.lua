@@ -6,8 +6,8 @@ return {
 	init = function()
 		-- defer so we don't get race conditions with the initial load
 		vim.defer_fn(function()
-			local highlight = require("mg.git-colors").highlight
-			local colors = require("mg.git-colors").colors
+			local highlight = require("mg").colors.highlight
+			local colors = require("mg").colors.colors
 
 			highlight("DiffAdd", nil, colors.green_dark, "none", nil)
 			highlight("DiffChange", nil, colors.orange_darker, "none", nil)

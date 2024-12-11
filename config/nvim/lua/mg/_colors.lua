@@ -10,6 +10,12 @@ M.colors = {
 	green_dark = "#024a14",
 }
 
+---Utility function for setting highlight colors
+---@param group string
+---@param fg string
+---@param bg string
+---@param attr string
+---@param sp string
 function M.highlight(group, fg, bg, attr, sp)
 	fg = fg and "guifg=" .. fg or "guifg=NONE"
 	bg = bg and "guibg=" .. bg or "guibg=NONE"

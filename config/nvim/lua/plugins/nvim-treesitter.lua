@@ -6,8 +6,9 @@ return {
 	config = function()
 		require("nvim-treesitter.install").compilers = { "zig", "cc", "gcc", "clang", "cl" }
 
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = {},
+			ensure_installed = { "angular" },
 			-- Install parsers synchronously (only applied to `ensure_installed`)
 			sync_install = false,
 			-- Automatically install missing parsers when entering buffer

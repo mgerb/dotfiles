@@ -37,6 +37,8 @@
     neovim
     lua-language-server
     typescript-language-server
+    tailwindcss-language-server
+    vscode-langservers-extracted # provides eslint
     angular-language-server
     stylua
     prettierd

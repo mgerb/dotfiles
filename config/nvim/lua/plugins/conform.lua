@@ -1,4 +1,4 @@
-local mg_state = require("mg.state")
+local mg = require("mg")
 
 return {
 	"stevearc/conform.nvim",
@@ -35,17 +35,17 @@ return {
 	},
 
 	init = function()
-		vim.g.conform_format_on_save = mg_state.get_value("conform_format_on_save") or false
+		vim.g.conform_format_on_save = mg.state.get_value("conform_format_on_save") or false
 
 		vim.api.nvim_create_user_command("ConformFormatOnSaveEnable", function()
 			vim.g.conform_format_on_save = true
-			mg_state.set_value("conform_format_on_save", true)
+			mg.state.set_value("conform_format_on_save", true)
 		end, {
 			desc = "Disable autoformat-on-save",
 		})
 		vim.api.nvim_create_user_command("ConformFormatOnSaveDisable", function()
 			vim.g.conform_format_on_save = false
-			mg_state.set_value("conform_format_on_save", false)
+			mg.state.set_value("conform_format_on_save", false)
 		end, {
 			desc = "Re-enable autoformat-on-save",
 		})
