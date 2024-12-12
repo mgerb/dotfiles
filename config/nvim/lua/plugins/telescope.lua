@@ -1,9 +1,17 @@
 return {
-    'nvim-telescope/telescope.nvim',
-    lazy = true,
-    cmd = { "Telescope" },
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-live-grep-args.nvim'
-    }
+	"nvim-telescope/telescope.nvim",
+	lazy = true,
+	cmd = { "Telescope" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-live-grep-args.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	},
+	config = function()
+		require("telescope").setup({
+			extensions = {
+				fzf = {},
+			},
+		})
+	end,
 }
