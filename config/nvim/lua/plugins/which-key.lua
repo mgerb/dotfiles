@@ -46,7 +46,7 @@ return {
 
 			{
 				mode = { "v" },
-				{ "<leader>x", "<cmd>:.lua<cr>", desc = "Run Lua" },
+				{ "<leader>x", ":.lua<CR>", desc = "Run Lua" },
 
 				-- move lines up/down
 				{ "J", ":m '>+1<CR>gv=gv", desc = "Line Down" },

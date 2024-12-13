@@ -31,15 +31,40 @@ M.telescope_find_files_oil = function()
 	require("mg._telescope").find_files_oil()
 end
 
+---Get the untracked module if it exists
+---@return table|nil
+M._get_untracked_module = function()
+	if require("mg._util").check_require("mg._untracked") then
+		return require("mg._untracked")
+	end
+	return nil
+end
+
 M.setup = function()
 	vim.api.nvim_create_user_command("MG", function(args)
-		M[args.args](args)
+		local untracked = M._get_untracked_module()
+
+		if M[args.args] then
+			M[args.args](args)
+		elseif untracked and untracked[args.args] then
+			untracked[args.args](args)
+		end
 	end, {
 		nargs = 1,
 		complete = function()
+			local module = M
+
+			-- Check if the untracked module exists and then
+			-- append it to our module if it does.
+			local untracked = M._get_untracked_module()
+
+			if untracked then
+				module = vim.tbl_deep_extend("force", module, untracked)
+			end
+
 			---@type string[]
 			local output = {}
-			for key, _ in pairs(M) do
+			for key, _ in pairs(module) do
 				if not vim.startswith(key, "_") and key ~= "setup" then
 					table.insert(output, key)
 				end

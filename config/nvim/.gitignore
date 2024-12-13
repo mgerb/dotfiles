@@ -3,3 +3,5 @@
 pack/*
 
 .luarc.json
+
+/lua/mg/_untracked.lua
