@@ -1,3 +1,4 @@
+local util = require("mg._util")
 local M = {}
 
 ---Temporary function used for testing things out
@@ -23,6 +24,17 @@ M.playground = function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end
 
+---Open a terminal and change directories to cursor
+M.terminal_oil = function()
+	local cursor_dir = util.oil_get_cursor_dir()
+	if cursor_dir then
+		print(cursor_dir)
+		vim.cmd("split")
+		vim.cmd("term")
+		vim.fn.chansend(vim.b.terminal_job_id, "cd " .. cursor_dir .. "\n")
+	end
+end
+
 M.telescope_live_grep_oil = function()
 	require("mg._telescope").live_grep_oil()
 end
@@ -34,45 +46,41 @@ end
 ---Get the untracked module if it exists
 ---@return table|nil
 M._get_untracked_module = function()
-	if require("mg._util").check_require("mg._untracked") then
+	if util.check_require("mg._untracked") then
 		return require("mg._untracked")
 	end
 	return nil
 end
 
-M.setup = function()
-	vim.api.nvim_create_user_command("MG", function(args)
+vim.api.nvim_create_user_command("MG", function(args)
+	local untracked = M._get_untracked_module()
+
+	if M[args.args] then
+		M[args.args](args)
+	elseif untracked and untracked[args.args] then
+		untracked[args.args](args)
+	end
+end, {
+	nargs = 1,
+	complete = function()
+		local module = M
+
+		-- Check if the untracked module exists and then
+		-- append it to our module if it does.
 		local untracked = M._get_untracked_module()
 
-		if M[args.args] then
-			M[args.args](args)
-		elseif untracked and untracked[args.args] then
-			untracked[args.args](args)
+		if untracked then
+			module = vim.tbl_deep_extend("force", module, untracked)
 		end
-	end, {
-		nargs = 1,
-		complete = function()
-			local module = M
 
-			-- Check if the untracked module exists and then
-			-- append it to our module if it does.
-			local untracked = M._get_untracked_module()
-
-			if untracked then
-				module = vim.tbl_deep_extend("force", module, untracked)
+		---@type string[]
+		local output = {}
+		for key, _ in pairs(module) do
+			if not vim.startswith(key, "_") and key ~= "setup" then
+				table.insert(output, key)
 			end
-
-			---@type string[]
-			local output = {}
-			for key, _ in pairs(module) do
-				if not vim.startswith(key, "_") and key ~= "setup" then
-					table.insert(output, key)
-				end
-			end
-			return output
-		end,
-		range = true,
-	})
-end
-
-return M
+		end
+		return output
+	end,
+	range = true,
+})

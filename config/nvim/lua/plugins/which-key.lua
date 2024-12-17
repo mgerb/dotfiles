@@ -56,6 +56,11 @@ return {
 					"<CMD>lua require('mg').telescope.live_grep_with_selection()<CR>",
 					desc = "Live Grep",
 				},
+				{
+					"<leader>f",
+					"<CMD>lua require('mg').telescope.find_files_with_selection()<CR>",
+					desc = "Find Files",
+				},
 			},
 
 			{

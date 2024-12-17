@@ -72,16 +72,13 @@ M._setup_windows = function()
 	end
 end
 
-M._setup_user_commands = function()
-	require("mg._user_commands").setup()
-end
-
+-- TODO: separate nvim setup stuff from lib stuff so they we can source these easier during dev
 M.setup = function()
 	vim.g.mapleader = " "
 	vim.g.maplocalleader = "\\"
 	M._setup_options()
 	M._setup_windows()
-	M._setup_user_commands()
+	require("mg._user_commands")
 
 	-- NOTE: This only works when NOT using oil
 	-- this is currently handled in the oil config, but we'll

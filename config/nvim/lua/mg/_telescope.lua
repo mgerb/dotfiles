@@ -39,6 +39,14 @@ M.get_theme = function(opts)
 	return vim.tbl_deep_extend("force", theme_opts, opts)
 end
 
+M.find_files_with_selection = function()
+	local text = require("mg._util").get_visual_selection()
+	local opts = vim.tbl_deep_extend("force", M.get_theme(), {
+		default_text = text,
+	})
+	require("telescope.builtin").find_files(opts)
+end
+
 M.live_grep_with_selection = function()
 	local text = require("mg._util").get_visual_selection()
 	require("telescope").extensions.live_grep_args.live_grep_args({
