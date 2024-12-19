@@ -1,7 +1,7 @@
 local M = {}
 
 M.get_separator = function()
-	if M.is_windows then
+	if M.is_windows() then
 		return "\\"
 	end
 	return "/"
@@ -63,6 +63,10 @@ M.check_require = function(path)
 	local full_path = vim.fs.joinpath(vim.fn.stdpath("config"), "lua", unpack(paths))
 	full_path = full_path .. ".lua"
 	return vim.fn.filereadable(full_path) == 1
+end
+
+M.is_windows = function()
+	return vim.fn.has("win32") == 1
 end
 
 return M

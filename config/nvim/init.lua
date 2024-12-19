@@ -2,7 +2,6 @@ local mg = require("mg")
 mg.setup()
 
 -- NOTE: Taken directly from the Lazy docs https://lazy.folke.io/installation
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

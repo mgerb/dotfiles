@@ -25,7 +25,7 @@ M.playground = function()
 end
 
 ---Open a terminal and change directories to cursor
-M.terminal_oil = function()
+M.oil_terminal = function()
 	local cursor_dir = util.oil_get_cursor_dir()
 	if cursor_dir then
 		print(cursor_dir)
@@ -35,11 +35,13 @@ M.terminal_oil = function()
 	end
 end
 
-M.telescope_live_grep_oil = function()
+---Live grep within the cursor folder in Oil
+M.oil_live_grep = function()
 	require("mg._telescope").live_grep_oil()
 end
 
-M.telescope_find_files_oil = function()
+---Find files within the cursor folder in Oil
+M.oil_find_files = function()
 	require("mg._telescope").find_files_oil()
 end
 
