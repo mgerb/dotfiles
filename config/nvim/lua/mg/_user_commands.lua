@@ -45,6 +45,18 @@ M.oil_find_files = function()
 	require("mg._telescope").find_files_oil()
 end
 
+---Start profiling functions/files
+M.profiler_start = function()
+	vim.cmd("profile start profile.log")
+	vim.cmd("profile func *")
+	vim.cmd("profile file *")
+end
+
+M.profiler_stop = function()
+	vim.cmd("profile pause")
+	vim.cmd("noautocmd qall!")
+end
+
 ---Get the untracked module if it exists
 ---@return table|nil
 M._get_untracked_module = function()
