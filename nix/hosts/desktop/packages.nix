@@ -20,9 +20,5 @@
     xwayland
     vlc
     postgresql_17
-
-    # browsers
-    google-chrome
-    brave
   ];
 }

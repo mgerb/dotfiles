@@ -12,6 +12,7 @@
     unzip
     nix-search-cli
     wireguard-tools
+    keyd
 
     # software tools
     rustup
