@@ -3,25 +3,16 @@ local M = {}
 
 ---Temporary function used for testing things out
 M.playground = function()
-	local out = vim.system({
-		"curl",
-		"-L",
-		"-A",
-		"Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0",
-		"https://reddit.com/r/all.json",
-		"|",
-		"jq",
-		".",
-	}, { text = true }):wait()
-
-	local output = vim.json.decode(out.stdout)
-
-	local buf = vim.api.nvim_create_buf(false, false)
-	vim.cmd("split")
-	vim.api.nvim_set_option_value("filetype", "json", { buf = buf })
-	vim.api.nvim_set_current_buf(buf)
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, { vim.json.encode(output) })
-	require("conform").format({ async = true, lsp_fallback = true })
+	util.curl_request({
+		request_type = "GET",
+		url = "https://reddit.com/r/all.json",
+		extra_curl_args = {
+			"-A",
+			"Mozilla/5.0 test",
+		},
+		response_type = "json",
+		open_response_in_buffer = true,
+	})
 end
 
 ---Open a terminal and change directories to cursor
