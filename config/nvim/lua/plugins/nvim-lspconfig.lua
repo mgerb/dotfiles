@@ -73,7 +73,13 @@ return {
 		lspconfig.tailwindcss.setup({})
 
 		-- zig
-		lspconfig.zls.setup({})
+		lspconfig.zls.setup({
+			settings = {
+				zls = {
+					enable_build_on_save = true,
+				},
+			},
+		})
 		-- prevent loclist from popping up on save
 		vim.g.zig_fmt_parse_errors = 0
 	end,
