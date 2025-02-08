@@ -27,6 +27,8 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    GOBIN = "/home/${user}/go/bin";
+    PATH = "$GOBIN:$PATH";
   };
 
   # Let Home Manager install and manage itself.
