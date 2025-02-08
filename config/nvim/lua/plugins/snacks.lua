@@ -1,11 +1,16 @@
+---@module "snacks"
+
 return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
 	opts = {
+		---@type snacks.bigfile.Config
 		bigfile = {
-			-- your bigfile configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
+			notify = true,
+			size = 1.5 * 1024 * 1024, -- 1.5MB
+			setup = function(ctx)
+				vim.cmd("IlluminatePauseBuf")
+			end,
 		},
 	},
 }
