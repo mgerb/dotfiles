@@ -26,7 +26,18 @@
   nixpkgs.config.allowUnfree = true;
 
   # docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+
+    daemon.settings = {
+      "default-address-pools" = [
+        {
+          "base" = "172.16.0.0/12";
+          "size" = 24;
+        }
+      ];
+    };
+  };
   users.users.${user}.extraGroups = ["docker"];
 
   # kvm
