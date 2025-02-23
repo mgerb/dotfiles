@@ -48,7 +48,9 @@ M.profiler_stop = function()
 	vim.cmd("noautocmd qall!")
 end
 
----Get the untracked module if it exists
+---Get the untracked module if it exists. This is used to
+---store lua commands, which cannot be checked into the repo.
+---To do this, create a _untracked.lua file in this directory.
 ---@return table|nil
 M._get_untracked_module = function()
 	if util.check_require("mg._untracked") then
@@ -57,6 +59,10 @@ M._get_untracked_module = function()
 	return nil
 end
 
+---This user command consumes module M, and adds a user
+---command option for each key in the module, only if it
+---does not start with "_", or is "setup".
+---@param args any
 vim.api.nvim_create_user_command("MG", function(args)
 	local untracked = M._get_untracked_module()
 
