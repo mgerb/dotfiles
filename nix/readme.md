@@ -36,6 +36,32 @@ See `./hosts/ubuntu/flake.nix` for example.
   chsh -s $(which zsh)
   ```
 
+## Updating
+
+```sh
+    # cd into host config
+    cd thinkpad
+    sudo nix flake update
+    sudo nixos-rebuild switch --flake .
+```
+
+## ZFS
+
+ZFS auto snapshots are not enabled by default. They MUST be enabled for each pool!
+
+```sh
+    # check if enabled
+    sudo zfs get com.sun:auto-snapshot=true
+
+    # enable
+    sudo zfs set com.sun:auto-snapshot=true raid-pool
+    sudo zfs set com.sun:auto-snapshot=true wd1
+    sudo zfs set com.sun:auto-snapshot=true wd2
+
+    # prune snapshots over a week old
+    zfs-prune-snapshots 1w
+```
+
 ## Misc
 
 - rebuild with flake
@@ -46,18 +72,6 @@ See `./hosts/ubuntu/flake.nix` for example.
   `sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/hosts/thinkpad/ --option eval-cache false`
 - clean store
   - `nix store verify --all --no-trust`
-
-## Updating
-
-```sh
-# cd into host config
-cd thinkpad
-sudo nix flake update
-sudo nixos-rebuild switch --flake .
-```
-
-### Misc
-
 - Wifi
   - nmcli
     - `nmcli dev wifi` to locate the access point(AP) name.
