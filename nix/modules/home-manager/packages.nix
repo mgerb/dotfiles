@@ -52,8 +52,6 @@
     gcc
     libffi
 
-    # clang
-
     # python
     python312Full
     python312Packages.cffi
@@ -82,5 +80,8 @@
     zsh
     oh-my-zsh
     zsh-autosuggestions
+
+    # mount ntfs drives - "mount.ntfs" command
+    ntfs3g
   ];
 }
