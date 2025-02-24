@@ -45,6 +45,29 @@ See `./hosts/ubuntu/flake.nix` for example.
     sudo nixos-rebuild switch --flake .
 ```
 
+## nix-shell
+
+Here's an example nix shell for a Java project.
+
+```nix
+# shell.nix
+# run `nix-shell` in the same directory as the shell.nix file
+with (import <nixpkgs> {});
+  mkShell {
+    # include packages here
+    buildInputs = [
+      zulu11
+      maven
+      jdt-language-server
+    ];
+
+    # start zsh shell after nix-shell runs
+    shellHook = ''
+      zsh
+    '';
+  }
+```
+
 ## ZFS
 
 ZFS auto snapshots are not enabled by default. They MUST be enabled for each pool!
