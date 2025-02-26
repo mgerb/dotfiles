@@ -3,10 +3,10 @@
     (final: prev: {
       zig-custom = prev.stdenv.mkDerivation {
         pname = "zig";
-        version = "0.14.0-dev.3237+ddff1fa4c";
+        version = "0.14.0-dev.3367+1cc388d52";
         src = prev.fetchurl {
-          url = "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.3237+ddff1fa4c.tar.xz";
-          sha256 = "sha256-B/dQhCt05MWRE6dObaCw8maQDeiziXifKrje1hDbJHA=";
+          url = "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.3367+1cc388d52.tar.xz";
+          sha256 = "sha256-XPzcMwQpnCnz8lZnQsrL8SiXP77nGYhucjq5QW86EaI=";
         };
         sourceRoot = ".";
         installPhase = ''
@@ -16,10 +16,10 @@
       };
       zls-custom = prev.stdenv.mkDerivation {
         pname = "zls";
-        version = "0.14.0-dev.390+188a4c0";
+        version = "0.14.0-dev.397+30b0da0";
         src = prev.fetchurl {
-          url = "https://builds.zigtools.org/zls-linux-x86_64-0.14.0-dev.390+188a4c0.tar.xz";
-          sha256 = "sha256-1q4WEfSHaIp9q6xtq+jNO0QHN22vE1e1bbH4OYzQlvI=";
+          url = "https://builds.zigtools.org/zls-linux-x86_64-0.14.0-dev.397+30b0da0.tar.xz";
+          sha256 = "sha256-l2Cz6ttxmnCF9OUZsF5Jg5uvcVd9q9/xY2OEJh/RSZQ=";
         };
         sourceRoot = ".";
         installPhase = ''
