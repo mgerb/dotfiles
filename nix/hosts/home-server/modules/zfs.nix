@@ -3,6 +3,8 @@
 #
 # Prune snapshots over a week old
 # `zfs-prune-snapshots 1w`
+# or specific pool
+# `zfs-prune-snapshots 1w raid-pool`
 {...}: {
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.extraPools = ["raid-pool" "wd1" "wd2"];
