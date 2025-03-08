@@ -9,16 +9,21 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zig.url = "github:mitchellh/zig-overlay";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     nixpkgs-stable,
+    zig,
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [zig.overlays.default];
+    };
     user = "mg";
     hmModules = [(import ../../modules/home-manager)];
   in {

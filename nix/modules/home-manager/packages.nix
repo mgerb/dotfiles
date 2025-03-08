@@ -1,25 +1,12 @@
 {pkgs, ...}: {
   nixpkgs.overlays = [
     (final: prev: {
-      zig-custom = prev.stdenv.mkDerivation {
-        pname = "zig";
-        version = "0.14.0-dev.3367+1cc388d52";
-        src = prev.fetchurl {
-          url = "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.3367+1cc388d52.tar.xz";
-          sha256 = "sha256-XPzcMwQpnCnz8lZnQsrL8SiXP77nGYhucjq5QW86EaI=";
-        };
-        sourceRoot = ".";
-        installPhase = ''
-          mkdir -p $out/bin
-          mv zig-linux-x86_64-*/* $out/bin/
-        '';
-      };
       zls-custom = prev.stdenv.mkDerivation {
         pname = "zls";
-        version = "0.14.0-dev.397+30b0da0";
+        version = "0.14.0";
         src = prev.fetchurl {
-          url = "https://builds.zigtools.org/zls-linux-x86_64-0.14.0-dev.397+30b0da0.tar.xz";
-          sha256 = "sha256-l2Cz6ttxmnCF9OUZsF5Jg5uvcVd9q9/xY2OEJh/RSZQ=";
+          url = "https://builds.zigtools.org/zls-linux-x86_64-0.14.0.tar.xz";
+          sha256 = "sha256-Zh+NQCuj3JsEtum8MCZJW+e4ONLxjRSNsr2YvWmcE2A=";
         };
         sourceRoot = ".";
         installPhase = ''
@@ -60,7 +47,7 @@
     poetry
     pyright
 
-    zig-custom
+    zigpkgs."master"
     zls-custom
 
     # neovim
