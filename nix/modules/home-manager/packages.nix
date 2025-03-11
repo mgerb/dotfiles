@@ -3,10 +3,10 @@
     (final: prev: {
       zls-custom = prev.stdenv.mkDerivation {
         pname = "zls";
-        version = "0.14.0";
+        version = "0.15.0-dev.3+fedbf31";
         src = prev.fetchurl {
-          url = "https://builds.zigtools.org/zls-linux-x86_64-0.14.0.tar.xz";
-          sha256 = "sha256-Zh+NQCuj3JsEtum8MCZJW+e4ONLxjRSNsr2YvWmcE2A=";
+          url = "https://builds.zigtools.org/zls-linux-x86_64-0.15.0-dev.3+fedbf31.tar.xz";
+          sha256 = "sha256-XagITflfF+Q/wJcAwFOsfPZ6qCBKyliSttizR76SLKU=";
         };
         sourceRoot = ".";
         installPhase = ''
