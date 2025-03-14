@@ -4,12 +4,13 @@
   pkgs-stable,
   user,
   hmModules,
+  zigpkgs,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs user pkgs-stable;};
+    extraSpecialArgs = {inherit inputs user pkgs-stable zigpkgs;};
     users.${user} = {
       imports = hmModules;
     };

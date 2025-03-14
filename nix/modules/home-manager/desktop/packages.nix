@@ -9,6 +9,23 @@
     ghostty
     discord
 
+    # browsers
+    google-chrome
+    brave
+
+    # networking tools
+    networkmanagerapplet
+    blueman
+
+    steam
+    lutris
+    wine64
+    spotify
+    exiftool
+    pkgs-stable.obsidian
+    xwayland
+    vlc
+
     # old sway stuff
     # swaylock-effects
     # wlsunset
@@ -19,14 +36,6 @@
     # slurp # screenshot functionality
     # wofi
     # polkit
-
-    # browsers
-    google-chrome
-    brave
-
-    # networking tools
-    networkmanagerapplet
-    blueman
     # wireless network TUI
     # impala # iwd TUI
     # iwd

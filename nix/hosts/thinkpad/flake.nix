@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -9,12 +9,14 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    zig.url = "github:mitchellh/zig-overlay";
   };
 
   outputs = {
     self,
     nixpkgs,
     nixpkgs-stable,
+    zig,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -22,12 +24,13 @@
     hmModules =
       [(import ../../modules/home-manager)]
       ++ [(import ../../modules/home-manager/desktop)];
+    zigpkgs = zig.packages.${system};
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = system;
         specialArgs = {
-          inherit inputs user hmModules;
+          inherit inputs user hmModules zigpkgs;
           # To use packages from nixpkgs-stable,
           # we configure some parameters for it first
           pkgs-stable = import nixpkgs-stable {

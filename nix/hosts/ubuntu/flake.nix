@@ -4,7 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,12 +20,10 @@
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [zig.overlays.default];
-    };
+    pkgs = nixpkgs.legacyPackages.${system};
     user = "mg";
     hmModules = [(import ../../modules/home-manager)];
+    zigpkgs = zig.system.${system};
   in {
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
@@ -37,7 +35,7 @@
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
       extraSpecialArgs = {
-        inherit user hmModules;
+        inherit user hmModules zigpkgs;
         pkgs-stable = import nixpkgs-stable {
           # Refer to the `system` parameter from
           # the outer scope recursively

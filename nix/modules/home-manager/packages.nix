@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  zigpkgs,
+  ...
+}: {
   nixpkgs.overlays = [
     (final: prev: {
       zls-custom = prev.stdenv.mkDerivation {
@@ -47,7 +51,7 @@
     poetry
     pyright
 
-    zigpkgs."master"
+    zigpkgs.master
     zls-custom
 
     # neovim

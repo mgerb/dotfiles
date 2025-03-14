@@ -5,8 +5,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./packages.nix
-    # ./sway.nix
     ./steam.nix
   ];
 
