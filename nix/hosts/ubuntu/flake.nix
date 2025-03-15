@@ -23,7 +23,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
     user = "mg";
     hmModules = [(import ../../modules/home-manager)];
-    zigpkgs = zig.system.${system};
+    zigpkgs = zig.packages.${system};
   in {
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
