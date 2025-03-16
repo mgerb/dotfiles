@@ -66,6 +66,7 @@
     eslint_d
     nil # nix lsp
     alejandra # nix formatter
+    tree-sitter
 
     # zsh
     zsh
