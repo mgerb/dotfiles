@@ -32,7 +32,7 @@ local options = {
 	cursorline = false, -- highlight the current line
 	number = true, -- set numbered lines
 	relativenumber = false, -- set relative numbered lines
-	numberwidth = 4, -- set number column width to 2 {default 4}
+	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
@@ -77,3 +77,11 @@ local function update_directory(data)
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = update_directory })
+
+-- Show line numbers in terminal emulator. Not sure why this got turned off.
+-- Must have been hidden in a plugin somewhere.
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.wo.number = true
+	end,
+})
