@@ -5,7 +5,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./steam.nix
+    ./modules
   ];
 
   # Bootloader.
@@ -32,7 +32,7 @@
   networking.networkmanager.enable = true;
 
   # audio
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -69,7 +69,7 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
