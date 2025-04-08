@@ -20,6 +20,7 @@ return {
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
+			htmlangular = { "prettierd", "prettier" },
 			json = { "prettierd", "prettier" },
 			jsonc = { "prettierd", "prettier" },
 			markdown = { "prettierd", "prettier" },
