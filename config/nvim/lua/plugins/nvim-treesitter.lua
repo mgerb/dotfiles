@@ -4,8 +4,9 @@ return {
 	cmd = { "TSUpdate", "TSInstall" },
 	event = "BufRead",
 	config = function()
+		-- comment out - just use default compilers
 		-- require("nvim-treesitter.install").compilers = { "zig", "cc", "gcc", "clang", "cl" }
-		require("nvim-treesitter.install").compilers = { "gcc" }
+		-- require("nvim-treesitter.install").compilers = { "gcc" }
 
 		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup({

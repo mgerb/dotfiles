@@ -192,53 +192,6 @@ return {
 				{ "<leader>v", "<cmd>vs<cr>", desc = "V Split" },
 				{ "<leader>w", "<cmd>:w<cr>", desc = "Write" },
 				{ "<leader>x", "<cmd>:%bd<cr>", desc = "Close All Buffers" },
-
-				---@deprecated or just broken and not used anymore
-				-- { "<leader>ag", group = "Generate" },
-				-- {
-				-- 	"<leader>agC",
-				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('component-store')<cr>",
-				-- 	desc = "Component Store",
-				-- },
-				-- {
-				-- 	"<leader>agc",
-				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('component')<cr>",
-				-- 	desc = "Component",
-				-- },
-				-- {
-				-- 	"<leader>agd",
-				-- 	"<cmd>lua require('mg.custom.nx').run_nx_generator('directive')<cr>",
-				-- 	desc = "Directive",
-				-- },
-				-- { "<leader>agp", "<cmd>lua require('mg.custom.nx').run_nx_generator('pipe')<cr>", desc = "Pipe" },
-				-- { "<leader>ags", "<cmd>lua require('mg.custom.nx').run_nx_generator('service')<cr>", desc = "Service" },
-				-- { "<leader>am", "<cmd>lua require('mg.custom.angular').jump_to_nearest_module()<cr>", desc = "Module" },
-				-- { "<leader>ax", group = "NGRX" },
-				-- {
-				-- 	"<leader>axa",
-				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('actions')<cr>",
-				-- 	desc = "NGRX Actions",
-				-- },
-				-- {
-				-- 	"<leader>axe",
-				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('effects')<cr>",
-				-- 	desc = "NGRX Effects",
-				-- },
-				-- {
-				-- 	"<leader>axf",
-				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('facade')<cr>",
-				-- 	desc = "NGRX Facade",
-				-- },
-				-- {
-				-- 	"<leader>axr",
-				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('reducer')<cr>",
-				-- 	desc = "NGRX Reducer",
-				-- },
-				-- {
-				-- 	"<leader>axs",
-				-- 	"<cmd>lua require('mg.custom.angular').jump_to_ngrx_parts('selectors')<cr>",
-				-- 	desc = "NGRX Selectors",
-				-- },
 			},
 		})
 	end,
