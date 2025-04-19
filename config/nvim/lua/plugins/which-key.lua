@@ -46,7 +46,7 @@ return {
 
 			{
 				mode = { "v" },
-				{ "<leader>x", ":.lua<CR>", desc = "Run Lua" },
+				{ "<leader>x", "<CMD>lua require('mg').util.execute_selection()<CR>", desc = "Execute Code" },
 
 				-- move lines up/down
 				{ "J", ":m '>+1<CR>gv=gv", desc = "Line Down" },
@@ -162,6 +162,8 @@ return {
 				{ "<leader>h1", "<cmd> lua require 'harpoon.term'.gotoTerminal(1)<cr>", desc = "Terminal 1" },
 				{ "<leader>h2", "<cmd> lua require 'harpoon.term'.gotoTerminal(2)<cr>", desc = "Terminal 2" },
 				{ "<leader>h3", "<cmd> lua require 'harpoon.term'.gotoTerminal(3)<cr>", desc = "Terminal 3" },
+				{ "<leader>h4", "<cmd> lua require 'harpoon.term'.gotoTerminal(4)<cr>", desc = "Terminal 4" },
+				{ "<leader>h5", "<cmd> lua require 'harpoon.term'.gotoTerminal(5)<cr>", desc = "Terminal 5" },
 				{ "<leader>ha", "<cmd> lua require 'harpoon.mark'.add_file()<cr>", desc = "Add File" },
 				{ "<leader>hc", "<cmd> lua require 'harpoon.cmd-ui'.toggle_quick_menu()<cr>", desc = "CMD Commands" },
 				{ "<leader>hh", "<cmd> lua require 'harpoon.ui'.toggle_quick_menu()<cr>", desc = "Menu" },
@@ -183,7 +185,13 @@ return {
 				{ "<leader>nc", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse" },
 				{ "<leader>ne", "<cmd>:NvimTreeToggle<cr>", desc = "Toggle" },
 				{ "<leader>nr", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh" },
+
 				{ "<leader>o", "<cmd>Oil<cr>", desc = "Oil" },
+				{ "<leader><leader>o", group = "Oil" },
+				{ "<leader><leader>of", "<cmd>MG oil_find_files<cr>", desc = "Find Files" },
+				{ "<leader><leader>oF", "<cmd>MG oil_live_grep<cr>", desc = "Live Grep" },
+				{ "<leader><leader>ot", "<cmd>MG oil_terminal<cr>", desc = "Terminal" },
+
 				{ "<leader>P", "<cmd>Lazy<cr>", desc = "Package Manager" },
 				{ "<leader>q", "<cmd>:q<cr>", desc = "Quit" },
 				{ "<leader>r", "<cmd>Telescope resume<cr>", desc = "Resume" },

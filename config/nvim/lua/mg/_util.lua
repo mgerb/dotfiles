@@ -20,16 +20,47 @@ M.create_folder_if_not_exists = function(folder_path)
 	end
 end
 
-M.get_visual_selection = function()
-	vim.cmd('noau normal! "vy"')
+---@param opts? { remove_new_lines?: boolean }
+---@return string
+M.get_visual_selection = function(opts)
+	local remove_new_lines = opts and opts.remove_new_lines or false
+
+	vim.cmd('silent! noau normal! "vy"')
 	local text = vim.fn.getreg("v")
 	vim.fn.setreg("v", {})
 
-	text = string.gsub(text, "\n", "")
+	if remove_new_lines then
+		text = string.gsub(text, "\n", "")
+	end
+
 	if #text > 0 then
 		return text
 	else
 		return ""
+	end
+end
+
+---Execute the selected code. Currently only works
+---in python and lua files.
+M.execute_selection = function()
+	local code = M.get_visual_selection()
+	if not code then
+		return
+	end
+
+	local filetype = vim.bo.filetype
+
+	if filetype == "lua" then
+		local chunk, err = load(code)
+		if err then
+			vim.notify(err, vim.log.levels.ERROR)
+			return
+		end
+		if chunk then
+			pcall(chunk)
+		end
+	elseif filetype == "python" then
+		vim.cmd("python << EOF\n" .. code .. "\nEOF")
 	end
 end
 

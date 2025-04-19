@@ -15,13 +15,17 @@ M.playground = function()
 	})
 end
 
+local terminal_count = 0
+
 ---Open a terminal and change directories to cursor
 M.oil_terminal = function()
 	local cursor_dir = util.oil_get_cursor_dir()
 	if cursor_dir then
 		print(cursor_dir)
-		vim.cmd("split")
-		vim.cmd("term")
+		vim.cmd("split | term")
+		local buf = vim.api.nvim_get_current_buf()
+		vim.api.nvim_buf_set_name(buf, "oil_term_" .. terminal_count .. ": " .. cursor_dir)
+		terminal_count = terminal_count + 1
 		vim.fn.chansend(vim.b.terminal_job_id, "cd " .. cursor_dir .. "\n")
 	end
 end
