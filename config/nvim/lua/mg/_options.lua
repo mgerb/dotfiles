@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-local guifont = "FiraCode Nerd Font Mono"
+local guifont = "JetBrainsMono Nerd Font Mono"
 
 local options = {
 	backup = false, -- creates a backup file
