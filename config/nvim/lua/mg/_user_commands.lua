@@ -52,6 +52,63 @@ M.profiler_stop = function()
 	vim.cmd("noautocmd qall!")
 end
 
+---Create a flake in the current working directory
+---that can be used for development. Use with `nix develop`.
+M.nix_flake_init = function()
+	local cwd = vim.fn.getcwd()
+	local dirname = vim.fn.fnamemodify(cwd, ":t")
+	local path = cwd .. "/flake.nix"
+
+	-- Check if file already exists
+	if vim.fn.filereadable(path) == 1 then
+		vim.notify("flake.nix already exists at " .. path, vim.log.levels.ERROR)
+		return
+	end
+
+	local flake_template = string.format(
+		[[
+{
+  description = "playground";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+      };
+    in {
+      devShells.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+        ];
+
+        shellHook = ''
+
+        '';
+      };
+    });
+}
+]],
+		dirname
+	)
+
+	local file = io.open(path, "w")
+	if file then
+		file:write(flake_template)
+		file:close()
+		vim.notify("flake.nix created at " .. path, vim.log.levels.INFO)
+	else
+		vim.notify("Failed to create flake.nix at " .. path, vim.log.levels.ERROR)
+	end
+end
+
 ---Get the untracked module if it exists. This is used to
 ---store lua commands, which cannot be checked into the repo.
 ---To do this, create a _untracked.lua file in this directory.
