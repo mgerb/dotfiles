@@ -61,6 +61,7 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
+    wowup-cf
   ];
 
   # for steam
