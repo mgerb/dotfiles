@@ -40,6 +40,15 @@
     goPath = "go";
   };
 
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    pinentry = {
+      package = pkgs.pinentry-curses;
+    };
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
