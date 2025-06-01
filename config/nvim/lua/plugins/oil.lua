@@ -1,5 +1,8 @@
+---@module "oil"
+
 return {
 	"stevearc/oil.nvim",
+	---@type oil.SetupOpts
 	opts = {
 		keymaps = {
 			["<C-r>"] = "actions.refresh",
