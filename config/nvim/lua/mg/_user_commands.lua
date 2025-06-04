@@ -109,6 +109,10 @@ M.nix_flake_init = function()
 	end
 end
 
+M.format_csv = function()
+	vim.cmd("%!column -t -s ','")
+end
+
 ---Get the untracked module if it exists. This is used to
 ---store lua commands, which cannot be checked into the repo.
 ---To do this, create a _untracked.lua file in this directory.
