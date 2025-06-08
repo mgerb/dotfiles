@@ -62,7 +62,10 @@
   environment.systemPackages = with pkgs; [
     obs-studio
     wowup-cf
+    appimage-run
   ];
+
+  services.flatpak.enable = true;
 
   # for steam
   hardware.graphics.enable32Bit = true;
