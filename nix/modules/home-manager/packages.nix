@@ -9,8 +9,8 @@
         pname = "zls";
         version = "0.15.0-dev.178+bd24e21a";
         src = prev.fetchurl {
-          url = "https://builds.zigtools.org/zls-linux-x86_64-0.15.0-dev.178+bd24e21a.tar.xz";
-          sha256 = "sha256-+JYL7R3kM/EThm+MXVH1PtSsc0pEpvaWkI3b1SGgr/w=";
+          url = "https://builds.zigtools.org/zls-linux-x86_64-0.15.0-dev.203+706e08fc.tar.xz";
+          sha256 = "sha256-1cmQD82SaeSV//CYGDeWQgbxfLqEJas/8yVBzBzmQBg=";
         };
         sourceRoot = ".";
         installPhase = ''
