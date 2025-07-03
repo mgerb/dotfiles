@@ -63,6 +63,7 @@
     obs-studio
     wowup-cf
     appimage-run
+    gemini-cli
   ];
 
   services.flatpak.enable = true;
