@@ -20,10 +20,12 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-cmdline",
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
 			snippet = {
@@ -50,6 +52,7 @@ return {
 			}),
 			sources = {
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer" },
 			},
@@ -89,5 +92,9 @@ return {
 		for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/mg/snippets/*.lua", true)) do
 			loadfile(ft_path)()
 		end
+
+		luasnip.filetype_extend("typescript", { "angular" })
+		luasnip.filetype_extend("html", { "angular" })
+		luasnip.filetype_extend("python", { "django" })
 	end,
 }
