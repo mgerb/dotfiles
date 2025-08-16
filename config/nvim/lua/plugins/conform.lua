@@ -1,8 +1,10 @@
+---@module conform
 local mg = require("mg")
 
 return {
 	"stevearc/conform.nvim",
 	event = "BufRead",
+	---@type conform.setupOpts
 	opts = {
 		notify_on_error = true,
 		notify_on_conform = true,

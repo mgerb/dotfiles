@@ -12,10 +12,10 @@ M.colors = {
 
 ---Utility function for setting highlight colors
 ---@param group string
----@param fg string
----@param bg string
----@param attr string
----@param sp string
+---@param fg string | nil
+---@param bg string | nil
+---@param attr string | nil
+---@param sp string | nil
 function M.highlight(group, fg, bg, attr, sp)
 	fg = fg and "guifg=" .. fg or "guifg=NONE"
 	bg = bg and "guibg=" .. bg or "guibg=NONE"
