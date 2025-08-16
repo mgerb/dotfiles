@@ -64,6 +64,7 @@
     wowup-cf
     appimage-run
     gemini-cli
+    protonup-qt
   ];
 
   services.flatpak.enable = true;
