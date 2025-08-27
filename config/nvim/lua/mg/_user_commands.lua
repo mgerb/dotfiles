@@ -52,65 +52,56 @@ M.profiler_stop = function()
 	vim.cmd("noautocmd qall!")
 end
 
----Create a flake in the current working directory
----that can be used for development. Use with `nix develop`.
-M.nix_flake_init = function()
-	local cwd = vim.fn.getcwd()
-	local dirname = vim.fn.fnamemodify(cwd, ":t")
-	local path = cwd .. "/flake.nix"
-
-	-- Check if file already exists
-	if vim.fn.filereadable(path) == 1 then
-		vim.notify("flake.nix already exists at " .. path, vim.log.levels.ERROR)
-		return
-	end
-
-	local flake_template = string.format(
-		[[
-{
-  description = "playground";
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-  };
-
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in {
-      devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-        ];
-
-        shellHook = ''
-
-        '';
-      };
-    });
-}
-]],
-		dirname
-	)
-
-	local file = io.open(path, "w")
-	if file then
-		file:write(flake_template)
-		file:close()
-		vim.notify("flake.nix created at " .. path, vim.log.levels.INFO)
-	else
-		vim.notify("Failed to create flake.nix at " .. path, vim.log.levels.ERROR)
-	end
-end
-
 M.format_csv = function()
 	vim.cmd("%!column -t -s ','")
+end
+
+-- Group each line in a buffer and show in a new buffer with a count
+M.count_lines_by_content = function()
+	-- Get all lines in the current buffer
+	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+	-- Count occurrences
+	local counts = {}
+	for _, line in ipairs(lines) do
+		if line ~= "" then -- ignore empty lines (optional)
+			counts[line] = (counts[line] or 0) + 1
+		end
+	end
+
+	-- Convert to array for sorting
+	local result = {}
+	local max_count = 0
+	for text, count in pairs(counts) do
+		table.insert(result, { count = count, text = text })
+		if count > max_count then
+			max_count = count
+		end
+	end
+
+	-- Sort by count (descending), then alphabetically
+	table.sort(result, function(a, b)
+		if a.count == b.count then
+			return a.text < b.text
+		else
+			return a.count > b.count
+		end
+	end)
+
+	-- Figure out padding width for counts
+	local width = tostring(max_count):len()
+
+	-- Create a new buffer
+	vim.cmd("new") -- opens in a new window
+	local new_buf = vim.api.nvim_get_current_buf()
+
+	-- Insert results with aligned counts
+	local out_lines = {}
+	for _, item in ipairs(result) do
+		table.insert(out_lines, string.format("%" .. width .. "d %s", item.count, item.text))
+	end
+
+	vim.api.nvim_buf_set_lines(new_buf, 0, -1, false, out_lines)
 end
 
 ---Get the untracked module if it exists. This is used to
