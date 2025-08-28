@@ -1,9 +1,12 @@
 ---@module "oil"
 
+local DEFAULT_COLUMNS = { "icon" }
+
 return {
 	"stevearc/oil.nvim",
 	---@type oil.SetupOpts
 	opts = {
+		columns = DEFAULT_COLUMNS,
 		keymaps = {
 			["<C-r>"] = "actions.refresh",
 			["<C-v>"] = "actions.select_vsplit",
@@ -26,4 +29,5 @@ return {
 
 		vim.cmd.cd(dir)
 	end,
+	DEFAULT_COLUMNS = DEFAULT_COLUMNS,
 }

@@ -40,6 +40,22 @@ M.oil_find_files = function()
 	require("mg._telescope").find_files_oil()
 end
 
+---@type "all" | "default"
+local oil_current_column = "default"
+
+M.oil_toggle_columns = function()
+	local oil = require("oil")
+	local oil_plugin = require("plugins.oil")
+
+	if oil_current_column == "default" then
+		oil.set_columns({ "icon", "size", "mtime" })
+		oil_current_column = "all"
+	else
+		oil.set_columns(oil_plugin.DEFAULT_COLUMNS)
+		oil_current_column = "default"
+	end
+end
+
 ---Start profiling functions/files
 M.profiler_start = function()
 	vim.cmd("profile start profile.log")
