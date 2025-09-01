@@ -13,6 +13,16 @@
     ./nvidia.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    obs-studio
+    wowup-cf
+    appimage-run
+    gemini-cli
+    protonup-qt
+    gparted
+    btop-cuda
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -58,14 +68,6 @@
 
   # Install firefox.
   # programs.firefox.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    obs-studio
-    wowup-cf
-    appimage-run
-    gemini-cli
-    protonup-qt
-  ];
 
   services.flatpak.enable = true;
 

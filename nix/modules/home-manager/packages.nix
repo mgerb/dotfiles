@@ -24,7 +24,6 @@ in {
     killall
     git
     wget
-    htop
     jq
     ripgrep
     fd

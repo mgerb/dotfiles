@@ -1,7 +1,15 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./modules
+  ];
+
+  environment.systemPackages = with pkgs; [
+    btop-rocm
   ];
 
   boot.loader.systemd-boot.enable = true;
