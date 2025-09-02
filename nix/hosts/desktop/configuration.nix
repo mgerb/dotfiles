@@ -32,6 +32,18 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # ssh server
+  services.openssh.enable = true;
+  services.openssh.settings = {
+    UseDns = true;
+    PasswordAuthentication = true;
+  };
+  networking.firewall = {
+    allowedTCPPorts = [
+      22 # ssh
+    ];
+  };
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
