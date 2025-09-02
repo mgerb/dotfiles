@@ -23,6 +23,7 @@ in {
     vim
     killall
     git
+    jujutsu
     wget
     jq
     ripgrep
