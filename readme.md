@@ -9,7 +9,7 @@ These are my dotfiles. They are actively updated and reflect my current developm
 ## Neovim
 
 Here's an example of what my Neovim looks like.
-I use many more additional plugins, [which are located here](./config/nvim/lua/plugins).
+I use many more plugins, [which are located here](./config/nvim/lua/plugins).
 
 ![nvimtree](./config/nvim/screenshots/nvimtree.jpg)
 
