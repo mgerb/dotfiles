@@ -85,3 +85,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.wo.number = true
 	end,
 })
+
+if vim.fn.has("nvim") == 1 then
+	vim.env.GIT_EDITOR = "nvr -cc split --remote-wait"
+	vim.env.EDITOR = "nvr -cc split --remote-wait"
+end

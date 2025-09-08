@@ -65,6 +65,7 @@ in {
     nil # nix lsp
     alejandra # nix formatter
     tree-sitter
+    neovim-remote
 
     # zsh
     zsh
