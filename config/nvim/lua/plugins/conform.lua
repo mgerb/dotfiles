@@ -19,6 +19,8 @@ return {
 			cpp = { "clang-format" },
 			lua = { "stylua" },
 			python = { "black" },
+			css = { "prettierd", "prettier" },
+			scss = { "prettierd", "prettier" },
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
