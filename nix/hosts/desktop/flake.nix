@@ -21,7 +21,8 @@
     user = "mg";
     hmModules =
       [(import ../../modules/home-manager)]
-      ++ [(import ../../modules/home-manager/desktop)];
+      ++ [(import ../../modules/home-manager/desktop)]
+      ++ [(import ./home-manager)];
     zigpkgs = zig.packages.${system};
   in {
     nixosConfigurations = {
