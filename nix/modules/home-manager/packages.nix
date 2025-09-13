@@ -42,7 +42,7 @@ in {
     libffi
 
     # python
-    python312Full
+    python312
     python312Packages.cffi
     python312Packages.pip
     black # python formatter
