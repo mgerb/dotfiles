@@ -9,6 +9,17 @@
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # NOTE: uncomment to flash keyboard firmware
+  # environment.systemPackages = with pkgs; [
+  #   via
+  #   qmk
+  #   qmk-udev-rules
+  # ];
+  # services.udev.packages = [
+  #   pkgs.via
+  #   pkgs.qmk-udev-rules
+  # ];
+
   home-manager = {
     extraSpecialArgs = {inherit inputs user pkgs-stable zigpkgs;};
     users.${user} = {

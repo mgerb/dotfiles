@@ -9,21 +9,29 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # this allows udiskie to work
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
   environment.systemPackages = with pkgs; [
-    hyprshot
-    hyprpicker
-    hyprsunset
-    sunsetr
-    hyprpolkitagent
-    hyprcursor
+    blueberry
     brightnessctl
-    pamixer
-    playerctl
     gnome-themes-extra
-    pavucontrol
+    hyprcursor
+    hyprpicker
+    hyprpolkitagent
+    hyprshot
+    hyprsunset
     libnotify
     nautilus
-    blueberry
+    pamixer
+    pavucontrol
+    playerctl
+    sunsetr
     wlogout
+    udiskie
+
+    # tool to select system installed fonts
+    # nwg-look
   ];
 }
