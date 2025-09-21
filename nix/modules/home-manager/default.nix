@@ -36,8 +36,10 @@
 
   programs.go = {
     enable = true;
-    goBin = "go/bin";
-    goPath = "go";
+    env = {
+      GOPATH = "go";
+      GOBIN = "go/bin";
+    };
   };
 
   programs.gpg.enable = true;

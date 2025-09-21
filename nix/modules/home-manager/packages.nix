@@ -5,11 +5,11 @@
 }: let
   zls-custom = pkgs.stdenv.mkDerivation {
     pname = "zls";
-    version = "0.15.0-dev.293+45b855f7";
+    version = "0.15.0";
     # can also use fetchTarball here and then remove sourceRoot
     src = pkgs.fetchurl {
-      url = "https://builds.zigtools.org/zls-linux-x86_64-0.15.0-dev.293+45b855f7.tar.xz";
-      sha256 = "sha256-Zkr+XXUhIfXuaMVxof4XM1USrrdr56+vPUBS+LOQpuU=";
+      url = "https://builds.zigtools.org/zls-x86_64-linux-0.15.0.tar.xz";
+      sha256 = "sha256-UIv+P9Y30qAvB/P8faiQA1H0BxFrA2hcXa4mtPAaMN4=";
     };
     # This will extract the tarball and set the root path
     sourceRoot = ".";
@@ -49,7 +49,7 @@ in {
     poetry
     pyright
 
-    zigpkgs.master
+    zigpkgs."0.15.1"
     zls-custom
 
     # neovim
