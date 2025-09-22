@@ -22,6 +22,7 @@
     protonup-qt
     gparted
     btop-cuda
+    aseprite
   ];
 
   # Bootloader.
@@ -101,6 +102,15 @@
   # for steam
   hardware.graphics.enable32Bit = true;
   services.pulseaudio.support32Bit = true;
+
+  # services.ollama = {
+  #   enable = true;
+  #   # Optional: preload models, see https://ollama.com/library
+  #   # loadModels = [""];
+  #   acceleration = "cuda";
+  # };
+  #
+  # services.open-webui.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
