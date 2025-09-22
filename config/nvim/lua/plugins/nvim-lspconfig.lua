@@ -6,7 +6,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/nvim-cmp",
 	},
-	event = "BufRead",
+	event = "BufReadPre",
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -90,14 +90,9 @@ return {
 			},
 		})
 
-		local servers = {
-			htmx = {
-				filetypes = { "rs", "html", "rust" },
-			},
-			docker_compose_language_service = {
-				filetypes = { "yml", "yaml" },
-			},
-		}
+		-- override server settings here - I don't really use mason anymore anyway...
+		local servers = {}
+
 		---@diagnostic disable-next-line: missing-fields
 		require("mason-lspconfig").setup({
 			handlers = {
@@ -109,30 +104,40 @@ return {
 			},
 		})
 
-		-- manually add LSP here
-		local lspconfig = require("lspconfig")
-		lspconfig.rust_analyzer.setup({})
-		lspconfig.nil_ls.setup({})
-		lspconfig.lua_ls.setup({})
-		lspconfig.clangd.setup({})
-		lspconfig.pyright.setup({})
-		lspconfig.ts_ls.setup({})
-		lspconfig.angularls.setup({
-			root_dir = require("lspconfig").util.root_pattern("package.json"),
-		})
-		lspconfig.eslint.setup({})
-		lspconfig.tailwindcss.setup({})
-
-		-- zig
-		lspconfig.zls.setup({
-			settings = {
-				zls = {
-					enable_build_on_save = true,
-					semantic_tokens = "partial",
+		---@type table<string, table>
+		local my_lsps = {
+			lua_ls = {},
+			rust_analyzer = {},
+			nil_ls = {},
+			clangd = {},
+			pyright = {},
+			ts_ls = {},
+			eslint = {},
+			tailwindcss = {},
+			jsonls = {},
+			angularls = {},
+			zls = {
+				settings = {
+					zls = {
+						enable_build_on_save = true,
+						semantic_tokens = "partial",
+					},
 				},
 			},
-		})
-		-- prevent loclist from popping up on save
+			-- htmx = {
+			-- 	filetypes = { "rs", "html", "rust" },
+			-- },
+			-- docker_compose_language_service = {
+			-- 	filetypes = { "yml", "yaml" },
+			-- },
+		}
+
+		-- prevent loclist from popping up on save - maybe it's fixed?
 		vim.g.zig_fmt_parse_errors = 0
+
+		for key, val in pairs(my_lsps) do
+			vim.lsp.config(key, val)
+			vim.lsp.enable({ key })
+		end
 	end,
 }
