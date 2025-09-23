@@ -108,8 +108,9 @@ end
 ---@field response_type? "json"
 ---@field extra_curl_args? table
 
----comment
+--- Returns the payload as a string only if open_response_in_buffer is nil/false
 ---@param options CurlRequestOptions
+---@return string?
 M.curl_request = function(options)
 	local request_payload = {
 		"curl",
@@ -149,7 +150,7 @@ M.curl_request = function(options)
 		vim.api.nvim_set_current_buf(buf)
 		vim.api.nvim_buf_set_lines(buf, 0, -1, false, { out.stdout })
 	else
-		vim.print(out.stdout)
+		return out.stdout
 	end
 end
 
