@@ -8,8 +8,7 @@
           # run `sudo keyd monitor` to get keyboard id
           [ids]
           # *
-          #0fac:0ade:efba1ddf # thinkpad
-          05ac:0262:615b17ae
+          0fac:0ade:efba1ddf # thinkpad
 
           [main]
           capslock = overload(capslock, esc)
