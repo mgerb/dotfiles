@@ -1,3 +1,5 @@
+local util = require("mg._util")
+
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -115,7 +117,17 @@ return {
 			eslint = {},
 			tailwindcss = {},
 			jsonls = {},
-			angularls = {},
+			angularls = {
+				-- NOTE: May need the following args. Remove "cmd" and check LSP info for default args.
+				-- --tsProbeLocations
+				-- --ngProbeLocations
+				cmd = {
+					"ngserver",
+					"--stdio",
+					"--angularCoreVersion",
+					util.get_node_package_version("@angular/core"),
+				},
+			},
 			zls = {
 				settings = {
 					zls = {

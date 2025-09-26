@@ -154,4 +154,36 @@ M.curl_request = function(options)
 	end
 end
 
+--- Recursively search for package.json and parse Angular version
+---@param package_name string
+---@return string
+M.get_node_package_version = function(package_name)
+	local cwd = vim.fn.getcwd()
+	local path = vim.fs.find("package.json", {
+		type = "file",
+		path = cwd,
+	})[1]
+
+	if not path then
+		vim.notify("package.json not found", vim.log.levels.WARN)
+		return ""
+	end
+
+	local fd = assert(io.open(path, "r"))
+	local content = fd:read("*a")
+	fd:close()
+	local json = vim.json.decode(content)
+
+	---@type string
+	local version = json.dependencies and json.dependencies[package_name]
+		or json.devDependencies and json.devDependencies[package_name]
+
+	if version then
+		version = version:gsub("^%^", "")
+		return version
+	end
+
+	return ""
+end
+
 return M
