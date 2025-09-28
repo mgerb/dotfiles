@@ -165,7 +165,6 @@ M.get_node_package_version = function(package_name)
 	})[1]
 
 	if not path then
-		vim.notify("package.json not found", vim.log.levels.WARN)
 		return ""
 	end
 
