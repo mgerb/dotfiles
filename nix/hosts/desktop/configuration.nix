@@ -18,7 +18,6 @@
     obs-studio
     wowup-cf
     appimage-run
-    gemini-cli
     protonup-qt
     gparted
     btop-cuda

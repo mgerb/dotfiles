@@ -31,6 +31,12 @@
     PATH = "$GOBIN:$PATH";
   };
 
+  # To install global npm packages the path must not
+  # be in the nix store.
+  #
+  # > npm config set prefix '~/.npm-global'
+  home.sessionPath = ["$HOME/.npm-global/bin"];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
