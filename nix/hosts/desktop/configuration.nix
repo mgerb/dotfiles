@@ -11,7 +11,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./nvidia.nix
-    ./hyprland.nix
+    # ./hyprland
+    # ./niri
   ];
 
   environment.systemPackages = with pkgs; [
