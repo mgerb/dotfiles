@@ -17,12 +17,13 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
-    wowup-cf
     appimage-run
     protonup-qt
     gparted
     btop-cuda
-    aseprite
+    # wowup-cf
+    # aseprite
+    # darktable
   ];
 
   # Bootloader.

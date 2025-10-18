@@ -40,13 +40,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.go = {
-    enable = true;
-    env = {
-      GOPATH = "go";
-      GOBIN = "go/bin";
-    };
-  };
+  programs.go.enable = true;
 
   programs.gpg.enable = true;
 

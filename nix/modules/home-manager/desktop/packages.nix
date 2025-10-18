@@ -8,6 +8,7 @@
     kitty
     ghostty
     discord
+    signal-desktop
 
     # browsers
     google-chrome
