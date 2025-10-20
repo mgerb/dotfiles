@@ -115,7 +115,9 @@ return {
 			pyright = {},
 			ts_ls = {},
 			eslint = {},
-			tailwindcss = {},
+			tailwindcss = {
+				filetypes = { "html" },
+			},
 			jsonls = {},
 			angularls = {
 				-- NOTE: May need the following args. Remove "cmd" and check LSP info for default args.
