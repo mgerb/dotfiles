@@ -47,6 +47,11 @@ return {
 			{
 				mode = { "v" },
 				{ "<leader>x", "<CMD>lua require('mg').util.execute_selection()<CR>", desc = "Execute Code" },
+				{
+					"<leader>d",
+					"<CMD>lua require('mg').util.diffview_open_visually_selected_commit()<CR>",
+					desc = "DiffviewOpen Commit",
+				},
 
 				-- move lines up/down
 				{ "J", ":m '>+1<CR>gv=gv", desc = "Line Down" },

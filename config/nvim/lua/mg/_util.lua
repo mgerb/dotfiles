@@ -86,6 +86,11 @@ M.oil_get_cursor_dir = function()
 	return nil
 end
 
+M.diffview_open_visually_selected_commit = function()
+	local commit = vim.trim(M.get_visual_selection({ remove_new_lines = true }))
+	vim.cmd("DiffviewOpen " .. commit .. "~1.." .. commit)
+end
+
 ---Check if a require statement will work
 ---@param path string this is the same argument that would be passed into the `require` function
 ---@return boolean
