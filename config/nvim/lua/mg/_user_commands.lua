@@ -120,6 +120,13 @@ M.count_lines_by_content = function()
 	vim.api.nvim_buf_set_lines(new_buf, 0, -1, false, out_lines)
 end
 
+--- Remove all carriage returns from the document.
+--- This usually occurs when pasting in text content
+--- into WSL.
+M.remove_carriage_returns = function()
+	vim.cmd("%s/\\r//g")
+end
+
 ---Get the untracked module if it exists. This is used to
 ---store lua commands, which cannot be checked into the repo.
 ---To do this, create a _untracked.lua file in this directory.
@@ -158,11 +165,13 @@ end, {
 
 		---@type string[]
 		local output = {}
+
 		for key, _ in pairs(module) do
 			if not vim.startswith(key, "_") and key ~= "setup" then
 				table.insert(output, key)
 			end
 		end
+
 		return output
 	end,
 	range = true,
