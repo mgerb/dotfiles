@@ -42,10 +42,11 @@ in {
     libffi
 
     # python
-    python312
-    python312Packages.cffi
-    python312Packages.pip
-    black # python formatter
+    python313
+    # python313Packages.cffi
+    # python313Packages.pip
+    # black # python formatter
+    ruff
     poetry
     pyright
 
