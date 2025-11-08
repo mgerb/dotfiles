@@ -28,7 +28,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     GOBIN = "/home/${user}/go/bin";
-    PATH = "$GOBIN:$PATH";
+    PATH = "/home/${user}/.local/bin:$GOBIN:$PATH";
   };
 
   # To install global npm packages the path must not
