@@ -114,7 +114,7 @@ M.count_lines_by_content = function()
 	-- Insert results with aligned counts
 	local out_lines = {}
 	for _, item in ipairs(result) do
-		table.insert(out_lines, string.format("%" .. width .. "d %s", item.count, item.text))
+		table.insert(out_lines, string.format("%" .. width .. "d %s", item.count, vim.trim(item.text)))
 	end
 
 	vim.api.nvim_buf_set_lines(new_buf, 0, -1, false, out_lines)
