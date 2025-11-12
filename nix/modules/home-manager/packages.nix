@@ -43,6 +43,7 @@ in {
 
     # python
     python313
+    uv
     # python313Packages.cffi
     # python313Packages.pip
     # black # python formatter
