@@ -23,21 +23,44 @@ end
 ---@param opts? { remove_new_lines?: boolean }
 ---@return string
 M.get_visual_selection = function(opts)
-	local remove_new_lines = opts and opts.remove_new_lines or false
+	local mode = vim.fn.mode()
 
-	vim.cmd('silent! noau normal! "vy"')
-	local text = vim.fn.getreg("v")
-	vim.fn.setreg("v", {})
+	local start_pos, end_pos
 
-	if remove_new_lines then
-		text = string.gsub(text, "\n", "")
-	end
-
-	if #text > 0 then
-		return text
+	if mode:match("[vV]") then
+		-- Still in visual mode
+		start_pos = vim.fn.getpos("v")
+		end_pos = vim.fn.getpos(".")
 	else
-		return ""
+		-- Visual mode already ended (user command case)
+		start_pos = vim.fn.getpos("'<")
+		end_pos = vim.fn.getpos("'>")
 	end
+
+	local _, ls, cs = unpack(start_pos)
+	local _, le, ce = unpack(end_pos)
+
+	if ls > le or (ls == le and cs > ce) then
+		ls, le = le, ls
+		cs, ce = ce, cs
+	end
+
+	local lines = vim.fn.getline(ls, le)
+
+	if #lines == 1 then
+		lines[1] = string.sub(lines[1], cs, ce)
+	else
+		lines[1] = string.sub(lines[1], cs)
+		lines[#lines] = string.sub(lines[#lines], 1, ce)
+	end
+
+	local concat_string = "\n"
+
+	if opts and opts.remove_new_lines then
+		concat_string = " "
+	end
+
+	return table.concat(lines, concat_string)
 end
 
 ---Execute the selected code. Currently only works
