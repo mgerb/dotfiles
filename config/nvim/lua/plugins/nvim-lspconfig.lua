@@ -1,4 +1,4 @@
-local util = require("mg._util")
+local util = require("mg.util")
 
 return {
 	"neovim/nvim-lspconfig",

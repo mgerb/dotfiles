@@ -1,4 +1,4 @@
-local util = require("mg._util")
+local util = require("mg.util")
 local M = {}
 
 ---Temporary function used for testing things out
@@ -32,12 +32,12 @@ end
 
 ---Live grep within the cursor folder in Oil
 M.oil_live_grep = function()
-	require("mg._telescope").live_grep_oil()
+	require("mg.telescope").live_grep_oil()
 end
 
 ---Find files within the cursor folder in Oil
 M.oil_find_files = function()
-	require("mg._telescope").find_files_oil()
+	require("mg.telescope").find_files_oil()
 end
 
 ---@type "all" | "default"
@@ -125,6 +125,53 @@ end
 --- into WSL.
 M.remove_carriage_returns = function()
 	vim.cmd("%s/\\r//g")
+end
+
+--- Open :messages in a new buffer
+M.messages = function()
+	vim.cmd("new")
+	vim.cmd("put =execute('messages')")
+end
+
+--- Prompt for a timestamp and update the latest commit's author/committer dates
+M.git_amend_commit_time = function()
+	local default_timestamp = os.date("%a %b %d %H:%M:%S %Y %z")
+
+	vim.ui.input({
+		prompt = "Commit timestamp: ",
+		default = default_timestamp,
+	}, function(input)
+		if not input or input == "" then
+			return
+		end
+
+		local command_preview =
+			string.format("GIT_COMMITTER_DATE='%s' git commit --amend --no-edit --date '%s'", input, input)
+
+		local confirm = vim.fn.confirm("Run?\n" .. command_preview, "&Yes\n&No", 2)
+		if confirm ~= 1 then
+			return
+		end
+
+		local result = vim.system({
+			"git",
+			"commit",
+			"--amend",
+			"--no-edit",
+			"--date",
+			input,
+		}, {
+			env = { GIT_COMMITTER_DATE = input },
+			text = true,
+		}):wait()
+
+		if result.code ~= 0 then
+			vim.notify(result.stderr, vim.log.levels.ERROR)
+			return
+		end
+
+		vim.notify("Updated commit timestamps to: " .. input, vim.log.levels.INFO)
+	end)
 end
 
 ---Get the untracked module if it exists. This is used to

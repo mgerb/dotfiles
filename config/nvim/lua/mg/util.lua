@@ -156,7 +156,7 @@ M.curl_request = function(options)
 	if options.request_type == "POST" then
 		request_payload = vim.fn.extend(request_payload, {
 			"-H",
-			"'Content-Type: application/json",
+			"Content-Type: application/json",
 		})
 
 		if options.payload then

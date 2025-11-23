@@ -1,4 +1,4 @@
-local util = require("mg._util")
+local util = require("mg.util")
 
 local M = {}
 
@@ -40,7 +40,7 @@ M.get_theme = function(opts)
 end
 
 M.find_files_with_selection = function()
-	local text = require("mg._util").get_visual_selection({ remove_new_lines = true })
+	local text = require("mg.util").get_visual_selection({ remove_new_lines = true })
 	local opts = vim.tbl_deep_extend("force", M.get_theme(), {
 		default_text = text,
 	})
@@ -48,7 +48,7 @@ M.find_files_with_selection = function()
 end
 
 M.live_grep_with_selection = function()
-	local text = require("mg._util").get_visual_selection({ remove_new_lines = true })
+	local text = require("mg.util").get_visual_selection({ remove_new_lines = true })
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		theme = M.get_theme(),
 		default_text = text,
