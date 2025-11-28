@@ -20,8 +20,6 @@
   };
 in {
   home.packages = with pkgs; [
-    vim
-    killall
     git
     jujutsu
     wget
@@ -46,8 +44,7 @@ in {
     uv
     # python313Packages.cffi
     # python313Packages.pip
-    # black # python formatter
-    ruff
+    ruff # python formatter
     poetry
     pyright
 

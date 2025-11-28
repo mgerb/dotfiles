@@ -11,15 +11,10 @@
     signal-desktop
 
     # browsers
-    google-chrome
+    # google-chrome
     brave
 
-    # networking tools
-    networkmanagerapplet
-    blueman
-
     steam
-    lutris
     wine64
     spotify
     exiftool
@@ -40,5 +35,7 @@
     # wireless network TUI
     # impala # iwd TUI
     # iwd
+    # networkmanagerapplet
+    # blueman
   ];
 }
