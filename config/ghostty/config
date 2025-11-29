@@ -20,10 +20,11 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 
-font-family = JetBrainsMono Nerd Font Mono
+font-family = Lilex Nerd Font Mono
+#font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
-# font-family = FiraCode Nerd Font Mono
-# font-family = Iosevka Nerd Font Mono
+# Disable ligatures.
+font-feature = -calt
 
 # window-padding-x = 2
 #
