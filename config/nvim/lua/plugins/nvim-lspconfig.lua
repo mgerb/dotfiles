@@ -116,7 +116,7 @@ return {
 			ts_ls = {},
 			eslint = {},
 			tailwindcss = {
-				filetypes = { "html" },
+				filetypes = { "html", "htmlangular" },
 			},
 			jsonls = {},
 			angularls = {
