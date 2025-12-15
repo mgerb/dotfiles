@@ -20,6 +20,11 @@
   #   pkgs.qmk-udev-rules
   # ];
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs user pkgs-stable zigpkgs;};
     users.${user} = {
