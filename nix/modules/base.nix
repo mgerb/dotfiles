@@ -25,6 +25,11 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs user pkgs-stable zigpkgs;};
     users.${user} = {
