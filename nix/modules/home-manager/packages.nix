@@ -31,6 +31,7 @@ in {
     nix-search-cli
     wireguard-tools
     keyd
+    appimage-run
 
     # software tools
     rustup

@@ -17,7 +17,6 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
-    appimage-run
     protonup-qt
     gparted
     btop-cuda
