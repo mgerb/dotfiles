@@ -7,7 +7,10 @@
   zigpkgs,
   ...
 }: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
+  };
 
   # NOTE: uncomment to flash keyboard firmware
   # environment.systemPackages = with pkgs; [

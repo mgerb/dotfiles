@@ -20,11 +20,13 @@ See `./hosts/ubuntu/flake.nix` for example.
   - add the following line to `/etc/nix/nix.conf`
     ```
     experimental-features = nix-command flakes
+    auto-optimise-store = true
     ```
 - install home mananger
   ```sh
   nix run home-manager/master -- init --switch
   ```
+
   - this will install with a basic flake, then run the next rebuild command
 - rebuild
   ```sh
@@ -106,7 +108,6 @@ ZFS auto snapshots are not enabled by default. They MUST be enabled for each poo
 - audio
   - `pavucontrol`
 - files
-
   - nautilus
 
 - font issues after updated
