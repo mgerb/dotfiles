@@ -29,7 +29,7 @@ in {
     tmux
     unzip
     nix-search-cli
-    wireguard-tools
+    # wireguard-tools
     keyd
     appimage-run
 
