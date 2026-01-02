@@ -5,6 +5,5 @@
     ./samba.nix
     ./zfs.nix
     ./wireguard.nix
-    ./tailscale.nix
   ];
 }

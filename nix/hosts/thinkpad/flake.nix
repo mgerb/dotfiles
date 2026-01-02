@@ -44,6 +44,7 @@
         };
         modules = [
           ../../modules/base.nix
+          ../../modules/tailscale-client.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default
