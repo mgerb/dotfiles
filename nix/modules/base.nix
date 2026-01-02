@@ -23,6 +23,11 @@
   #   pkgs.qmk-udev-rules
   # ];
 
+  services.tailscale = {
+      enable = true;
+      useRoutingFeatures = "both";
+  };
+
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
