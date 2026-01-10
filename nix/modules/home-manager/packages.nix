@@ -32,6 +32,7 @@ in {
     # wireguard-tools
     keyd
     appimage-run
+    # opencode
 
     # software tools
     rustup
