@@ -21,7 +21,6 @@
 in {
   home.packages = with pkgs; [
     git
-    jujutsu
     wget
     jq
     ripgrep
