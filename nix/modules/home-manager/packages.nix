@@ -46,7 +46,6 @@ in {
     # python313Packages.cffi
     # python313Packages.pip
     ruff # python formatter
-    poetry
     pyright
 
     zigpkgs."0.15.1"
