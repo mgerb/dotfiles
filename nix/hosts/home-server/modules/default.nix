@@ -5,5 +5,6 @@
     ./samba.nix
     ./zfs.nix
     ./wireguard.nix
+    ./fail2ban.nix
   ];
 }
