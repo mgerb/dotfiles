@@ -44,11 +44,20 @@
 
   programs.gpg.enable = true;
 
-  programs.jujutsu.enable = true;
-  programs.jujutsu.settings.aliases.tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
-  programs.jujutsu.settings.user = {
-    name = "Mitchell";
-    email = "mgerb42@gmail.com";
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      aliases = {
+        tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+      };
+      user = {
+        name = "Mitchell";
+        email = "mgerb42@gmail.com";
+      };
+      ui = {
+        default-command = ["log"];
+      };
+    };
   };
 
   services.gpg-agent = {
