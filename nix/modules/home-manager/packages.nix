@@ -31,7 +31,8 @@ in {
     # wireguard-tools
     keyd
     appimage-run
-    # opencode
+    opencode
+    sqlite
 
     # software tools
     rustup
