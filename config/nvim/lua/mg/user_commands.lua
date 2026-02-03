@@ -56,6 +56,72 @@ M.oil_toggle_columns = function()
 	end
 end
 
+--- When in oil, open the sqlite db file with vim-dadbod-ui
+M.oil_open_sqlite_db = function()
+	local oil = require("oil")
+	local entry = oil.get_cursor_entry()
+	local current_dir = oil.get_current_dir()
+
+	if not entry or entry.type ~= "file" then
+		vim.notify("Cursor is not on a file", vim.log.levels.WARN)
+		return
+	end
+
+	if not current_dir then
+		vim.notify("Unable to resolve current directory", vim.log.levels.ERROR)
+		return
+	end
+
+	local file_path = vim.fs.joinpath(current_dir, entry.parsed_name)
+
+	if vim.fn.filereadable(file_path) == 0 then
+		vim.notify("File does not exist: " .. file_path, vim.log.levels.ERROR)
+		return
+	end
+
+	local extension = vim.fn.fnamemodify(file_path, ":e")
+	local is_sqlite = extension == "db" or extension == "sqlite" or extension == "sqlite3"
+	if not is_sqlite then
+		vim.notify("Not a sqlite db file: " .. file_path, vim.log.levels.WARN)
+		return
+	end
+
+	local db_url = "sqlite:" .. file_path
+	local name = vim.fn.fnamemodify(file_path, ":t")
+	local dbs = vim.g.dbs
+
+	if type(dbs) ~= "table" then
+		vim.g.dbs = { { name = name, url = db_url } }
+	else
+		local is_list = true
+		for key, _ in pairs(dbs) do
+			if type(key) ~= "number" then
+				is_list = false
+				break
+			end
+		end
+
+		if is_list then
+			local updated = false
+			for _, db in ipairs(dbs) do
+				if db.name == name then
+					db.url = db_url
+					updated = true
+					break
+				end
+			end
+
+			if not updated then
+				table.insert(dbs, { name = name, url = db_url })
+			end
+		else
+			dbs[name] = db_url
+		end
+	end
+
+	vim.cmd("DBUI")
+end
+
 ---Start profiling functions/files
 M.profiler_start = function()
 	vim.cmd("profile start profile.log")
