@@ -23,16 +23,17 @@
   #   pkgs.qmk-udev-rules
   # ];
 
-
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
   };
 
-  services.scx = {
-    enable = true;
-    scheduler = "scx_lavd";
-  };
+  # Disable for now. Seems like the default scheduler was
+  # having better performance. Maybe try this at a later date.
+  # services.scx = {
+  #   enable = true;
+  #   scheduler = "scx_lavd";
+  # };
 
   home-manager = {
     extraSpecialArgs = {inherit inputs user pkgs-stable zigpkgs;};
