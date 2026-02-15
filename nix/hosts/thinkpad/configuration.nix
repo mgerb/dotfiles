@@ -15,6 +15,7 @@
   environment.systemPackages = with pkgs; [
     btop
     moonlight-qt
+    google-chrome
   ];
 
   # Bootloader.
