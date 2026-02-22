@@ -34,6 +34,9 @@ in {
     opencode
     sqlite
 
+    ffmpeg
+    yt-dlp
+
     # software tools
     rustup
     nodejs
