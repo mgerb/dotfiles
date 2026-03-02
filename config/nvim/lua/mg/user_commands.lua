@@ -40,6 +40,27 @@ M.oil_find_files = function()
 	require("mg.telescope").find_files_oil()
 end
 
+--- Copy the absolute path of the file under the cursor in Oil.
+--- Copy to both vim and system clipboard.
+M.oil_copy_path = function()
+	local oil = require("oil")
+	local entry = oil.get_cursor_entry()
+	local current_dir = oil.get_current_dir()
+
+	if not current_dir then
+		vim.notify("Unable to resolve current directory", vim.log.levels.ERROR)
+		return
+	end
+
+	local absolute_path = vim.fs.normalize(vim.fs.joinpath(current_dir, entry.parsed_name))
+
+	-- Yank to vim register.
+	vim.fn.setreg('"', absolute_path)
+	-- Copy to system clipboard.
+	vim.fn.setreg("+", absolute_path)
+	vim.notify("Copied file path: " .. absolute_path, vim.log.levels.INFO)
+end
+
 ---@type "all" | "default"
 local oil_current_column = "default"
 
