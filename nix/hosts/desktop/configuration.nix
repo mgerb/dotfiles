@@ -77,8 +77,12 @@
   users.users.${user} = {
     isNormalUser = true;
     description = user;
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = ["networkmanager" "wheel" "video" "libvirtd"];
   };
+
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+  '';
 
   # Install firefox.
   # programs.firefox.enable = true;
