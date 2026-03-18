@@ -1,6 +1,6 @@
 ---@module "oil"
 
-local DEFAULT_COLUMNS = { "icon" }
+local DEFAULT_COLUMNS = { "icon", "size", "mtime" }
 
 return {
 	"stevearc/oil.nvim",
