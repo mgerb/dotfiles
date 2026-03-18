@@ -22,7 +22,7 @@
     hmModules =
       [(import ../../modules/home-manager)]
       # ++ [(import ./hyprland/home-manager)]
-      # ++ [(import ./niri/home-manager)]
+      ++ [(import ./niri/home-manager)]
       ++ [(import ../../modules/home-manager/desktop)];
     zigpkgs = zig.packages.${system};
   in {
