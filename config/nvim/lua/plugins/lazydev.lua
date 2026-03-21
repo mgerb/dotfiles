@@ -10,14 +10,21 @@ return {
 			},
 		},
 	},
-	{ -- optional cmp completion source for require statements and module annotations
-		"hrsh7th/nvim-cmp",
+	{ -- optional blink completion source for require statements and module annotations
+		"saghen/blink.cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}
-			table.insert(opts.sources, {
-				name = "lazydev",
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-			})
+			opts.sources.default = opts.sources.default or { "lsp", "path", "snippets", "buffer" }
+			opts.sources.providers = opts.sources.providers or {}
+			opts.sources.providers.lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				score_offset = 100,
+			}
+
+			if not vim.tbl_contains(opts.sources.default, "lazydev") then
+				table.insert(opts.sources.default, 1, "lazydev")
+			end
 		end,
 	},
 }

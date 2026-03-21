@@ -29,9 +29,8 @@ return {
 					"scratch/custom_rules/",
 				},
 
-				--- What autocomplete do you use.  We currently only
-				--- support cmp right now
-				source = "cmp",
+				--- What autocomplete do you use.
+				source = "blink",
 			},
 
 			--- WARNING: if you change cwd then this is likely broken
