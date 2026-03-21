@@ -3,9 +3,6 @@ local util = require("mg.util")
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/nvim-cmp",
 	},
 	event = "BufReadPre",
@@ -62,9 +59,6 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		require("mason").setup()
-		require("mason-tool-installer").setup({})
-
 		vim.diagnostic.config({
 			severity_sort = true,
 			underline = { severity = vim.diagnostic.severity.ERROR },
@@ -88,20 +82,6 @@ return {
 						[vim.diagnostic.severity.HINT] = diagnostic.message,
 					}
 					return diagnostic_message[diagnostic.severity]
-				end,
-			},
-		})
-
-		-- override server settings here - I don't really use mason anymore anyway...
-		local servers = {}
-
-		---@diagnostic disable-next-line: missing-fields
-		require("mason-lspconfig").setup({
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
 				end,
 			},
 		})
@@ -149,9 +129,14 @@ return {
 		-- prevent loclist from popping up on save - maybe it's fixed?
 		vim.g.zig_fmt_parse_errors = 0
 
-		for key, val in pairs(my_lsps) do
-			vim.lsp.config(key, val)
-			vim.lsp.enable({ key })
+		for server_name, server_config in pairs(my_lsps) do
+			vim.lsp.config(
+				server_name,
+				vim.tbl_deep_extend("force", {}, {
+					capabilities = capabilities,
+				}, server_config)
+			)
+			vim.lsp.enable(server_name)
 		end
 	end,
 }
