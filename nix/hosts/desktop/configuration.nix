@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     # ./hyprland
-    ./niri
   ];
 
   environment.systemPackages = with pkgs; [
@@ -51,7 +50,7 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment (with sddm).
-  # services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11

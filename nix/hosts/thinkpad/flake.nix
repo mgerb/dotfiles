@@ -23,6 +23,7 @@
     user = "mg";
     hmModules =
       [(import ../../modules/home-manager)]
+      ++ [(import ./home-manager/files.nix)]
       ++ [(import ../../modules/home-manager/desktop)];
     zigpkgs = zig.packages.${system};
   in {
@@ -45,6 +46,8 @@
         modules = [
           ../../modules/base.nix
           ../../modules/tailscale-client.nix
+          # Disable niri/dms for now.
+          # ../../modules/niri.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default

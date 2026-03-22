@@ -22,7 +22,7 @@
     hmModules =
       [(import ../../modules/home-manager)]
       # ++ [(import ./hyprland/home-manager)]
-      ++ [(import ./niri/home-manager)]
+      ++ [(import ./home-manager/files.nix)]
       ++ [(import ../../modules/home-manager/desktop)];
     zigpkgs = zig.packages.${system};
   in {
@@ -46,6 +46,7 @@
         modules = [
           ../../modules/base.nix
           ../../modules/tailscale-client.nix
+          ../../modules/niri.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default

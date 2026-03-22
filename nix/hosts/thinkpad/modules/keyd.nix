@@ -1,3 +1,6 @@
+# This is used to rebind the caps lock key to escape.
+# Holding it acts as a function key rebinding HJKL to
+# arrow keys.
 {...}: {
   services.keyd = {
     enable = true;
