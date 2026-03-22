@@ -3,6 +3,22 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
+    # This is for mapping drives, which aren't in the git repo.
+    # NOTE: When this is modified, flake.lock needs to be updated.
+    #
+    # e.g.
+    # {
+    #   outputs = {self}: {
+    #     nixosModules.default = {...}: {
+    #       fileSystems."/mnt/example-drive" = {
+    #         device = "/dev/disk/by-uuid/REPLACE-ME";
+    #         fsType = "ext4";
+    #       };
+    #     };
+    #   };
+    # }
+    private-drives.url = "path:/home/mg/.config/nix-private-drives";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +30,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    private-drives,
     zig,
     ...
   } @ inputs: let
@@ -49,6 +66,7 @@
           ../../modules/niri.nix
 
           ./configuration.nix
+          private-drives.nixosModules.default
           inputs.home-manager.nixosModules.default
         ];
       };

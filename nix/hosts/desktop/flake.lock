@@ -84,11 +84,24 @@
         "type": "github"
       }
     },
+    "private-drives": {
+      "locked": {
+        "lastModified": 1774207900,
+        "narHash": "sha256-kCXqKoJo5o6Kue5SeeV/IP5Ya2SOAumUrQKhi8PExQY=",
+        "path": "/home/mg/.config/nix-private-drives",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/mg/.config/nix-private-drives",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
+        "private-drives": "private-drives",
         "zig": "zig"
       }
     },
