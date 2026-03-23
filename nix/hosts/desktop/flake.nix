@@ -24,6 +24,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zig.url = "github:mitchellh/zig-overlay";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    danksearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -36,11 +44,13 @@
   } @ inputs: let
     system = "x86_64-linux";
     user = "mg";
-    hmModules =
-      [(import ../../modules/home-manager)]
-      # ++ [(import ./hyprland/home-manager)]
-      ++ [(import ./home-manager/files.nix)]
-      ++ [(import ../../modules/home-manager/desktop)];
+    hmModules = [
+      # NOTE: Add home-manager modules here. Add NixOS modules below.
+      (import ../../modules/home-manager)
+      (import ./home-manager/files.nix)
+      (import ../../modules/home-manager/desktop)
+      (import ../../modules/home-manager/desktop/dms-shell.nix)
+    ];
     zigpkgs = zig.packages.${system};
   in {
     nixosConfigurations = {
@@ -60,6 +70,7 @@
             config.allowUnfree = true;
           };
         };
+        # NOTE: Add NixOS modules here. Add home-manager modules above.
         modules = [
           ../../modules/base.nix
           ../../modules/tailscale-client.nix
