@@ -1,3 +1,5 @@
+---@module "blink.cmp"
+
 return {
 	"saghen/blink.cmp",
 	version = "1.*",
@@ -18,6 +20,7 @@ return {
 			opts = {},
 		},
 	},
+	---@type blink.cmp.Config
 	opts = {
 		snippets = {
 			preset = "luasnip",
@@ -49,6 +52,11 @@ return {
 			keymap = {
 				preset = "cmdline",
 			},
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+			},
 			sources = function()
 				local cmd_type = vim.fn.getcmdtype()
 				if cmd_type == "/" or cmd_type == "?" then
@@ -63,6 +71,12 @@ return {
 				sql = { "snippets", "dadbod", "buffer" },
 			},
 			providers = {
+				buffer = {
+					opts = {
+						max_async_buffer_size = 1000000000,
+						max_total_buffer_size = math.huge,
+					},
+				},
 				dadbod = {
 					name = "Dadbod",
 					module = "vim_dadbod_completion.blink",
