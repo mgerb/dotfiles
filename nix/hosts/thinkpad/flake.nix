@@ -34,7 +34,7 @@
       (import ../../modules/home-manager)
       (import ./home-manager/files.nix)
       (import ../../modules/home-manager/desktop)
-      # (import ../../modules/home-manager/desktop/dms-shell.nix)
+      (import ../../modules/home-manager/desktop/dms-shell.nix)
     ];
     zigpkgs = zig.packages.${system};
   in {
@@ -59,7 +59,7 @@
           ../../modules/base.nix
           ../../modules/tailscale-client.nix
           # Disable niri/dms for now.
-          # ../../modules/niri.nix
+          ../../modules/niri.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default
