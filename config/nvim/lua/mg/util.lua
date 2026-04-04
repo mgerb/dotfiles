@@ -128,6 +128,22 @@ M.is_windows = function()
 	return vim.fn.has("win32") == 1
 end
 
+---@param value string
+---@return string
+M.to_snake_case = function(value)
+	if value == "" then
+		return value
+	end
+
+	local snake = value
+	snake = snake:gsub("([%l%d])(%u)", "%1_%2")
+	snake = snake:gsub("(%u)(%u%l)", "%1_%2")
+	snake = snake:gsub("[%s%-]+", "_")
+	snake = snake:gsub("__+", "_")
+
+	return snake:lower()
+end
+
 ---@class CurlRequestOptions
 ---@field url string
 ---@field request_type "GET" | "POST"

@@ -56,7 +56,6 @@ in {
     zls-custom
 
     # neovim
-    neovim
     lua-language-server
     typescript-language-server
     tailwindcss-language-server

@@ -261,6 +261,18 @@ M.git_amend_commit_time = function()
 	end)
 end
 
+--- Rename the identifier under the cursor to snake_case using LSP rename.
+M.rename_snake_case = function()
+	local current_name = vim.fn.expand("<cword>")
+	if current_name == "" then
+		vim.notify("No identifier found under cursor", vim.log.levels.WARN)
+		return
+	end
+
+	local new_name = util.to_snake_case(current_name)
+	vim.lsp.buf.rename(new_name)
+end
+
 ---Get the untracked module if it exists. This is used to
 ---store lua commands, which cannot be checked into the repo.
 ---To do this, create a _untracked.lua file in this directory.
