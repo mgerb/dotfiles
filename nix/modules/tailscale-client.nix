@@ -4,7 +4,7 @@
     enable = true;
     useRoutingFeatures = "client";
     extraSetFlags = [
-      "--accept-routes"
+      # "--accept-routes" # To route traffic through exit note.
     ];
   };
 }
