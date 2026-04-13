@@ -31,8 +31,8 @@ in {
     # wireguard-tools
     keyd
     appimage-run
-    opencode
     sqlite
+    inetutils
 
     ffmpeg
     yt-dlp
