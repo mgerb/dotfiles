@@ -16,7 +16,6 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = [];
   boot.extraModulePackages = [];
-  boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/1a647aa8-91e3-449b-bc13-06bd46edbb2c";

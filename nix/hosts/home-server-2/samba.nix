@@ -15,6 +15,11 @@
         "browseable" = "yes";
         "read only" = "no";
       };
+      "usb2" = {
+        "path" = "/mnt/usb2";
+        "browseable" = "yes";
+        "read only" = "no";
+      };
     };
   };
 
