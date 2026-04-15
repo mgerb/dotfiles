@@ -1,14 +1,20 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		opts = {},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
+		cmd = {
+			"Mason",
+			"MasonInstall",
+			"MasonLog",
+			"MasonUninstall",
+			"MasonUninstallAll",
+			"MasonUpdate",
+		},
 		opts = {},
 		dependencies = {
-			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig",
+			{
+				"mason-org/mason-lspconfig.nvim",
+				opts = {},
+			},
 		},
 	},
 }

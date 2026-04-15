@@ -2,6 +2,7 @@
 
 return {
 	"folke/snacks.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	---@type snacks.Config
 	opts = {
 		---@type snacks.bigfile.Config

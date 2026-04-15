@@ -85,6 +85,8 @@ return {
 			},
 		})
 
+		local angular_core_version = util.get_node_package_version("@angular/core")
+
 		---@type table<string, table>
 		local my_lsps = {
 			lua_ls = {},
@@ -102,12 +104,12 @@ return {
 				-- NOTE: May need the following args. Remove "cmd" and check LSP info for default args.
 				-- --tsProbeLocations
 				-- --ngProbeLocations
-				cmd = {
+				cmd = angular_core_version ~= "" and {
 					"ngserver",
 					"--stdio",
 					"--angularCoreVersion",
-					util.get_node_package_version("@angular/core"),
-				},
+					angular_core_version,
+				} or nil,
 			},
 			zls = {
 				settings = {

@@ -202,10 +202,14 @@ end
 ---@param package_name string
 ---@return string
 M.get_node_package_version = function(package_name)
-	local cwd = vim.fn.getcwd()
+	local buffer_name = vim.api.nvim_buf_get_name(0)
+	local start_dir = buffer_name ~= "" and vim.fs.dirname(buffer_name) or vim.fn.getcwd()
 	local path = vim.fs.find("package.json", {
 		type = "file",
-		path = cwd,
+		path = start_dir,
+		upward = true,
+		limit = 1,
+		stop = vim.uv.os_homedir(),
 	})[1]
 
 	if not path then
