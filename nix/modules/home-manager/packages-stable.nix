@@ -1,5 +1,3 @@
 {pkgs-stable, ...}: {
-  home.packages = with pkgs-stable; [
-    neovim
-  ];
+  home.packages = with pkgs-stable; [];
 }
