@@ -93,7 +93,9 @@ return {
 			rust_analyzer = {},
 			nil_ls = {},
 			clangd = {},
-			pyright = {},
+			-- pyright = {},
+			ty = {},
+			ruff = {},
 			ts_ls = {},
 			eslint = {},
 			tailwindcss = {

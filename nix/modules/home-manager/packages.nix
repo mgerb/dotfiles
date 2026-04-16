@@ -45,12 +45,13 @@ in {
     libffi
 
     # python
-    python313
+    python314
     uv
     # python313Packages.cffi
     # python313Packages.pip
     ruff # python formatter
-    pyright
+    ty # python lsp
+    # pyright
 
     zigpkgs."0.15.2"
     zls-custom
