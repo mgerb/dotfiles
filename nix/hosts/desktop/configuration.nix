@@ -33,6 +33,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # ssh server
   services.openssh.enable = true;
   services.openssh.settings = {
