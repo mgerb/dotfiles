@@ -41,6 +41,9 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # audio
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
