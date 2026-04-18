@@ -16,6 +16,7 @@
 
           [main]
           capslock = overload(capslock, esc)
+          rightalt = leftmeta
 
           [capslock:C]
           h = left
