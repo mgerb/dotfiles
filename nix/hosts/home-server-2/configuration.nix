@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ./samba.nix
     ./drives.nix
+    ./zfs.nix
   ];
 
   # Bootloader.
@@ -18,6 +19,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
+  # Required for zfs.
+  networking.hostId = "3bac7c8f";
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
