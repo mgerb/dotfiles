@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
+    ./backup_service.nix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -33,6 +33,7 @@ in {
     appimage-run
     sqlite
     inetutils
+    rsync
 
     ffmpeg
     yt-dlp
