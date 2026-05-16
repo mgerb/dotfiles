@@ -6,5 +6,6 @@
 
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.extraPools = ["mbak1"];
+  boot.zfs.forceImportRoot = false;
   services.zfs.autoScrub.enable = true;
 }

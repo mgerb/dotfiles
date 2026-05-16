@@ -13,6 +13,7 @@
 {...}: {
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.extraPools = ["raid-pool" "wd1" "wd2"];
+  boot.zfs.forceImportRoot = false;
 
   services.zfs.autoScrub.enable = true;
 
