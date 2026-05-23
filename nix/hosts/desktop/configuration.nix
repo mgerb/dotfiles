@@ -32,6 +32,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # This is disabled otherwise there is a noticeable
+  # delay in SSH. It's not really necessary on a
+  # desktop that always has power.
+  networking.networkmanager.wifi.powersave = false;
 
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
