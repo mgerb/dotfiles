@@ -20,8 +20,13 @@
     gparted
     btop-cuda
     # wowup-cf
-    # aseprite
+    aseprite
     # darktable
+    # llama-cpp-vulkan
+    # opencode
+    # (pkgs.llama-cpp.override {
+    #   cudaSupport = true;
+    # })
   ];
 
   # Bootloader.

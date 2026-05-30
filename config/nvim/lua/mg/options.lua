@@ -49,6 +49,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+-- vim.o.scrollback = 100000
 vim.opt.isfname:append("@-@")
 
 -- if in neovide

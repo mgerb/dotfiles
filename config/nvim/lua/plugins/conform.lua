@@ -16,6 +16,7 @@ return {
 		end,
 		formatters_by_ft = {
 			c = { "clang-format" },
+			go = { "gofmt" },
 			cpp = { "clang-format" },
 			lua = { "stylua" },
 			python = { "ruff_format" },

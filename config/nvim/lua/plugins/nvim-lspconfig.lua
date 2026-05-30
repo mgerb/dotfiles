@@ -102,6 +102,7 @@ return {
 				filetypes = { "html", "htmlangular" },
 			},
 			jsonls = {},
+			gopls = {},
 			angularls = {
 				-- NOTE: May need the following args. Remove "cmd" and check LSP info for default args.
 				-- --tsProbeLocations
