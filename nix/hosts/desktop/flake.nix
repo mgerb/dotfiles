@@ -17,7 +17,6 @@
     #     };
     #   };
     # }
-    private-drives.url = "path:/home/mg/.config/nix-private-drives";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -38,7 +37,6 @@
     self,
     nixpkgs,
     nixpkgs-stable,
-    private-drives,
     zig,
     ...
   } @ inputs: let
@@ -77,7 +75,6 @@
           ../../modules/niri.nix
 
           ./configuration.nix
-          private-drives.nixosModules.default
           inputs.home-manager.nixosModules.default
         ];
       };
