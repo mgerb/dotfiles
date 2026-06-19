@@ -16,7 +16,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    obs-studio
     protonup-qt
     gparted
     btop-cuda
@@ -28,7 +27,30 @@
     # (pkgs.llama-cpp.override {
     #   cudaSupport = true;
     # })
+
+    # ventoy
+    gpu-screen-recorder-gtk
   ];
+
+  programs.obs-studio = {
+    enable = true;
+
+    # optional Nvidia hardware acceleration
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi #optional AMD hardware acceleration
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

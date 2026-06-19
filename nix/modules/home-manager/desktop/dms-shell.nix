@@ -1,11 +1,21 @@
 # Dank Material Shell
 # https://danklinux.com/
 # Used with Niri.
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.danksearch.homeModules.dsearch
   ];
+
+  home.packages = with pkgs; [
+    # This fixes missing icons.
+    adwaita-icon-theme
+  ];
+
   programs.dank-material-shell = {
     enable = true;
     systemd = {
