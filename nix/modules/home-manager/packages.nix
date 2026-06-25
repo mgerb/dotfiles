@@ -61,10 +61,11 @@ in {
     lua-language-server
     typescript-language-server
     tailwindcss-language-server
-    vscode-langservers-extracted # provides eslint
+    vscode-css-languageserver
     angular-language-server
     stylua
     prettierd
+    eslint
     eslint_d
     nil # nix lsp
     alejandra # nix formatter

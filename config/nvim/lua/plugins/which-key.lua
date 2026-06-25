@@ -181,7 +181,7 @@ return {
 					"<cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<cr>",
 					desc = "Diagnostics (File)",
 				},
-				{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+				{ "<leader>li", "<cmd>checkhealth vim.lsp<cr>", desc = "Info" },
 				{ "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
 				{ "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
 				{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },

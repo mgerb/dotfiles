@@ -32,13 +32,14 @@ return {
 			nix = { "alejandra", "nixpkgs-fmt", "nixfmt" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			sql = { "pg_format" },
+			xml = { "prettierd", "prettier" },
 			zig = { "zigfmt", lsp_format = "fallback" },
 		},
-		formatters = {
-			["clang-format"] = {
-				prepend_args = { "-style={BasedOnStyle: llvm, IndentWidth: 4}" },
-			},
-		},
+		-- formatters = {
+		-- 	["clang-format"] = {
+		-- 		prepend_args = { "-style={BasedOnStyle: llvm, IndentWidth: 4}" },
+		-- 	},
+		-- },
 	},
 
 	init = function()
