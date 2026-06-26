@@ -1,0 +1,4 @@
+{
+  manualJobName = "remoteBackup";
+  systemJobName = "remoteBackupSystem";
+}

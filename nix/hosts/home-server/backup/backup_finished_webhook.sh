@@ -3,9 +3,8 @@
 # Sleep so that we can wait for the job logs to flush.
 sleep 2
 
-# NOTE: In user mode, this won't show data transfer.
 line=$(
-    journalctl --user -u remoteBackup.service -n 50 --no-pager \
+    journalctl $1 -n 50 --no-pager \
     | tail -n 1 \
     | sed 's/"/\\"/g'
 )

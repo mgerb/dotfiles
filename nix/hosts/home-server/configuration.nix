@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./modules
     ./backup/backup_service.nix
+    ./backup/backup_service_system.nix
   ];
 
   environment.systemPackages = with pkgs; [

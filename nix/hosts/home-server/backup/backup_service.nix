@@ -1,13 +1,17 @@
+# User mode service so that we can start over SSH without root permissions.
+# Unlike root, it will not show transfer data in the web hook.
 {
   lib,
   pkgs,
   user,
   ...
 }: let
-  jobName = "remoteBackup";
+  backupNames = import ./backup_names.nix;
+  jobName = backupNames.manualJobName;
   backupPath = lib.makeBinPath (with pkgs; [
     coreutils
     curl
+    util-linux
     rsync
     openssh
   ]);
@@ -23,7 +27,7 @@ in {
   home-manager.users.${user}.systemd.user = {
     services.${jobName} = {
       Unit = {
-        Description = "Nightly remote backup job";
+        Description = "Manual remote backup job";
       };
 
       Service = {
@@ -38,22 +42,6 @@ in {
       };
     };
 
-    timers.${jobName} = {
-      Unit = {
-        Description = "Start remote backup at 2am";
-      };
-
-      Timer = {
-        OnCalendar = "*-*-* 01:00:00";
-        Persistent = true;
-        Unit = "${jobName}.service";
-      };
-
-      Install = {
-        WantedBy = ["timers.target"];
-      };
-    };
-
     services."${jobName}Stop" = {
       Unit = {
         Description = "Stop remote backup at 8am";
@@ -64,23 +52,7 @@ in {
       Service = {
         Type = "oneshot";
         Environment = "PATH=${stopPath}";
-        ExecStart = "${pkgs.bash}/bin/bash /raid-pool/samba/backup_finished_webhook.sh";
-      };
-    };
-
-    timers."${jobName}Stop" = {
-      Unit = {
-        Description = "Stop remote backup at 8am";
-      };
-
-      Timer = {
-        OnCalendar = "*-*-* 08:00:00";
-        Persistent = true;
-        Unit = "${jobName}Stop.service";
-      };
-
-      Install = {
-        WantedBy = ["timers.target"];
+        ExecStart = "${pkgs.bash}/bin/bash /raid-pool/samba/backup_finished_webhook.sh '--user -u ${jobName}.service'";
       };
     };
   };
