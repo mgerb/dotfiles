@@ -77,6 +77,8 @@
   networking.firewall = {
     allowedTCPPorts = [
       22 # ssh
+      3000
+      8080
     ];
   };
 
