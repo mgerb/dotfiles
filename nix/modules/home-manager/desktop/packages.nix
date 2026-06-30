@@ -19,7 +19,7 @@
     wine64
     spotify
     exiftool
-    pkgs-stable.obsidian
+    obsidian
     xwayland
     vlc
 
