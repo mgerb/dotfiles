@@ -31,6 +31,11 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -50,7 +55,6 @@
     hmModules = [
       # NOTE: Add home-manager modules here. Add NixOS modules below.
       (import ../../modules/home-manager)
-      (import ./home-manager/files.nix)
       (import ../../modules/home-manager/desktop)
       # (import ../../modules/home-manager/desktop/dms-shell.nix)
       (import ../../modules/home-manager/desktop/noctalia.nix)
@@ -79,6 +83,7 @@
           ../../modules/tailscale-client.nix
           # Disable niri/dms for now.
           ../../modules/niri.nix
+          ../../modules/greeter.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default

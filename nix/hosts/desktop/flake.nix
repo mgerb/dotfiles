@@ -22,18 +22,35 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     zig = {
       url = "github:mitchellh/zig-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     danksearch = {
       url = "github:AvengeMedia/danksearch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://noctalia.cachix.org"];
+    extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
   };
 
   outputs = {
@@ -48,9 +65,9 @@
     hmModules = [
       # NOTE: Add home-manager modules here. Add NixOS modules below.
       (import ../../modules/home-manager)
-      (import ./home-manager/files.nix)
       (import ../../modules/home-manager/desktop)
-      (import ../../modules/home-manager/desktop/dms-shell.nix)
+      # (import ../../modules/home-manager/desktop/dms-shell.nix)
+      (import ../../modules/home-manager/desktop/noctalia.nix)
     ];
     zigpkgs = zig.packages.${system};
   in {
@@ -76,6 +93,7 @@
           ../../modules/base.nix
           ../../modules/tailscale-client.nix
           ../../modules/niri.nix
+          ../../modules/greeter.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default

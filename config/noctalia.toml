@@ -1,0 +1,57 @@
+# NOTE: To see a full config with all available options:
+# noctalia config export full > noctalia-full-config.toml
+
+[theme]
+builtin = "Catppuccin"
+mode = "dark"
+source = "builtin"
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    background_opacity = 0.5
+    padding = 10
+    radius = 0
+    margin_edge = 0
+    margin_ends = 0
+    margin_opposite_edge = 0
+    widget_spacing = 12
+
+    start = [ "launcher", "workspaces", "spacer", "spacer", "taskbar" ]
+    center = [ "clock" ]
+    end = [
+        "tray",
+        "notifications",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "session"
+    ]
+
+[wallpaper]
+enabled = true
+directory = "~/Pictures/wallpaper"
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 1800
+    order = "random"
+    recursive = true
+
+[nightlight]
+enabled = true
+force = true
+temperature_day = 6500
+temperature_night = 4000
+
+[shell]
+font_family = "Lilex Nerd Font"
