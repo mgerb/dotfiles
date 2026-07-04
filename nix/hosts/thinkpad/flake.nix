@@ -27,6 +27,15 @@
       url = "github:AvengeMedia/danksearch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+    };
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://noctalia.cachix.org"];
+    extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
   };
 
   outputs = {
@@ -43,7 +52,8 @@
       (import ../../modules/home-manager)
       (import ./home-manager/files.nix)
       (import ../../modules/home-manager/desktop)
-      (import ../../modules/home-manager/desktop/dms-shell.nix)
+      # (import ../../modules/home-manager/desktop/dms-shell.nix)
+      (import ../../modules/home-manager/desktop/noctalia.nix)
     ];
     zigpkgs = zig.packages.${system};
   in {
