@@ -66,6 +66,7 @@
       # NOTE: Add home-manager modules here. Add NixOS modules below.
       (import ../../modules/home-manager)
       (import ../../modules/home-manager/desktop)
+      (import ./home-manager/files.nix)
       # (import ../../modules/home-manager/desktop/dms-shell.nix)
       (import ../../modules/home-manager/desktop/noctalia.nix)
     ];
