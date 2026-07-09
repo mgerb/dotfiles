@@ -25,8 +25,8 @@ order = [ "default" ]
     center = [ "clock" ]
     end = [
         "tray",
-        "notifications",
-        "clipboard",
+        "cpu",
+        "ram",
         "network",
         "bluetooth",
         "volume",
@@ -48,17 +48,17 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     [idle.behavior.lock]
     action = "lock"
     enabled = true
-    timeout = 600.0
+    timeout = 1800.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
     enabled = true
-    timeout = 900.0
+    timeout = 3600.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
-    timeout = 660.0
+    timeout = 900.0
 
 [osd]
     [osd.kinds]
@@ -83,4 +83,13 @@ temperature_night = 4000
 
 [shell]
 font_family = "Lilex Nerd Font"
-time_format = "{:%-I:%M %p} {:%Y-%m-%d}"
+time_format = "{:%-I:%M %p} | {:%Y-%m-%d}"
+
+[widget.clock]
+format = "{:%-I:%M %p} // {:%Y-%m-%d}"
+
+[widget.cpu]
+display = "text"
+
+[widget.ram]
+display = "text"
