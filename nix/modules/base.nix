@@ -25,7 +25,7 @@
 
   services.mullvad-vpn = {
     enable = true;
-    package = pkgs.mullvad-vpn;
+    gui.enable = true;
   };
 
   # Disable for now. Seems like the default scheduler was
