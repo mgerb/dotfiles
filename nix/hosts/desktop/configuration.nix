@@ -74,13 +74,8 @@
     UseDns = true;
     PasswordAuthentication = true;
   };
-  networking.firewall = {
-    allowedTCPPorts = [
-      22 # ssh
-      3000
-      8080
-    ];
-  };
+
+  networking.firewall.enable = false;
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.

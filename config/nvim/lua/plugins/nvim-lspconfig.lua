@@ -94,6 +94,7 @@ return {
 			nil_ls = {},
 			cssls = {},
 			clangd = {},
+			gleam = {},
 			-- pyright = {},
 			ty = {},
 			ruff = {},

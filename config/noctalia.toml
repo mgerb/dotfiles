@@ -25,6 +25,7 @@ order = [ "default" ]
     center = [ "clock" ]
     end = [
         "tray",
+        "clipboard",
         "cpu",
         "ram",
         "network",
@@ -84,6 +85,7 @@ temperature_night = 4000
 [shell]
 font_family = "Lilex Nerd Font"
 time_format = "{:%-I:%M %p} | {:%Y-%m-%d}"
+clipboard_enabled = false
 
 [widget.clock]
 format = "{:%-I:%M %p} // {:%Y-%m-%d}"

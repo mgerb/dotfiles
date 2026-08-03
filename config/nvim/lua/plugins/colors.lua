@@ -4,6 +4,7 @@ return {
 	name = "catppuccin",
 	config = function()
 		-- local color = "#00000f"
+		---@type CatppuccinOptions
 		require("catppuccin").setup({
 			flavour = "mocha",
 			color_overrides = {
@@ -27,6 +28,7 @@ return {
 					crust = "#08080d",
 				},
 			},
+			auto_integrations = true,
 		})
 		vim.cmd.colorscheme("catppuccin-mocha")
 	end,
