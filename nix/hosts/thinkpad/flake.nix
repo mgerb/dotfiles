@@ -81,10 +81,8 @@
         # NOTE: Add NixOS modules here. Add home-manager modules above.
         modules = [
           ../../modules/base.nix
+          ../../modules/base-desktop.nix
           ../../modules/tailscale-client.nix
-          # Disable niri/dms for now.
-          ../../modules/niri.nix
-          ../../modules/greeter.nix
 
           ./configuration.nix
           inputs.home-manager.nixosModules.default
