@@ -23,11 +23,12 @@
     aseprite
     # darktable
     # llama-cpp-vulkan
-    # opencode
+    opencode
     # (pkgs.llama-cpp.override {
     #   cudaSupport = true;
     # })
 
+    # davinci-resolve
     # ventoy
     gpu-screen-recorder-gtk
   ];

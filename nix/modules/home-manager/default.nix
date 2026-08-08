@@ -44,6 +44,17 @@
 
   programs.gpg.enable = true;
 
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Mitchell";
+        email = "mgerb42@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {

@@ -4,7 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     kitty
     ghostty
     # alacritty
@@ -13,7 +12,7 @@
 
     # browsers
     # google-chrome
-    brave
+    brave-origin
 
     steam
     wine64

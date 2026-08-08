@@ -9,7 +9,5 @@
     # zfs
     zfs
     zfs-prune-snapshots
-
-    wl-clipboard
   ];
 }

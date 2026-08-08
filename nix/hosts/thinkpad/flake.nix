@@ -81,7 +81,7 @@
         # NOTE: Add NixOS modules here. Add home-manager modules above.
         modules = [
           ../../modules/base.nix
-          ../../modules/base-desktop.nix
+          ../../modules/desktop
           ../../modules/tailscale-client.nix
 
           ./configuration.nix

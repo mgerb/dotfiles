@@ -36,12 +36,9 @@ order = [ "default" ]
         "control-center",
         "session"
     ]
-        [bar.default.dead_zone]
-        command = ""
-        middle_command = ""
-        right_command = ""
-        scroll_down_command = "niri msg action focus-workspace-down"
-        scroll_up_command = "niri msg action focus-workspace-up"
+        [bar.default.dead_zone.actions]
+        scroll_down = "exec niri msg action focus-workspace-down"
+        scroll_up = "exec niri msg action focus-workspace-up"
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]

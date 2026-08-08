@@ -20,7 +20,6 @@
   };
 in {
   home.packages = with pkgs; [
-    git
     wget
     jq
     ripgrep
@@ -34,6 +33,8 @@ in {
     sqlite
     inetutils
     rsync
+    hydra-check # check build status of nixos channels
+    wl-clipboard
 
     ffmpeg
     yt-dlp
@@ -57,6 +58,7 @@ in {
     zigpkgs."0.16.0"
     zls-custom
 
+    # Neovim
     neovim
     lua-language-server
     typescript-language-server
@@ -71,7 +73,7 @@ in {
     nil # nix lsp
     alejandra # nix formatter
     tree-sitter
-    neovim-remote
+    neovim-remote # nvr
 
     # zsh
     zsh
