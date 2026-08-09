@@ -1,11 +1,16 @@
-{...}: {
+{pkgs, ...}: {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+  environment.systemPackages = with pkgs; [
+    protonup-qt
+  ];
 
+  hardware.graphics.enable32Bit = true;
+  services.pulseaudio.support32Bit = true;
   # nixpkgs.config.allowUnfreePredicate = pkg:
   #   builtins.elem (lib.getName pkg) [
   #     "steam"

@@ -14,7 +14,6 @@
     # google-chrome
     brave-origin
 
-    steam
     wine64
     spotify
     exiftool

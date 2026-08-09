@@ -16,7 +16,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    protonup-qt
     gparted
     btop-cuda
     # wowup-cf
@@ -128,17 +127,6 @@
   #   capSysAdmin = true;
   #   openFirewall = true;
   # };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
-
-  # for steam
-  hardware.graphics.enable32Bit = true;
-  services.pulseaudio.support32Bit = true;
 
   # services.ollama = {
   #   enable = true;
