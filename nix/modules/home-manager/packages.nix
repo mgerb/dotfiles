@@ -57,6 +57,7 @@ in {
 
     zigpkgs."0.16.0"
     zls-custom
+    zig-zlint
 
     # Neovim
     neovim
