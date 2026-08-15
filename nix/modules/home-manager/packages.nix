@@ -5,11 +5,10 @@
 }: let
   zls-custom = pkgs.stdenv.mkDerivation {
     pname = "zls";
-    version = "0.16.0";
-    # can also use fetchTarball here and then remove sourceRoot
+    version = "0.17.0-dev.44+8da87d4f";
     src = pkgs.fetchurl {
-      url = "https://builds.zigtools.org/zls-x86_64-linux-0.16.0.tar.xz";
-      sha256 = "sha256-3tbVYqC4buh4sd33D/qyeXzjzco7AtYHdUj51W3/lrY=";
+      url = "https://builds.zigtools.org/zls-x86_64-linux-0.17.0-dev.44+8da87d4f.tar.xz";
+      sha256 = "sha256-nqIj+ohCRnFVWRG+ul1okZGuCApOgn71x2yPZOOf8pY=";
     };
     # This will extract the tarball and set the root path
     sourceRoot = ".";
@@ -55,7 +54,7 @@ in {
     ty # python lsp
     # pyright
 
-    zigpkgs."0.16.0"
+    zigpkgs.master
     zls-custom
     zig-zlint
 

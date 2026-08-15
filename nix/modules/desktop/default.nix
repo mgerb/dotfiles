@@ -2,7 +2,7 @@
   imports = [
     ./niri.nix
     ./greeter.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./steam.nix
   ];
 }

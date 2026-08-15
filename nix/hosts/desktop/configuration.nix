@@ -19,10 +19,14 @@
     gparted
     btop-cuda
     # wowup-cf
-    aseprite
+    # aseprite
+    # ghidra
     # darktable
     # llama-cpp-vulkan
+
     opencode
+    pi-coding-agent
+
     # (pkgs.llama-cpp.override {
     #   cudaSupport = true;
     # })
@@ -84,6 +88,8 @@
   # Enable the KDE Plasma Desktop Environment (with sddm).
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
+  # This is required when running both.
+  # services.displayManager.defaultSession = "niri";
 
   # Configure keymap in X11
   services.xserver.xkb = {
