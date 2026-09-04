@@ -44,6 +44,7 @@ in {
     gnumake
     gcc
     libffi
+    xxd
 
     # python
     python314

@@ -9,6 +9,7 @@
     # alacritty
     discord
     signal-desktop
+    xeyes
 
     # browsers
     # google-chrome

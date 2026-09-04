@@ -29,6 +29,8 @@
     EDITOR = "nvim";
     GOBIN = "/home/${user}/go/bin";
     PATH = "/home/${user}/.local/bin:$GOBIN:$PATH";
+    # Used in conjunction with the sessionPath config below
+    NPM_CONFIG_PREFIX = "/home/${user}/.npm-global";
   };
 
   # To install global npm packages the path must not

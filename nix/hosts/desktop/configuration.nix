@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     ./drives.nix
+    ./intel_cpu.nix
     # ./hyprland
   ];
 
