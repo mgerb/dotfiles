@@ -34,6 +34,7 @@ in {
     rsync
     hydra-check # check build status of nixos channels
     wl-clipboard
+    bubblewrap
 
     ffmpeg
     yt-dlp
