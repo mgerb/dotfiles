@@ -56,7 +56,7 @@ in {
     ty # python lsp
     # pyright
 
-    zigpkgs.master
+    zigpkgs."0.17.0"
     zls-custom
     zig-zlint
 
