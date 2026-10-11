@@ -20,6 +20,19 @@ return {
 	{
 		"dlyongemallo/diffview-plus.nvim",
 		version = "*",
+		opts = {
+			keymaps = {
+				file_panel = {
+					{ { "n", "x" }, "w", false },
+					{ "n", "l", false },
+					{ "n", "h", false },
+				},
+				file_history_panel = {
+					{ "n", "l", false },
+					{ "n", "h", false },
+				},
+			},
+		},
 		laxy = true,
 		cmd = {
 			"DiffviewOpen",
