@@ -3,6 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+    spacecap.url = "github:mgerb/spacecap";
+
     # This is for mapping drives, which aren't in the git repo.
     # NOTE: When this is modified, flake.lock needs to be updated.
     #

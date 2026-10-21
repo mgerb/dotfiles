@@ -5,6 +5,7 @@
   config,
   pkgs,
   user,
+  inputs,
   ...
 }: {
   imports = [
@@ -20,9 +21,11 @@
     btop-cuda
     # wowup-cf
     # aseprite
-    # ghidra
+    ghidra
     # darktable
     # llama-cpp-vulkan
+
+    inputs.spacecap.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     opencode
     pi-coding-agent

@@ -38,7 +38,8 @@
       else brave-origin
     )
 
-    wine64
+    wineWow64Packages.stable
+    winetricks
     spotify
     exiftool
     obsidian

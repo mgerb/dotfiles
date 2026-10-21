@@ -57,7 +57,7 @@ in {
     # pyright
 
     zigpkgs."0.17.0"
-    zls-custom
+    #zls-custom
     zig-zlint
 
     # Neovim
