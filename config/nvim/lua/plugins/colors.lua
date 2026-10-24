@@ -29,6 +29,15 @@ return {
 				},
 			},
 			auto_integrations = true,
+			custom_highlights = function(colors)
+				return {
+					TreesitterContext = { bg = colors.surface0 },
+					TreesitterContextLineNumber = { bg = colors.surface0 },
+					-- Catppuccin underlines context by default; explicitly disable it.
+					TreesitterContextBottom = { style = {}, underline = false },
+					TreesitterContextLineNumberBottom = { style = {}, underline = false },
+				}
+			end,
 		})
 		vim.cmd.colorscheme("catppuccin-mocha")
 	end,
