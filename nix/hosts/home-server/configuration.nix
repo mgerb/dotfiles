@@ -1,6 +1,7 @@
 {
   user,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     btop-rocm
+    inputs.spacecap.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   boot.loader.systemd-boot.enable = true;

@@ -24,6 +24,7 @@ in {
     fd
     tmux
     unzip
+    unrar
     nix-search-cli
     # wireguard-tools
     keyd

@@ -11,6 +11,8 @@
       url = "github:mitchellh/zig-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spacecap.url = "github:mgerb/spacecap";
   };
 
   outputs = {
