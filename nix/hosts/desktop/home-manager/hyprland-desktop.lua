@@ -42,7 +42,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "ghostty"
-local fileManager = "thunar"
+local fileManager = "dolphin"
 -- local menu = "hyprlauncher"
 local menu = "noctalia msg panel-toggle launcher"
 
