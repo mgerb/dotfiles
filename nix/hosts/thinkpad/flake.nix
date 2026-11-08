@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+    # Last master revision before brave and brave-origin were removed in PR #582838.
+    nixpkgs-brave-origin = {
+      url = "github:NixOS/nixpkgs/2591f65879e995cb99e023c8d3b6ec5b758150c4";
+      flake = false;
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -57,6 +62,17 @@
       (import ../../modules/home-manager)
       (import ../../modules/home-manager/desktop)
       (import ./home-manager/files.nix)
+      {
+        nixpkgs.overlays = [
+          (_: _: {
+            brave-origin =
+              (import inputs.nixpkgs-brave-origin {
+                inherit system;
+                config.allowUnfree = true;
+              }).brave-origin;
+          })
+        ];
+      }
       # (import ../../modules/home-manager/desktop/dms-shell.nix)
       (import ../../modules/home-manager/desktop/noctalia.nix)
     ];
