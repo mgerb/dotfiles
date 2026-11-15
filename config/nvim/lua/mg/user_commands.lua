@@ -77,25 +77,11 @@ M.oil_toggle_columns = function()
 	end
 end
 
---- When in oil, open the sqlite db file with vim-dadbod-ui
+--- When in oil, open the sqlite db file with vim-dadbod-ui - unique by file name.
 M.oil_open_sqlite_db = function()
-	local oil = require("oil")
-	local entry = oil.get_cursor_entry()
-	local current_dir = oil.get_current_dir()
+	local file_path = util.oil_get_cursor_file()
 
-	if not entry or entry.type ~= "file" then
-		vim.notify("Cursor is not on a file", vim.log.levels.WARN)
-		return
-	end
-
-	if not current_dir then
-		vim.notify("Unable to resolve current directory", vim.log.levels.ERROR)
-		return
-	end
-
-	local file_path = vim.fs.joinpath(current_dir, entry.parsed_name)
-
-	if vim.fn.filereadable(file_path) == 0 then
+	if file_path == nil or vim.fn.filereadable(file_path) == 0 then
 		vim.notify("File does not exist: " .. file_path, vim.log.levels.ERROR)
 		return
 	end
@@ -112,35 +98,79 @@ M.oil_open_sqlite_db = function()
 	local dbs = vim.g.dbs
 
 	if type(dbs) ~= "table" then
-		vim.g.dbs = { { name = name, url = db_url } }
+		dbs = { { name = name, url = db_url } }
 	else
-		local is_list = true
-		for key, _ in pairs(dbs) do
-			if type(key) ~= "number" then
-				is_list = false
-				break
+		local exists = false
+		for _, value in ipairs(dbs) do
+			if value["name"] == name then
+				exists = true
 			end
 		end
 
-		if is_list then
-			local updated = false
-			for _, db in ipairs(dbs) do
-				if db.name == name then
-					db.url = db_url
-					updated = true
-					break
-				end
-			end
-
-			if not updated then
-				table.insert(dbs, { name = name, url = db_url })
-			end
-		else
-			dbs[name] = db_url
+		if not exists then
+			table.insert(dbs, { name = name, url = db_url })
 		end
 	end
 
+	vim.g.dbs = dbs
+
+	vim.notify(vim.inspect(vim.g.dbs))
 	vim.cmd("DBUI")
+	vim.cmd("normal gg")
+	vim.api.nvim_input("<Plug>(DBUI_Redraw)")
+end
+
+---Extract the selected archive into a new folder beside it without blocking Neovim.
+M.oil_extract_file = function()
+	local file_path = util.oil_get_cursor_file()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local extension =
+		vim.fn.matchstr(file_path:lower(), [[\.\%(zip\|rar\|7z\|tar\|tar\.gz\|tar\.bz2\|tar\.xz\|tgz\|tbz2\|txz\)$]])
+	local tools = {
+		[".zip"] = "unzip",
+		[".rar"] = "unrar",
+		[".7z"] = "7z",
+		[".tar"] = "tar",
+		[".tar.gz"] = "tar",
+		[".tar.bz2"] = "tar",
+		[".tar.xz"] = "tar",
+		[".tgz"] = "tar",
+		[".tbz2"] = "tar",
+		[".txz"] = "tar",
+	}
+	local tool = tools[extension]
+
+	if not tool then
+		return
+	end
+
+	local destination = file_path:sub(1, -#extension - 1)
+
+	if vim.fn.isdirectory(destination) == 1 then
+		vim.notify("Destination already exists")
+		return
+	end
+
+	vim.fn.mkdir(destination, "p")
+
+	local commands = {
+		unzip = { "unzip", "-n", file_path, "-d", destination },
+		tar = { "tar", "-xf", file_path, "-C", destination },
+		unrar = { "unrar", "x", "-o-", file_path, destination .. "/" },
+		["7z"] = { "7z", "x", "-y", "-o" .. destination, file_path },
+	}
+	vim.system(
+		commands[tool],
+		{ text = true },
+		vim.schedule_wrap(function(result)
+			if result.code ~= 0 then
+				vim.notify(result.stderr, vim.log.levels.ERROR)
+			else
+				vim.notify(result.stderr)
+			end
+			vim.api.nvim_buf_call(bufnr, require("oil.actions").refresh.callback)
+		end)
+	)
 end
 
 ---Start profiling functions/files

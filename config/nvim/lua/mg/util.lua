@@ -104,7 +104,20 @@ M.oil_get_cursor_dir = function()
 	local entry = oil.get_cursor_entry()
 	local current_dir = oil.get_current_dir()
 	if entry and entry.type == "directory" then
-		return current_dir .. entry.parsed_name
+		return vim.fs.joinpath(current_dir, entry.parsed_name)
+	end
+	return nil
+end
+
+---Get the full file path of the item under the cursor in Oil
+---Will return nil if it is not a directory
+---@return string | nil
+M.oil_get_cursor_file = function()
+	local oil = require("oil")
+	local entry = oil.get_cursor_entry()
+	local current_dir = oil.get_current_dir()
+	if entry and entry.type == "file" then
+		return vim.fs.joinpath(current_dir, entry.parsed_name)
 	end
 	return nil
 end
